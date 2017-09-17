@@ -35,6 +35,8 @@ gem 'jbuilder', '~> 2.5'
 gem 'bcrypt', '~> 3.1.11'
 # Use rails admin
 gem 'rails_admin', '~> 1.2'
+# Use Simple Form
+gem 'simple_form'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
