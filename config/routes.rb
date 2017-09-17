@@ -1,11 +1,5 @@
 Rails.application.routes.draw do
-  namespace :admin do
-    resources :users
-    # resources :administrators
-
-    root to: "users#index"
-  end
-
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :users
   root to: "home#index"
   #get 'home/index'
