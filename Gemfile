@@ -12,6 +12,8 @@ gem 'rails', '~> 5.1.4'
 gem 'pg', '~> 0.18'
 # Use Devise
 gem 'devise'
+# Use CanCanCan
+gem 'cancancan'
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
 # Use SCSS for stylesheets
