@@ -1,6 +1,6 @@
 class User < ApplicationRecord
-  belongs_to :group
-  # attribute :type, :string, default: 'Public'
+  belongs_to :group, optional: true
+  attribute :type, :string, default: 'Public'
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -23,8 +23,8 @@ class User < ApplicationRecord
   }
   validates_format_of :username, with: /^[a-zA-Z0-9_\.]*$/, :multiline => true
 
-  def self.types
-    %w(Administrator Employee Public)
+  def type_enum
+    ['Public', 'Employee', 'Administrator']
   end
 
   def self.find_for_database_authentication(warden_conditions)
@@ -39,11 +39,11 @@ class User < ApplicationRecord
 end
 
 class Administrator < User
-
+  belongs_to :group, required: true
 end
 
 class Employee < User
-
+  belongs_to :group, required: true
 end
 
 class Public < User

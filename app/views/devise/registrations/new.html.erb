@@ -6,8 +6,8 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
-    <%= f.input :email, required: true, autofocus: true, placeholder: "Votre email" %>
     <%= f.input :username, required: true, autofocus: true, placeholder: "Votre nom d'utilisateur" %>
+    <%= f.input :email, required: true, placeholder: "Votre email" %>
     <%= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length), placeholder: "Votre mot de passe" %>
     <%= f.input :password_confirmation, required: true, placeholder: "Confirmez votre mot de passe" %>
   </div>

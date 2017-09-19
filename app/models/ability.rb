@@ -4,6 +4,8 @@ class Ability
   def initialize(user)
     # Define abilities for the passed in user here. For example:
     #
+      # alias_action :create, :read, :update, :destroy, to: :crud
+      #
       user ||= User.new # guest user (not logged in)
       if user.type=="Administrator"
         can :manage, :all           # grant access to all app ressources
@@ -11,6 +13,7 @@ class Ability
         can :dashboard              # grant access to the dashboard
       else
         can :read, :all
+        can :crud, User
       end
     #
     # The first argument to `can` is the action you are giving the user
