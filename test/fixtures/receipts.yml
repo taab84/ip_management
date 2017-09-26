@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  type: 
+  serie: 1
+  number: 1
+  name: MyString
+  adress: MyString
+  total: 9.99
+  image_data: 
+  representative: one
+  user: one
+
+two:
+  type: 
+  serie: 1
+  number: 1
+  name: MyString
+  adress: MyString
+  total: 9.99
+  image_data: 
+  representative: two
+  user: two

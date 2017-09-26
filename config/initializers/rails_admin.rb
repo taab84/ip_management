@@ -1,8 +1,10 @@
 RailsAdmin.config do |config|
 
   # inherit from main app controller
-  config.parent_controller = 'ApplicationController' 
+  config.parent_controller = 'ApplicationController'
 
+  # Models to exclude from dashboard
+  config.excluded_models = ["Receipt"]
   ### Popular gems integration
 
   ## == Devise ==

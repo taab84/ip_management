@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170918142247) do
+ActiveRecord::Schema.define(version: 20170926115553) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,6 +27,26 @@ ActiveRecord::Schema.define(version: 20170918142247) do
     t.index ["tenant"], name: "index_groups_on_tenant", unique: true
   end
 
+  create_table "receipts", force: :cascade do |t|
+    t.string "type"
+    t.integer "serie"
+    t.integer "number"
+    t.string "name"
+    t.string "adress"
+    t.decimal "total"
+    t.jsonb "image_data"
+    t.bigint "representative_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_receipts_on_name"
+    t.index ["number"], name: "index_receipts_on_number"
+    t.index ["representative_id"], name: "index_receipts_on_representative_id"
+    t.index ["serie"], name: "index_receipts_on_serie"
+    t.index ["type"], name: "index_receipts_on_type"
+    t.index ["user_id"], name: "index_receipts_on_user_id"
+  end
+
   create_table "representatives", force: :cascade do |t|
     t.string "fullname"
     t.string "adress"
@@ -34,6 +54,7 @@ ActiveRecord::Schema.define(version: 20170918142247) do
     t.jsonb "contact"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "email"
     t.index ["contact"], name: "index_representatives_on_contact", using: :gin
     t.index ["fullname"], name: "index_representatives_on_fullname", unique: true
   end
@@ -61,4 +82,6 @@ ActiveRecord::Schema.define(version: 20170918142247) do
     t.index ["username"], name: "index_users_on_username", unique: true
   end
 
+  add_foreign_key "receipts", "representatives"
+  add_foreign_key "receipts", "users"
 end
