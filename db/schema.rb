@@ -35,6 +35,7 @@ ActiveRecord::Schema.define(version: 20170928100513) do
     t.jsonb "owner_adress"
     t.decimal "total"
     t.jsonb "data"
+    t.jsonb "image_data"
     t.bigint "representative_id"
     t.bigint "user_id"
     t.datetime "created_at", null: false
@@ -83,4 +84,6 @@ ActiveRecord::Schema.define(version: 20170928100513) do
   end
 
   add_foreign_key "receipts", "representatives"
+  add_foreign_key "receipts", "users"
+  add_foreign_key "users", "groups"
 end

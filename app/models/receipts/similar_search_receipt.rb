@@ -1,0 +1,2 @@
+class SimilarSearchReceipt < MdReceipt
+end

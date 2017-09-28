@@ -1,0 +1,2 @@
+class IdenticalSearchReceipt < MdReceipt
+end

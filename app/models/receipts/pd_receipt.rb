@@ -1,0 +1,2 @@
+class PdReceipt < Receipt
+end

@@ -1,0 +1,2 @@
+class MarkReceipt < MdReceipt
+end

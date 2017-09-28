@@ -62,7 +62,6 @@ development:
 test:
   <<: *default
   database: management_test
-  database: management_development
   user: "inapi"
   password: "oran_2016"
   host: localhost
@@ -89,6 +88,5 @@ test:
 #
 production:
   <<: *default
-  database: management_production
-  username: management
+  database: management
   password: <%= ENV['MANAGEMENT_DATABASE_PASSWORD'] %>
