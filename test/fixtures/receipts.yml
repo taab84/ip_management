@@ -4,20 +4,20 @@ one:
   type: 
   serie: 1
   number: 1
-  name: MyString
-  adress: MyString
+  owner_name: MyString
+  owner_adress: 
   total: 9.99
-  image_data: 
+  data: 
   representative: one
-  user: one
+  user: 
 
 two:
   type: 
   serie: 1
   number: 1
-  name: MyString
-  adress: MyString
+  owner_name: MyString
+  owner_adress: 
   total: 9.99
-  image_data: 
+  data: 
   representative: two
-  user: two
+  user: 

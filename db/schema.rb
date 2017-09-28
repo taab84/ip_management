@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170926115553) do
+ActiveRecord::Schema.define(version: 20170928100513) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,16 +31,17 @@ ActiveRecord::Schema.define(version: 20170926115553) do
     t.string "type"
     t.integer "serie"
     t.integer "number"
-    t.string "name"
-    t.string "adress"
+    t.string "owner_name"
+    t.jsonb "owner_adress"
     t.decimal "total"
-    t.jsonb "image_data"
+    t.jsonb "data"
     t.bigint "representative_id"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["name"], name: "index_receipts_on_name"
     t.index ["number"], name: "index_receipts_on_number"
+    t.index ["owner_adress"], name: "index_receipts_on_owner_adress", using: :gin
+    t.index ["owner_name"], name: "index_receipts_on_owner_name"
     t.index ["representative_id"], name: "index_receipts_on_representative_id"
     t.index ["serie"], name: "index_receipts_on_serie"
     t.index ["type"], name: "index_receipts_on_type"
@@ -54,7 +55,6 @@ ActiveRecord::Schema.define(version: 20170926115553) do
     t.jsonb "contact"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "email"
     t.index ["contact"], name: "index_representatives_on_contact", using: :gin
     t.index ["fullname"], name: "index_representatives_on_fullname", unique: true
   end
@@ -83,5 +83,4 @@ ActiveRecord::Schema.define(version: 20170926115553) do
   end
 
   add_foreign_key "receipts", "representatives"
-  add_foreign_key "receipts", "users"
 end

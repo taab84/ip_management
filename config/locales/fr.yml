@@ -1,5 +1,47 @@
 fr:
   activerecord:
+    models:
+      group:
+        one: Groupe
+        other: Groupes
+      receipt:
+        one: Quittance
+        other: Quittances
+      representative:
+        one: Mandataire
+        other: Mandataires
+      user:
+        one: Utilisateur
+        other: Utilisateurs
+    attributes:
+      group:
+        name: "Nom"
+        tenant: "Région"
+        adress: "Adresse"
+        email: "email"
+        phone: "Tel Fixe"
+        mobile: "Tel Mobile"
+        fax: "Fax"
+      receipt:
+        type: "Type"
+        serie: "Serie"
+        number: "Numéro"
+        name: "Nom"
+        adress: "Adresse"
+        total: "Total"
+        created_at: "Créé le"
+      representative:
+        fullname: "Nom Complet"
+        adress: "Adresse"
+        wilaya: "Wilaya"
+        phone: "Tel Fixe"
+        mobile: "Tel Mobile"
+        fax: "Fax"
+        created_at: "Créé le"
+      user/type:
+        public: "Publique"
+        employee: "Employé"
+        administrator: "Administrateur"
     errors:
       messages:
         record_invalid: 'La validation a échoué : %{errors}'

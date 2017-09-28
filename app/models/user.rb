@@ -24,7 +24,9 @@ class User < ApplicationRecord
   validates_format_of :username, with: /^[a-zA-Z0-9_\.]*$/, :multiline => true
 
   def type_enum
-    ['Public', 'Employee', 'Administrator']
+    # ['Public', 'Employee', 'Administrator']
+    # [ %w(Public Public), %w(Employee Employee), %w(Administrator Administrator) ]
+    { Public: Public, Employee: Employee, Administrator: Administrator }
   end
 
   def self.find_for_database_authentication(warden_conditions)

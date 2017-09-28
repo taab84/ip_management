@@ -1,7 +1,5 @@
 RailsAdmin.config do |config|
   config.model 'User' do
-    label "Utilisateur"
-    label_plural "Utilisateurs"
     weight 1
     edit do
       field :username do
