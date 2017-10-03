@@ -6,7 +6,7 @@ class CreateReceipts < ActiveRecord::Migration[5.1]
       t.integer :number
       t.string :owner_name
       t.jsonb :owner_adress
-      t.decimal :total
+      t.decimal :total, precision: 10, scale:2, null: false, default: 0
       t.jsonb :data
       t.jsonb :image_data
       t.references :representative, foreign_key: true

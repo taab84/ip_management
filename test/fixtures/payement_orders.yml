@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  type: 
+  number: 1
+  remain: 9.99
+  image_data: 
+
+two:
+  type: 
+  number: 1
+  remain: 9.99
+  image_data: 

@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  type: 
+  value: 9.99
+  name: MyString
+  date: 2017-10-02
+  data: 
+  image_data: 
+  payement_order: one
+
+two:
+  type: 
+  value: 9.99
+  name: MyString
+  date: 2017-10-02
+  data: 
+  image_data: 
+  payement_order: two

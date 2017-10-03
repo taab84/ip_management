@@ -4,7 +4,7 @@ RailsAdmin.config do |config|
   config.parent_controller = 'ApplicationController'
 
   # Models to exclude from dashboard
-  config.excluded_models = ["Receipt"]
+  config.included_models = ["Group", "User", "Representative"]
   ### Popular gems integration
 
   ## == Devise ==

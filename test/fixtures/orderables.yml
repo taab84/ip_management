@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  type: 
+  payement_order: one
+  receipt: one
+
+two:
+  type: 
+  payement_order: two
+  receipt: two

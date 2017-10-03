@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170928100513) do
+ActiveRecord::Schema.define(version: 20171002135353) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,13 +27,52 @@ ActiveRecord::Schema.define(version: 20170928100513) do
     t.index ["tenant"], name: "index_groups_on_tenant", unique: true
   end
 
+  create_table "orderables", force: :cascade do |t|
+    t.string "type"
+    t.bigint "payement_order_id"
+    t.bigint "receipt_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["payement_order_id"], name: "index_orderables_on_payement_order_id"
+    t.index ["receipt_id"], name: "index_orderables_on_receipt_id"
+    t.index ["type"], name: "index_orderables_on_type"
+  end
+
+  create_table "payement_orders", force: :cascade do |t|
+    t.string "type"
+    t.integer "number"
+    t.decimal "remain", precision: 10, scale: 2, default: "0.0", null: false
+    t.jsonb "image_data"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["number"], name: "index_payement_orders_on_number"
+    t.index ["type"], name: "index_payement_orders_on_type"
+  end
+
+  create_table "payements", force: :cascade do |t|
+    t.string "type"
+    t.decimal "value", precision: 10, scale: 2, default: "0.0", null: false
+    t.string "name"
+    t.date "date"
+    t.jsonb "data"
+    t.jsonb "image_data"
+    t.bigint "payement_order_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["data"], name: "index_payements_on_data", using: :gin
+    t.index ["date"], name: "index_payements_on_date"
+    t.index ["name"], name: "index_payements_on_name"
+    t.index ["payement_order_id"], name: "index_payements_on_payement_order_id"
+    t.index ["type"], name: "index_payements_on_type"
+  end
+
   create_table "receipts", force: :cascade do |t|
     t.string "type"
     t.integer "serie"
     t.integer "number"
     t.string "owner_name"
     t.jsonb "owner_adress"
-    t.decimal "total"
+    t.decimal "total", precision: 10, scale: 2, default: "0.0", null: false
     t.jsonb "data"
     t.jsonb "image_data"
     t.bigint "representative_id"
@@ -83,6 +122,9 @@ ActiveRecord::Schema.define(version: 20170928100513) do
     t.index ["username"], name: "index_users_on_username", unique: true
   end
 
+  add_foreign_key "orderables", "payement_orders"
+  add_foreign_key "orderables", "receipts"
+  add_foreign_key "payements", "payement_orders"
   add_foreign_key "receipts", "representatives"
   add_foreign_key "receipts", "users"
   add_foreign_key "users", "groups"
