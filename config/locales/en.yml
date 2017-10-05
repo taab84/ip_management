@@ -1,4 +1,18 @@
 en:
+  menu:
+    languages:
+      lang: "Language"
+      fr: "French"
+      en: "English"
+    receipt:
+      mark:
+        new: "New Applicant Mark"
+        correction: "Mark Correction Form"
+      search:
+        identical: "Identical Search"
+        similitude: "Similitude Search"
+      design:
+        new: "New Applicant Industrial Design"
   activerecord:
     models:
       group:
@@ -11,8 +25,17 @@ en:
         one: Representative
         other: Representatives
       user:
-        one: user
+        one: User
         other: Users
+      administrator:
+        one: Administrator
+        other: Administrators
+      employee:
+        one: Employee
+        other: Employees
+      public:
+        one: Public
+        other: Publics
     attributes:
       group:
         name: "Name"
@@ -38,3 +61,10 @@ en:
         mobile: "Mobile"
         fax: "Fax"
         created_at: "Created on"
+      user:
+        username: "Nom d'Utilisateur"
+        group: "Groupe"
+        email: "e-Mail"
+        created_at: "Créé le"
+        current_sign_in_at: "Derniére Connexion"
+        type: "Type"

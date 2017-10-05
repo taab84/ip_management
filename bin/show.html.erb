@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Owner name:</strong>
+  <%= @receipt.owner_name %>
+</p>
+
+<p>
+  <strong>Owner adress:</strong>
+  <%= @receipt.owner_adress %>
+</p>
+
+<p>
+  <strong>Representative:</strong>
+  <%= @receipt.representative %>
+</p>
+
+<%= link_to 'Edit', edit_receipt_path(@receipt) %> |
+<%= link_to 'Back', receipts_path %>

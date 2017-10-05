@@ -62,7 +62,7 @@ ActiveRecord::Schema.define(version: 20171002135353) do
     t.index ["data"], name: "index_payements_on_data", using: :gin
     t.index ["date"], name: "index_payements_on_date"
     t.index ["name"], name: "index_payements_on_name"
-    t.index ["payement_order_id"], name: "index_payements_on_payement_order_id"
+    t.index ["payement_order_id"], name: "index_payements_on_payement_order_id", unique: true
     t.index ["type"], name: "index_payements_on_type"
   end
 

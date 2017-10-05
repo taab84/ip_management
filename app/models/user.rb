@@ -5,6 +5,24 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :authentication_keys => [:login]
+  # Rails Admin config
+  rails_admin do
+    weight 1
+    edit do
+      field :username
+      field :type
+      field :group
+      field :email
+    end
+    list do
+      field :username
+      field :type
+      field :group
+      field :email
+      field :created_at
+      field :current_sign_in_at
+    end
+  end
 
   attr_accessor :login
 
@@ -23,10 +41,12 @@ class User < ApplicationRecord
   }
   validates_format_of :username, with: /^[a-zA-Z0-9_\.]*$/, :multiline => true
 
+  # enum type: { Public: 'Public', Employee: 'Employee', Administrator: 'Administrator' }
+
   def type_enum
     # ['Public', 'Employee', 'Administrator']
     # [ %w(Public Public), %w(Employee Employee), %w(Administrator Administrator) ]
-    { Public: Public, Employee: Employee, Administrator: Administrator }
+    { I18n.t('activerecord.models.public.one') => 'Public', I18n.t('activerecord.models.employee.one') => 'Employee', I18n.t('activerecord.models.administrator.one') => 'Administrator' }
   end
 
   def self.find_for_database_authentication(warden_conditions)

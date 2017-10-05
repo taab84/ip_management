@@ -17,6 +17,7 @@ fr:
       starts_with: Commence par
       ends_with: Termine par
     loading: "Chargement..."
+    toggle_navigation: Navigation basculable
     home:
       name: Home
     pagination:
@@ -51,6 +52,7 @@ fr:
     table_headers:
       model_name: "Nom du modèle"
       last_used: "Utilisé"
+      last_created: "Dernier créé il y a"
       records: "Enregistrements"
       username: "Utilisateur"
       changes: "Changements"
