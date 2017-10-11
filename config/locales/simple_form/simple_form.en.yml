@@ -1,0 +1,25 @@
+en:
+  simple_form:
+    "yes": 'Yes'
+    "no": 'No'
+    required:
+      text: 'required'
+      mark: '*'
+    error_notification:
+      default_message: "Please review the problems below:"
+    labels:
+      mark_receipt:
+        colored: "In Color"
+        rev_pri: "With Priority Revendication"
+        ipas_num: "IPAS Number"
+    placeholders:
+      mark_receipt:
+        mark_name: "Mark Name"
+        classes: "Classes Number (Between 1 and 45)"
+      defaults:
+        owner_name: "Applicant Name"
+        owner_street: "Applicant Street"
+        owner_wilaya: "Applicant State"
+    prompts:
+      receipt:
+        representative: "Select a Representative if exists"

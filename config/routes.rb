@@ -4,6 +4,11 @@ Rails.application.routes.draw do
   # gems generated routes
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :users
+  # resources routes
+  resources :receipts
+  resources :mark_receipts, :controller => "receipts", :type => "MarkReceipt"
+  resources :identical_search_receipts, :controller => "receipts", :type => "IdenticalSearchReceipt"
+  resources :similar_search_receipts, :controller => "receipts", :type => "SimilarSearchReceipt"
 
   # custom routes
   root to: "home#index"

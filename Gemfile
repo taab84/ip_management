@@ -41,9 +41,12 @@ gem 'bcrypt', '~> 3.1.11'
 gem 'rails_admin', '~> 1.2'
 # Use Simple Form
 gem 'simple_form'
-
+# Use Cocoon gem for nested forms
+gem 'cocoon'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+# Use Enum_help for select option i18n
+gem 'enum_help'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

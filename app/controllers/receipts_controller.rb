@@ -4,7 +4,7 @@ class ReceiptsController < ApplicationController
   # GET /receipts
   # GET /receipts.json
   def index
-    @receipts = Receipt.all
+    @receipts = receipt_type.all
   end
 
   # GET /receipts/1
@@ -14,7 +14,7 @@ class ReceiptsController < ApplicationController
 
   # GET /receipts/new
   def new
-    @receipt = Receipt.new
+    @receipt = receipt_type.new
   end
 
   # GET /receipts/1/edit
@@ -24,7 +24,7 @@ class ReceiptsController < ApplicationController
   # POST /receipts
   # POST /receipts.json
   def create
-    @receipt = Receipt.new(receipt_params)
+    @receipt = receipt_type.new(receipt_params)
 
     respond_to do |format|
       if @receipt.save
@@ -62,6 +62,14 @@ class ReceiptsController < ApplicationController
   end
 
   private
+
+    def receipt_types
+      ["MarkReceipt", "IdenticalSearchReceipt", "SimilarSearchReceipt"]
+    end
+
+    def receipt_type
+      params[:type].constantize if params[:type].in? receipt_types
+    end
     # Use callbacks to share common setup or constraints between actions.
     def set_receipt
       @receipt = Receipt.find(params[:id])
@@ -69,6 +77,9 @@ class ReceiptsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def receipt_params
-      params.require(:receipt).permit(:owner_name, :owner_adress, :representative)
+      if params[:type] == "MarkReceipt"
+        params.require(:mark_receipt).permit(:owner_name, :owner_adress, :representative, :owner_street, :owner_wilaya, :mark_name,
+        :mark_type, :colored, :classes, :rev_pri, :ipas_num)
+      end
     end
 end

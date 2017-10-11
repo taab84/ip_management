@@ -1,0 +1,25 @@
+fr:
+  simple_form:
+    "yes": 'Oui'
+    "no": 'Non'
+    required:
+      text: 'Obligatoire'
+      mark: '*'
+    error_notification:
+      default_message: "SVP lisez les problémes cités:"
+    labels:
+      mark_receipt:
+        colored: "En Couleur"
+        rev_pri: "Avec Revendication de Priorité"
+    placeholders:
+      mark_receipt:
+        mark_name: "Nom de la Marque"
+        classes: "Nombre de Classes (Entre 1 et 45)"
+        ipas_num: "Numéro IPAS"
+      defaults:
+        owner_name: "Nom du Demandeur"
+        owner_street: "Adresse du demandeur"
+        owner_wilaya: "Wilaya du demandeur"
+    prompts:
+      receipt:
+        representative: "Selectionnez un Mandataire s'il existe"

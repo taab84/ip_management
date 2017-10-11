@@ -1,0 +1,15 @@
+en:
+  menu:
+    languages:
+      lang: "Language"
+      fr: "French"
+      en: "English"
+    receipt:
+      mark:
+        new: "New Applicant Mark"
+        correction: "Mark Correction Form"
+      search:
+        identical: "Identical Search"
+        similitude: "Similitude Search"
+      design:
+        new: "New Applicant Industrial Design"

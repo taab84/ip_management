@@ -10,6 +10,7 @@ module Management
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.1
+    config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**/*.{rb,yml}').to_s]
     config.i18n.default_locale = :fr
     I18n.available_locales = [:fr, :en]
     config.autoload_paths += Dir[Rails.root.join('app', 'models', '{**}')]

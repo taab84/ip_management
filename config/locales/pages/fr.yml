@@ -1,0 +1,15 @@
+fr:
+  menu:
+    languages:
+      lang: "Langue"
+      fr: "Français"
+      en: "Anglais"
+    receipt:
+      mark:
+        new: "Dépôt Marque"
+        correction: "Correction d'erreur Materiel (Marque)"
+      search:
+        identical: "Recherche à Identique"
+        similitude: "Recherche de Similitude"
+      design:
+        new: "Dépôt de Dessin & Modèle"

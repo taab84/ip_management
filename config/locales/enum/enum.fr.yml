@@ -1,0 +1,7 @@
+fr:
+  enums:
+    mark_receipt:
+      mark_type:
+        verbal: "Verbale"
+        figuratif: "Figurative"
+        figuratif_and_verbal: "Figurative et Verbale"
