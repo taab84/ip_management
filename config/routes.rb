@@ -14,6 +14,8 @@ Rails.application.routes.draw do
   root to: "home#index"
   get 'home/info'
   get 'home/help'
+  post 'orders/select_request'
+  # get 'receipts/old', to: 'receipts#old'
 
   # Cahnge locale routes
   get '/change_locale/:locale', to: 'settings#change_locale', as: :change_locale

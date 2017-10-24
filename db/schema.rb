@@ -62,7 +62,7 @@ ActiveRecord::Schema.define(version: 20171002135353) do
     t.index ["data"], name: "index_payements_on_data", using: :gin
     t.index ["date"], name: "index_payements_on_date"
     t.index ["name"], name: "index_payements_on_name"
-    t.index ["payement_order_id"], name: "index_payements_on_payement_order_id", unique: true
+    t.index ["payement_order_id"], name: "index_payements_on_payement_order_id"
     t.index ["type"], name: "index_payements_on_type"
   end
 
@@ -79,6 +79,7 @@ ActiveRecord::Schema.define(version: 20171002135353) do
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["data"], name: "index_receipts_on_data", using: :gin
     t.index ["number"], name: "index_receipts_on_number"
     t.index ["owner_adress"], name: "index_receipts_on_owner_adress", using: :gin
     t.index ["owner_name"], name: "index_receipts_on_owner_name"
@@ -103,6 +104,7 @@ ActiveRecord::Schema.define(version: 20171002135353) do
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "username", default: "", null: false
+    t.string "fullname", default: "", null: false
     t.string "type", default: "Public", null: false
     t.bigint "group_id"
     t.string "reset_password_token"

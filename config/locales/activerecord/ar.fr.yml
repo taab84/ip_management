@@ -22,6 +22,9 @@ fr:
       public:
         one: Publique
         other: Publiques
+      payement:
+        add: Ajouter un Payement
+        remove: Supprimer le Payement
     attributes:
       group:
         name: "Nom"

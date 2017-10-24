@@ -14,4 +14,7 @@
 //= require turbolinks
 //= require jquery
 //= require bootstrap-sprockets
+//= require cocoon
+//= require selectize
 //= require home
+//= require receipts

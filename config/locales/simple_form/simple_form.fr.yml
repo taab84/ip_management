@@ -8,18 +8,30 @@ fr:
     error_notification:
       default_message: "SVP lisez les problémes cités:"
     labels:
+      defaults:
+        image: "Televerser le Fichier Scanné"
       mark_receipt:
+        image: "Televerser la Demande scanné"
         colored: "En Couleur"
         rev_pri: "Avec Revendication de Priorité"
+      order:
+        image: "Televerser l'Ordre de Paiement"
     placeholders:
-      mark_receipt:
-        mark_name: "Nom de la Marque"
-        classes: "Nombre de Classes (Entre 1 et 45)"
-        ipas_num: "Numéro IPAS"
       defaults:
         owner_name: "Nom du Demandeur"
         owner_street: "Adresse du demandeur"
         owner_wilaya: "Wilaya du demandeur"
+        value: "Valeur Total"
+        name: "au Nom de"
+        date: "Date de Paiement"
+      mark_receipt:
+        mark_name: "Nom de la Marque"
+        classes: "Nombre de Classes (Entre 1 et 45)"
+        ipas_num: "Numéro IPAS"
+      transfer_payement:
+        ref: "Réference de Versement"
+      check_payement:
+        number: "Numéro de Chèque"
     prompts:
       receipt:
         representative: "Selectionnez un Mandataire s'il existe"

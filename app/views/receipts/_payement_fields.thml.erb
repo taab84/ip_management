@@ -1,0 +1,25 @@
+<% if defined? payement_type %>
+<% if payement_type == "transfer" %>
+  <div>
+    <%= f.simple_fields_for f.object.transfer_payement do |p| %>
+    <%= p.input :type, :as => :hidden, :input_html => { :value => "TransferPayement" } %>
+    <%= p.input :date %>
+    <%= p.input :value %>
+    <%= p.input :name %>
+    <%= p.input :ref %>
+    <%= p.input :image, as: :file %>
+    <% end %>
+  </div>
+<% elsif payement_type == "check" %>
+  <div>
+    <%= f.simple_fields_for :payement do |p| %>
+    <%= p.input :type, :as => :hidden, :input_html => { :value => "CheckPayement" } %>
+    <%= p.input :date %>
+    <%= p.input :value %>
+    <%= p.input :name %>
+    <%= p.input :number %>
+    <%= p.input :image, as: :file %>
+    <% end %>
+  </div>
+<% end %>
+<% end %>

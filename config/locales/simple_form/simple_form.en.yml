@@ -8,18 +8,31 @@ en:
     error_notification:
       default_message: "Please review the problems below:"
     labels:
+      defaults:
+        image: "Upload Scanned File"
       mark_receipt:
+        image: "Upload Applicantion File"
         colored: "In Color"
         rev_pri: "With Priority Revendication"
         ipas_num: "IPAS Number"
+      order:
+        image: "Upload Order File"
     placeholders:
-      mark_receipt:
-        mark_name: "Mark Name"
-        classes: "Classes Number (Between 1 and 45)"
       defaults:
         owner_name: "Applicant Name"
         owner_street: "Applicant Street"
         owner_wilaya: "Applicant State"
+        value: "Total Valeur"
+        name: "By"
+        date: "Payement Date"
+      mark_receipt:
+        mark_name: "Mark name"
+        classes: "Class numbers (Entre 1 et 45)"
+        ipas_num: "IPAS Number"
+      transfer_payement:
+        ref: "Transfer reference"
+      check_payement:
+        number: "Check Number"
     prompts:
       receipt:
         representative: "Select a Representative if exists"

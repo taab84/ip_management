@@ -2,8 +2,8 @@ class CreateOrderables < ActiveRecord::Migration[5.1]
   def change
     create_table :orderables do |t|
       t.string :type
-      t.references :payement_order, foreign_key: true
-      t.references :receipt, foreign_key: true
+      t.references :payement_order, foreign_key: true, index: true
+      t.references :receipt, foreign_key: true, index: true
 
       t.timestamps
     end

@@ -9,8 +9,8 @@ class CreateReceipts < ActiveRecord::Migration[5.1]
       t.decimal :total, precision: 10, scale:2, null: false, default: 0
       t.jsonb :data
       t.jsonb :image_data
-      t.references :representative, foreign_key: true
-      t.references :user,   foreign_key: true
+      t.references :representative, foreign_key: true, index: true
+      t.references :user,   foreign_key: true, index: true
 
       t.timestamps
     end
@@ -19,5 +19,6 @@ class CreateReceipts < ActiveRecord::Migration[5.1]
     add_index :receipts, :number, unique: false
     add_index :receipts, :owner_name, unique: false
     add_index :receipts, :owner_adress, unique: false, using: :gin
+    add_index :receipts, :data, unique: false, using: :gin
   end
 end

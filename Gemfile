@@ -43,10 +43,15 @@ gem 'rails_admin', '~> 1.2'
 gem 'simple_form'
 # Use Cocoon gem for nested forms
 gem 'cocoon'
+# Use Selectize for select field
+# gem "selectize-rails"
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 # Use Enum_help for select option i18n
 gem 'enum_help'
+# Use shrine for file uploads
+gem 'shrine'
+# Use i18n task to manage translations
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

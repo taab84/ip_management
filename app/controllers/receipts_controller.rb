@@ -25,9 +25,9 @@ class ReceiptsController < ApplicationController
   # POST /receipts.json
   def create
     @receipt = receipt_type.new(receipt_params)
-
+    @receipt.user_id = current_user.id
     respond_to do |format|
-      if @receipt.save
+      if @receipt.save!
         format.html { redirect_to @receipt, notice: 'Receipt was successfully created.' }
         format.json { render :show, status: :created, location: @receipt }
       else
@@ -54,7 +54,7 @@ class ReceiptsController < ApplicationController
   # DELETE /receipts/1
   # DELETE /receipts/1.json
   def destroy
-    @receipt.destroy
+    @receipt.destroy!
     respond_to do |format|
       format.html { redirect_to receipts_url, notice: 'Receipt was successfully destroyed.' }
       format.json { head :no_content }
@@ -78,8 +78,10 @@ class ReceiptsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def receipt_params
       if params[:type] == "MarkReceipt"
-        params.require(:mark_receipt).permit(:owner_name, :owner_adress, :representative, :owner_street, :owner_wilaya, :mark_name,
-        :mark_type, :colored, :classes, :rev_pri, :ipas_num)
+        # params.require(:mark_receipt).permit(:owner_name, :owner_adress, :representative_id, :owner_street, :owner_wilaya, :mark_name, :image,
+        # :mark_type, :colored, :classes, :rev_pri, :ipas_num, :payement_type, orders_attributes:[:id, :number, :remain, :image], :transfer_payement_attributes => [:type, :image, :date, :value, :name, :ref, :number])
+        params.require(:mark_receipt).permit(:owner_name, :owner_adress, :representative_id, :owner_street, :owner_wilaya, :mark_name, :image,
+        :mark_type, :colored, :classes, :rev_pri, :ipas_num, :order_ids => [])
       end
     end
 end
