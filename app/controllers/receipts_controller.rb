@@ -4,12 +4,19 @@ class ReceiptsController < ApplicationController
   # GET /receipts
   # GET /receipts.json
   def index
-    @receipts = receipt_type.all
+    if receipt_type
+      @receipts = receipt_type.all
+    else
+      redirect_to root_url
+    end
   end
 
   # GET /receipts/1
   # GET /receipts/1.json
   def show
+    unless receipt_type
+      redirect_to root_url
+    end
   end
 
   # GET /receipts/new
@@ -56,12 +63,16 @@ class ReceiptsController < ApplicationController
   def destroy
     @receipt.destroy!
     respond_to do |format|
-      format.html { redirect_to receipts_url, notice: 'Receipt was successfully destroyed.' }
+      format.html { redirect_to customized_url, notice: 'Receipt was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
 
   private
+
+    def customized_url
+      "/" + params[:type].tableize if params[:type].in? receipt_types
+    end
 
     def receipt_types
       ["MarkReceipt", "IdenticalSearchReceipt", "SimilarSearchReceipt"]

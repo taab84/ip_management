@@ -1,8 +1,12 @@
 <% if params[:type]=="MarkReceipt" %>
-    <%= f.input :mark_name %>
-    <%= f.input :mark_type, include_blank: false %>
-    <%= f.input :colored %>
-    <%= f.input :classes %>
-    <%= f.input :rev_pri %>
-    <%= f.input :ipas_num %>
+  <div class='row'>
+    <div class="col col-md-6"> <%= f.input :mark_name %> </div>
+    <div class="col col-md-6"> <%= f.input :mark_type, include_blank: false %> </div>
+  </div>
+  <div class="row">
+    <div class="col col-md-3"> <%= f.input :classes %> </div>
+    <div class="col col-md-3"> <%= f.input :ipas_num %> </div>
+    <div class="col col-md-3"> <%= f.input :colored %> </div>
+    <div class="col col-md-3"> <%= f.input :rev_pri %> </div>
+  </div>
 <% end %>

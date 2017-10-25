@@ -2,30 +2,26 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
-    <%= f.input :owner_name %>
+    <div class="row">
+      <div class="col col-md-6"><%= f.input :owner_name %> </div>
+      <div class="col col-md-6"><%= f.association :representative, label_method: :fullname, prompt: t('simple_form.prompts.receipt.representative') %> </div>
+    </div>
     <div class="row">
     <div class="col col-md-8"><%= f.input :owner_street %> </div>
     <div class="col col-md-4"><%= f.input :owner_wilaya %> </div>
     </div>
-    <%= f.association :representative, label_method: :fullname, prompt: t('simple_form.prompts.receipt.representative') %>
     <%= render :partial => "form_cases", :locals=>{:f=>f} %>
     <%= f.input :image, as: :hidden, input_html: {value: @receipt.cached_image_data} %>
     <%= f.input :image, as: :file %>
-    <%= f.select :order_ids, PayementOrder.pluck(:number, :id).last(5), { prompt: "Selectionner un order de paiement"}, {multiple: true, class: "mark_receipt_orders"} %>
+    <%= f.select :order_ids, {}, { prompt: "Selectionner un order de paiement"}, {multiple: true, class: "mark_receipt_orders"} %>
     <div id="orders_old">
     </div>
 
   </div>
 
-  <div class="panel-footer">
     <div class="form-actions">
-      <div class="row">
-        <div class="col col-md-3"></div>
-        <div class="col col-md-3">
-        </div>
-        <div class="col col-md-3 col-md-offset-3"> <%= f.button :submit, :class => 'btn btn-info pull-right' %> </div>
-      </div>
+        <%= f.button :submit, :class => 'btn btn-info pull-right' %>
     </div>
-  </div>
 
 <% end %>
+<%= render :partial => "orders/order_fields" %>

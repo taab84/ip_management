@@ -1,4 +1,5 @@
 $(document).on('turbolinks:load', function() {
+  // $('.datepicker').datepicker();
   var instance = $(".mark_receipt_orders").selectize({
       plugins: ['remove_button'],
       valueField: 'id',
@@ -26,22 +27,24 @@ $(document).on('turbolinks:load', function() {
               callback(res);
             }
         });
+      },
+      create: function(input, callback){
+        $(".order-modal").modal('show');
       }
   });
 
-
-  document.getElementById("mark_receipt_payement_type").onchange = function() {Updatelocal()};
-  document.getElementById("link_to_add_nested_check").style.display = 'none';
+  // document.getElementById("mark_receipt_payement_type").onchange = function() {Updatelocal()};
+  // document.getElementById("link_to_add_nested_check").style.display = 'none';
 
 });
 
-function Updatelocal() {
-  var req = $("#mark_receipt_payement_type")[0].selectedIndex;
-  if (req == 0) {
-    document.getElementById("link_to_add_nested_transfer").style.display = 'inline-block';
-    document.getElementById("link_to_add_nested_check").style.display = 'none';
-  } else if (req == 1) {
-    document.getElementById("link_to_add_nested_transfer").style.display = 'none';
-    document.getElementById("link_to_add_nested_check").style.display = 'inline-block';
-  }
-}
+// function Updatelocal() {
+//   var req = $("#mark_receipt_payement_type")[0].selectedIndex;
+//   if (req == 0) {
+//     document.getElementById("link_to_add_nested_transfer").style.display = 'inline-block';
+//     document.getElementById("link_to_add_nested_check").style.display = 'none';
+//   } else if (req == 1) {
+//     document.getElementById("link_to_add_nested_transfer").style.display = 'none';
+//     document.getElementById("link_to_add_nested_check").style.display = 'inline-block';
+//   }
+// }

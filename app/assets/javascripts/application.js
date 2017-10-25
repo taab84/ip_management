@@ -18,3 +18,6 @@
 //= require selectize
 //= require home
 //= require receipts
+//= require bootstrap-datepicker/core
+//= require bootstrap-datepicker/locales/bootstrap-datepicker.en-GB.js
+//= require bootstrap-datepicker/locales/bootstrap-datepicker.fr.js

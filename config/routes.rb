@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   get 'home/info'
   get 'home/help'
   post 'orders/select_request'
+  post 'orders/create'
   # get 'receipts/old', to: 'receipts#old'
 
   # Cahnge locale routes
