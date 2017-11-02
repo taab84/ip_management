@@ -7,11 +7,6 @@ class Receipt < ApplicationRecord
 
   before_validation :valuate, on: :create
 
-  attr_accessor :payement_type
-  attr_accessor :used_number
-
-  enum payement_type: ['transfer', 'check']
-
   jsonb_accessor :owner_adress,
     owner_street: :string,
     owner_wilaya: :string

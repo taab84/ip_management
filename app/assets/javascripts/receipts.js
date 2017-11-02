@@ -1,19 +1,18 @@
 $(document).on('turbolinks:load', function() {
-  // $('.datepicker').datepicker();
-  var instance = $(".mark_receipt_orders").selectize({
-      plugins: ['remove_button'],
+  var selectizeCallback = null;
+  $('.datepicker').datepicker();
+
+  var select_order = $(".receipt_orders").selectize({
+      plugins: ['remove_button', 'drag_drop'],
       valueField: 'id',
       labelField: 'number',
       searchField: 'number',
       delimiter: ',',
-      // highlight: false,
-      loadThrottle: 1000,
-      // openOnFocus: false,
       load: function(query, callback) {
-          instance.selectize()[0].selectize.clearOptions();
+          select_order.selectize()[0].selectize.clearOptions();
       if (!query.length) return callback();
         $.ajax({
-            url: 'http://localhost:3000/orders/select_request',
+            url: '/orders/select_request',
             type: 'POST',
             dataType: 'json',
             data: {
@@ -29,22 +28,34 @@ $(document).on('turbolinks:load', function() {
         });
       },
       create: function(input, callback){
-        $(".order-modal").modal('show');
+        selectizeCallback = callback;
+        $(".order-modal").modal();
       }
   });
 
-  // document.getElementById("mark_receipt_payement_type").onchange = function() {Updatelocal()};
-  // document.getElementById("link_to_add_nested_check").style.display = 'none';
+  $('#payement').on('cocoon:after-insert', function(e, insertedItem) {
+         $('.datepicker').datepicker();
+      });
+
+  $("#new_payement_order").on("submit", function(e){
+    e.preventDefault();
+    $.ajax({
+      method: "POST",
+      url: '/payement_orders/',
+      data: $(this).serialize(),
+      success: function(res){
+        selectizeCallback(res);
+        selectizeCallback = null;
+        $(".order-modal").modal('toggle');
+      }
+    });
+  });
+
+  $(".order-modal").on("hide.bs.modal", function(e) {
+    if (selectizeCallback != null) {
+      selectizeCallback();
+      selecitzeCallback = null;
+    }
+  });
 
 });
-
-// function Updatelocal() {
-//   var req = $("#mark_receipt_payement_type")[0].selectedIndex;
-//   if (req == 0) {
-//     document.getElementById("link_to_add_nested_transfer").style.display = 'inline-block';
-//     document.getElementById("link_to_add_nested_check").style.display = 'none';
-//   } else if (req == 1) {
-//     document.getElementById("link_to_add_nested_transfer").style.display = 'none';
-//     document.getElementById("link_to_add_nested_check").style.display = 'inline-block';
-//   }
-// }

@@ -1,16 +1,22 @@
-<div class="modal fade order-modal" id="myModal" role="dialog">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">new payement order</h4>
-      </div>
-      <div class="modal-body">
-        <p>payement order informations.</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-info" data-dismiss="modal">Close</button>
-      </div>
+<%= simple_form_for(@order=new_order, wrapper: :inline_form) do |f| %>
+  <%= f.error_notification %>
+  <%= f.hidden_field :type, :value => order_type %>
+  <%= f.input :image, as: :file %>
+  <div id="payement">
+    <%= f.simple_fields_for :payement do |payement| %>
+    <%= render 'payement_fields', :f => payement %>
+    <% end %>
+  </div>
+  <div class="row links">
+    <div class="col col-md-8">
+    <%= link_to_add_association('versement', f, :payement, data: {association_insertion_node: '#payement', association_insertion_method: :append}, :class => "btn btn-success btn-xs",
+    wrap_object: Proc.new { |payement| payement.type = "TransferPayement"; payement = TransferPayement.new }) %>
+    <%= link_to_add_association('chèque', f, :payement, data: {association_insertion_node: '#payement', association_insertion_method: :append}, :class => "btn btn-success btn-xs",
+    wrap_object: Proc.new { |payement| payement.type = "CheckPayement"; payement = CheckPayement.new }) %>
+    </div>
+    <div class="col col-md-4">
+      <%= f.submit class: "btn btn-info pull-right" %>
     </div>
   </div>
-</div>
+
+<% end %>

@@ -1,0 +1,207 @@
+fr:
+  date:
+    abbr_day_names:
+    - sun
+    - mon
+    - tue
+    - wed
+    - thu
+    - fri
+    - sat
+    abbr_month_names:
+    -
+    - jan.
+    - feb.
+    - mar.
+    - apr.
+    - mai
+    - june
+    - july.
+    - aug
+    - sept.
+    - oct.
+    - nov.
+    - dec.
+    day_names:
+    - sunday
+    - monday
+    - tuesday
+    - wednsday
+    - thursday
+    - friday
+    - saturday
+    formats:
+      default: "%d/%m/%Y"
+      short: "%e %b"
+      long: "%e %B %Y"
+    month_names:
+    -
+    - january
+    - february
+    - march
+    - april
+    - mai
+    - june
+    - july
+    - august
+    - september
+    - october
+    - november
+    - décember
+    order:
+    - :day
+    - :month
+    - :year
+  datetime:
+    distance_in_words:
+      about_x_hours:
+        one: nearly one hour
+        other: nearly %{count} hours
+      about_x_months:
+        one: nearly one month
+        other: nearly %{count} months
+      about_x_years:
+        one: nearly a year
+        other: nearly %{count} years
+      almost_x_years:
+        one: nearly a year
+        other: nearly %{count} years
+      half_a_minute: half minute
+      less_than_x_minutes:
+        zero: less than minute
+        one: less than minute
+        other: less than %{count} minutes
+      less_than_x_seconds:
+        zero: less than second
+        one: less than second
+        other: less than %{count} secondes
+      over_x_years:
+        one: more than year
+        other: more than %{count} years
+      x_days:
+        one: 1 day
+        other: "%{count} days"
+      x_minutes:
+        one: 1 minute
+        other: "%{count} minutes"
+      x_months:
+        one: 1 month
+        other: "%{count} months"
+      x_years:
+        one: one year
+        other: "%{count} years"
+      x_seconds:
+        one: 1 second
+        other: "%{count} secondes"
+    prompts:
+      day: Day
+      hour: Hour
+      minute: Minute
+      month: Month
+      second: Second
+      year: Year
+  errors:
+    format: "%{attribute} %{message}"
+    messages:
+      accepted: must be accepted
+      blank: cannot be blank
+      present: must be blank
+      confirmation: don't match %{attribute}
+      empty: cannot be empty
+      equal_to: must equal to %{count}
+      even: must be pair
+      exclusion: is not disponible
+      greater_than: must be greater than %{count}
+      greater_than_or_equal_to: must be greater or equal to %{count}
+      inclusion: is not on the list
+      invalid: is not valid
+      less_than: must be inferior to %{count}
+      less_than_or_equal_to: must be inferior or equal to %{count}
+      model_invalid: "Validation error : %{errors}"
+      not_a_number: is not a number
+      not_an_integer: is not an integer number
+      odd: must be impair
+      required: required
+      taken: already taken
+      too_long:
+        one: is too long
+        other: are too long (not more than %{count} caracters)
+      too_short:
+        one: too short
+        other: are too short (at least %{count} caracters)
+      wrong_length:
+        one: wrong lenght (must be one caracter)
+        other: wrong lenght (mus be %{count} caracters)
+      other_than: must be different to %{count}
+    template:
+      body: 'Please check a following attributes : '
+      header:
+        one: 'Impossible to register a %{model} : 1 error'
+        other: 'Impossible to register a %{model} : %{count} errors'
+  helpers:
+    select:
+      prompt: Please Select
+    submit:
+      create: Create a  %{model}
+      submit: Register a %{model}
+      update: Update a %{model}
+  number:
+    currency:
+      format:
+        delimiter: " "
+        format: "%n %u"
+        precision: 2
+        separator: ","
+        significant: false
+        strip_insignificant_zeros: false
+        unit: "€"
+    format:
+      delimiter: " "
+      precision: 3
+      separator: ","
+      significant: false
+      strip_insignificant_zeros: false
+    human:
+      decimal_units:
+        format: "%n %u"
+        units:
+          billion: billion
+          million: million
+          quadrillion: quadillion
+          thousand: thousand
+          trillion: trillion
+          unit: ''
+      format:
+        delimiter: ''
+        precision: 3
+        significant: true
+        strip_insignificant_zeros: true
+      storage_units:
+        format: "%n %u"
+        units:
+          byte:
+            one: octet
+            other: octets
+          gb: Go
+          kb: ko
+          mb: Mo
+          tb: To
+    percentage:
+      format:
+        delimiter: ''
+        format: "%n%"
+    precision:
+      format:
+        delimiter: ''
+  support:
+    array:
+      last_word_connector: " and "
+      two_words_connector: " and "
+      words_connector: ", "
+  time:
+    am: am
+    formats:
+      default: "%d %B %Y %Hh %Mmin %Ss"
+      long: "%A %d %B %Y %Hh%M"
+      short: "%d %b %Hh%M"
+    pm: pm

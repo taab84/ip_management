@@ -1,0 +1,27 @@
+<div class="panel panel-info nested-fields">
+  <div class="panel-heading">New Payement
+    <%= link_to_remove_association '', f, class: "close glyphicon glyphicon-remove close-link" %>
+  </div>
+  <div class="panel-body">
+
+<% if f.object.type == "TransferPayement" %>
+  <div>
+    <%= f.hidden_field :type, :value => "TransferPayement" %>
+    <%= f.input :date, as: :string, input_html: {class: "datepicker"} %>
+    <%= f.input :value %>
+    <%= f.input :name %>
+    <%= f.input :ref %>
+    <%= f.input :image, as: :file %>
+  </div>
+<% elsif f.object.type  == "CheckPayement" %>
+  <div>
+    <%= f.hidden_field :type, :value => "CheckPayement" %>
+    <%= f.input :date, as: :string, input_html: {class: "datepicker"} %>
+    <%= f.input :value %>
+    <%= f.input :name %>
+    <%= f.input :number %>
+    <%= f.input :image, as: :file %>
+  </div>
+<% end %>
+</div>
+</div>

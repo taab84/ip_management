@@ -25,8 +25,8 @@ gem 'bootstrap-sass', '~> 3.3', '>= 3.3.7'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # use datepicker-bootstrap
-gem 'bootstrap-datepicker-rails', :require => 'bootstrap-datepicker-rails',
-                              :git => 'git://github.com/Nerian/bootstrap-datepicker-rails.git'
+# gem 'bootstrap-datepicker-rails', :require => 'bootstrap-datepicker-rails',
+#                               :git => 'git://github.com/Nerian/bootstrap-datepicker-rails.git'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 
@@ -54,6 +54,8 @@ gem 'cocoon'
 gem 'enum_help'
 # Use shrine for file uploads
 gem 'shrine'
+# jQuery UI gem
+gem 'jquery-ui-rails'
 # Use i18n task to manage translations
 
 group :development, :test do

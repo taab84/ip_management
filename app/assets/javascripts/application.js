@@ -13,11 +13,9 @@
 //= require rails-ujs
 //= require turbolinks
 //= require jquery
+//= require jquery-ui
 //= require bootstrap-sprockets
 //= require cocoon
 //= require selectize
 //= require home
 //= require receipts
-//= require bootstrap-datepicker/core
-//= require bootstrap-datepicker/locales/bootstrap-datepicker.en-GB.js
-//= require bootstrap-datepicker/locales/bootstrap-datepicker.fr.js

@@ -12,7 +12,8 @@
  */
  @import "bootstrap-sprockets";
  @import "bootstrap";
- @import "bootstrap-datepicker3";
+ @import 'jquery-ui/datepicker.css';
  @import "selectize";
  @import "selectize.default";
  @import "home";
+ @import "orders";
