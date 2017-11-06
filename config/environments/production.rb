@@ -91,5 +91,4 @@ Rails.application.configure do
 
   # Forse SSL
   config.force_ssl = true
-  config.ssl_options = {  redirect: { status: 307, port: 81 } }
 end
