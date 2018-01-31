@@ -2,10 +2,12 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :set_locale
+  self.page_cache_directory = -> { Rails.root.join("public", request.domain) }
 
   protected
 
   def configure_permitted_parameters
+    expire_fragment("navbar_cache")
     added_attrs = [:username, :email, :password, :password_confirmation, :remember_me, :fullname]
     devise_parameter_sanitizer.permit :sign_up, keys: added_attrs
     devise_parameter_sanitizer.permit :account_update, keys: added_attrs

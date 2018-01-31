@@ -4,6 +4,9 @@ fr:
       lang: "Langue"
       fr: "Français"
       en: "Anglais"
+    logout: "Déconnexion"
+    register: "Enregistrer"
+    login: "Connexion"
     receipt:
       mark:
         new: "Dépôt Marque"

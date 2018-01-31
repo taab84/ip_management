@@ -4,8 +4,8 @@
     <li><%= link_to(I18n.t('menu.receipt.mark.new'), '/mark_receipts/new') %></li>
     <li><a href="#"><%= t('menu.receipt.mark.correction') %></a></li>
     <li role="separator" class="divider"></li>
-    <li><a href="#"><%= t('menu.receipt.search.identical') %></a></li>
-    <li><a href="#"><%= t('menu.receipt.search.similitude') %></a></li>
+    <li><%= link_to(I18n.t('menu.receipt.search.identical'), '/identical_search_receipts/new') %></li>
+    <li><%= link_to(I18n.t('menu.receipt.search.similitude'), '/similar_search_receipts/new') %></li>
     <li role="separator" class="divider"></li>
     <li><a href="#"><%= t('menu.receipt.design.new') %></a></li>
   </ul>

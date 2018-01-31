@@ -4,6 +4,9 @@ en:
       lang: "Language"
       fr: "French"
       en: "English"
+    logout: "Log-out"
+    register: "Sign-in"
+    login: "Log-in"
     receipt:
       mark:
         new: "New Applicant Mark"

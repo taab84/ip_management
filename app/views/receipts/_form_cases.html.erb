@@ -9,4 +9,14 @@
     <div class="col col-md-3"> <%= f.input :colored %> </div>
     <div class="col col-md-3"> <%= f.input :rev_pri %> </div>
   </div>
+<% elsif params[:type]=="IdenticalSearchReceipt" %>
+  <div class="row">
+    <div class="col col-md-6"> <%= f.input :number_searches %> </div>
+    <div class="col col-md-6"> <%= f.input :number_classes %> </div>
+  </div>
+<% elsif params[:type]=="SimilarSearchReceipt" %>
+  <div class="row">
+    <div class="col col-md-6"> <%= f.input :number_searches %> </div>
+    <div class="col col-md-6"> <%= f.input :number_classes %> </div>
+  </div>
 <% end %>

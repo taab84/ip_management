@@ -7,11 +7,11 @@
       <li><a href="/admin/">Admin</a></li>
       <li><%= link_to "Modifier", edit_user_registration_path %></li>
       <li role="separator" class="divider"></li>
-      <li><%= link_to "Deconnexion", destroy_user_session_path, :method=>'delete'%></li>
+      <li><%= link_to I18n.t("menu.logout"), destroy_user_session_path, :method=>'delete'%></li>
     </ul>
   </li>
   <% else %>
-  <li><%= link_to "Enregistrer", new_user_registration_path %></li>
-  <li><%= link_to "Connecter", new_user_session_path %></li>
+  <li><%= link_to I18n.t("menu.register"), new_user_registration_path %></li>
+  <li><%= link_to I18n.t("menu.login"), new_user_session_path %></li>
   <% end %>
 </ul>

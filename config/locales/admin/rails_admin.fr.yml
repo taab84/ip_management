@@ -19,7 +19,7 @@ fr:
     loading: "Chargement..."
     toggle_navigation: Navigation basculable
     home:
-      name: Home
+      name: Acceuil
     pagination:
       previous: "&laquo; Préc."
       next: "Suiv. &raquo;"
@@ -41,7 +41,7 @@ fr:
       down: "Descendre"
       navigation: "Navigation"
       navigation_static_label: "Liens"
-      log_out: "Log out"
+      log_out: "Se Déconnecter"
       ago: ""
     flash:
       successful: "%{name} a été %{action} avec succès"

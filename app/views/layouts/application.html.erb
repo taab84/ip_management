@@ -9,7 +9,9 @@
   </head>
 
   <body>
+    <% cache "navbar_cache", skip_digest: true do %>
     <%= render 'partials/navbar' %>
+    <% end %>
     <%= render 'partials/flash_messages' %>
     <div class="container">
     <%= yield %>

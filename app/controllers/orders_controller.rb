@@ -1,6 +1,7 @@
 class OrdersController < ApplicationController
   before_action :set_order, only: [:show, :edit, :update, :destroy]
   protect_from_forgery with: :null_session
+  load_and_authorize_resource
 
   def select_request
   	number = params[:number]
