@@ -1,5 +1,6 @@
 fr:
   menu:
+    home: "Acceuil"
     languages:
       lang: "Langue"
       fr: "Français"
@@ -7,7 +8,15 @@ fr:
     logout: "Déconnexion"
     register: "Enregistrer"
     login: "Connexion"
+    show: "Afficher"
+    destroy: "Supprimer"
+    edit: "Editer"
+    if_sure: "Etes vous sure?"
+    action:
+      one: "Action"
+      other: "Actions"
     receipt:
+      new: "Nouvelle Quittance"
       mark:
         new: "Dépôt Marque"
         correction: "Correction d'erreur Materiel (Marque)"

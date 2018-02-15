@@ -1,5 +1,6 @@
 en:
   menu:
+    home: "Home"
     languages:
       lang: "Language"
       fr: "French"
@@ -7,7 +8,15 @@ en:
     logout: "Log-out"
     register: "Sign-in"
     login: "Log-in"
+    show: "Show"
+    destroy: "Destroy"
+    edit: "Edit"
+    if_sure: "Are you sure?"
+    action:
+      one: "Action"
+      other: "Actions"
     receipt:
+      new: "New Receipt"
       mark:
         new: "New Applicant Mark"
         correction: "Mark Correction Form"

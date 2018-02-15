@@ -76,7 +76,7 @@ class ReceiptsController < ApplicationController
     end
 
     def receipt_types
-      ["MarkReceipt", "IdenticalSearchReceipt", "SimilarSearchReceipt"]
+      ["Receipt", "MarkReceipt", "IdenticalSearchReceipt", "SimilarSearchReceipt"]
     end
 
     def receipt_type

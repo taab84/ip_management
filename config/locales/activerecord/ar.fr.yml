@@ -5,6 +5,7 @@ fr:
         one: Groupe
         other: Groupes
       receipt:
+        new: Nouvelle Quittance
         one: Quittance
         other: Quittances
       representative:
@@ -38,7 +39,9 @@ fr:
         type: "Type"
         serie: "Serie"
         number: "Numéro"
-        name: "Nom"
+        owner_name: "Nom Complet"
+        owner_street: "Adresse"
+        owner_wilaya: "Wilaya"
         adress: "Adresse"
         total: "Total"
         created_at: "Créé le"

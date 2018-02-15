@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :users
   # resources routes
-  resources :receipts
+  resources :receipts, :controller => "receipts", :type => "Receipt"
   resources :mark_receipts, :controller => "receipts", :type => "MarkReceipt", :branch => "M"
   resources :identical_search_receipts, :controller => "receipts", :type => "IdenticalSearchReceipt", :branch => "M"
   resources :similar_search_receipts, :controller => "receipts", :type => "SimilarSearchReceipt", :branch => "M"

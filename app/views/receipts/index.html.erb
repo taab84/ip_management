@@ -1,31 +1,40 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Receipts</h1>
+<div class="panel panel-info">
+<div class="panel-heading">Receipts</div>
+<div class="panel-body">
 
-<table>
+<table class="table table-bordered">
   <thead>
     <tr>
-      <th>Owner name</th>
-      <th>Owner adress</th>
-      <th>Representative</th>
-      <th colspan="3"></th>
+      <th class="col-md-1"><%= Receipt.human_attribute_name("number") %></th>
+      <th class="col-md-2"><%= Receipt.human_attribute_name("owner_name") %></th>
+      <th class="col-md-5"><%= Receipt.human_attribute_name("owner_street") %></th>
+      <th class="col-md-2"><%= Representative.model_name.human %></th>
+      <th colspan="3" class="text-center col-md-2"><%= I18n.t("menu.action.other") %></th>
     </tr>
   </thead>
 
   <tbody>
     <% @receipts.each do |receipt| %>
       <tr>
+        <td><%= receipt.serie %>/<%= receipt.number %></td>
         <td><%= receipt.owner_name %></td>
-        <td><%= receipt.owner_adress %></td>
+        <td><%= receipt.owner_street %>, <%= receipt.owner_wilaya %></td>
         <td><%= receipt.representative %></td>
-        <td><%= link_to 'Show', receipt %></td>
-        <td><%= link_to 'Edit', edit_receipt_path(receipt) %></td>
-        <td><%= link_to 'Destroy', receipt, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to t('menu.show'), receipt, class: "btn btn-success btn-xs btn-block" %></td>
+        <td><%= link_to t('menu.edit'), edit_receipt_path(receipt), class: "btn btn-warning btn-xs btn-block" %></td>
+        <td><%= link_to t('menu.destroy'), receipt, method: :delete, data: { confirm: t('menu.if_sure') }, class: "btn btn-danger btn-xs btn-block" %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
+<%= link_to t('menu.home'), "/", class: "btn btn-success" %>
+<% if params[:type].in?(["Receipt"]) == false %>
+<%= link_to t('menu.receipt.new'), customized_url + "/new", class: "btn btn-info pull-right" %>
+<% end %>
 
-<%= link_to 'New Receipt', customized_url + "/new" %>
+</div>
+</div>

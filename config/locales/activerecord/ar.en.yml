@@ -5,6 +5,7 @@ en:
         one: Group
         other: Groups
       receipt:
+        new: New Receipt
         one: Receipt
         other: Receipts
       representative:
@@ -38,7 +39,9 @@ en:
         type: "Type"
         serie: "Serie"
         number: "Number"
-        name: "Name"
+        owner_name: "Full Name"
+        owner_street: "Street"
+        owner_wilaya: "Wilaya"
         adress: "Adress"
         total: "Total"
         created_at: "Created on"
