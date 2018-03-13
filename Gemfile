@@ -43,7 +43,7 @@ gem 'jbuilder', '~> 2.5'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.11'
 # Use rails admin
-gem 'rails_admin', '~> 1.2'
+gem 'rails_admin', '~> 1.3'
 # Use Simple Form
 gem 'simple_form'
 # Use Cocoon gem for nested forms
@@ -59,6 +59,17 @@ gem 'shrine'
 # jQuery UI gem
 gem 'jquery-ui-rails'
 # Use i18n task to manage translations
+# Use Prawn for PDF documents
+gem 'prawn'
+gem 'prawn-table'
+gem 'arabic-letter-connector', '~> 0.1.1'
+gem 'bidi', '~> 0.0.2'
+# Using Reponders
+gem 'responders'
+# Money gem for currency formatting
+gem 'money', '~> 6.10', '>= 6.10.1'
+# Humanize gem from number to letters
+gem 'humanize'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

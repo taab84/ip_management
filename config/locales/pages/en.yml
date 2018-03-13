@@ -1,4 +1,6 @@
 en:
+  pdf:
+    print: "Print (PDF)"
   menu:
     home: "Home"
     languages:
@@ -16,12 +18,18 @@ en:
       one: "Action"
       other: "Actions"
     receipt:
+      all: "All Receipts"
       new: "New Receipt"
       mark:
         new: "New Applicant Mark"
+        list_mark: "Applicants Marks"
         correction: "Mark Correction Form"
+        list_correction: "Corrections Marks"
       search:
         identical: "Identical Search"
+        identical_list: "Identical Searches"
         similitude: "Similitude Search"
+        similitude_list: "Similitude Searches"
       design:
         new: "New Applicant Industrial Design"
+        list: "Industrial Design Applicants"

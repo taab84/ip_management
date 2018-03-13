@@ -1,4 +1,6 @@
 fr:
+  pdf:
+    print: "Imprimer (PDF)"
   menu:
     home: "Acceuil"
     languages:
@@ -16,12 +18,18 @@ fr:
       one: "Action"
       other: "Actions"
     receipt:
+      all: "Toutes les Quittances"
       new: "Nouvelle Quittance"
       mark:
         new: "Dépôt Marque"
+        list_mark: "Dépôts Marques"
         correction: "Correction d'erreur Materiel (Marque)"
+        list_correction: "Corrections Marques"
       search:
         identical: "Recherche à Identique"
+        identical_list: "Recherches à Identique"
         similitude: "Recherche de Similitude"
+        similitude_list: "Recherches de Similitude"
       design:
         new: "Dépôt de Dessin & Modèle"
+        list: "Dépôts Dessins/Modéles"

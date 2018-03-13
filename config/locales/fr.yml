@@ -1,4 +1,11 @@
 fr:
+  number:
+    currency:
+      symbol:
+        DZ: "DA"
+      format:
+        delimiter: " "
+        separator: ","
   date:
     abbr_day_names:
     - dim

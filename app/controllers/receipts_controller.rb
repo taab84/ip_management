@@ -15,7 +15,19 @@ class ReceiptsController < ApplicationController
   # GET /receipts/1
   # GET /receipts/1.json
   def show
-    unless receipt_type
+    if receipt_type
+      @receipt = Receipt.find(params[:id])
+      respond_to do |format|
+        format.html
+        format.pdf do
+        pdf = ReceiptPdf.new(@receipt)
+        send_data pdf.render,
+          filename: "receipt_#{@receipt.serie}_#{@receipt.number}",
+          type: 'application/pdf',
+          disposition: 'inline'
+    end
+      end
+    else
       redirect_to root_url
     end
   end

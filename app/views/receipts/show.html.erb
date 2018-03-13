@@ -28,5 +28,6 @@
       </p>
     </div>
     </div>
+    <%= link_to(I18n.t('pdf.print'), receipt_path(@receipt, format: 'pdf'), class: "btn btn-info pull-right btn-sm", target: :_blank) %>
 </div>
 </div>
