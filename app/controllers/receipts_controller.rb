@@ -101,11 +101,9 @@ class ReceiptsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def receipt_params
-      if params[:type] == "MarkReceipt"
-        # params.require(:mark_receipt).permit(:owner_name, :owner_adress, :representative_id, :owner_street, :owner_wilaya, :mark_name, :image,
-        # :mark_type, :colored, :classes, :rev_pri, :ipas_num, :payement_type, orders_attributes:[:id, :number, :remain, :image], :transfer_payement_attributes => [:type, :image, :date, :value, :name, :ref, :number])
-        params.require(:mark_receipt).permit(:owner_name, :owner_adress, :representative_id, :owner_street, :owner_wilaya, :mark_name, :image,
-        :mark_type, :colored, :classes, :rev_pri, :ipas_num, :order_ids => [])
-      end
+      params.require(:mark_receipt).permit(:owner_name, :type, :owner_adress, :representative_id, :owner_street, :owner_wilaya, :mark_name, :image,
+      :mark_type, :colored, :classes, :rev_pri, :ipas_num, :order_ids => [])
+      # if params[:type] == "MarkReceipt" 
+      # end
     end
 end

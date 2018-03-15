@@ -7,7 +7,7 @@ class CreatePayements < ActiveRecord::Migration[5.1]
       t.date :date
       t.jsonb :data
       t.jsonb :image_data
-      t.references :payement_order, index: true, foreign_key: true
+      t.references :order, index: true, foreign_key: true
 
       t.timestamps
     end

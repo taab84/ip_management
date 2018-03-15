@@ -3,9 +3,9 @@ class OrdersController < ApplicationController
   protect_from_forgery with: :null_session
   load_and_authorize_resource
 
-  def select_request
+  def list
   	number = params[:number]
-  	@orders = [PayementOrder.where(number: number)]
+  	@orders = [Order.where(number: number)]
   	render json: @orders
   end
 
@@ -14,7 +14,7 @@ class OrdersController < ApplicationController
   end
 
   def create
-    @order = PayementOrder.new(order_params)
+    @order = Order.new(order_params)
     # respond_to do |format|
       if @order.save
         render json:@order
@@ -33,11 +33,11 @@ class OrdersController < ApplicationController
   private
 
   def set_order
-    @order = PayementOrder.find(params[:id])
+    @order = Order.find(params[:id])
   end
 
   def order_params
-    params.require(:payement_order).permit(:image, payement_attributes:[:type, :value, :name, :date, :image, :serie, :number, :ref, :state, :_destroy])
+    params.require(:order).permit(:image, :type, payement_attributes:[:type, :value, :name, :date, :image, :serie, :number, :ref, :state, :_destroy])
   end
 
 end

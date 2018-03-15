@@ -5,8 +5,10 @@ class MarkReceipt < MdReceipt
     colored: [:boolean, default: true],
     classes: [:integer, default: 1],
     rev_pri: [:boolean, default: false],
-    ipas_num: :integer
-
+    ipas_num: :integer,
+    base_tax: :decimal,
+    class_tax: :decimal,
+    rev_tax: :decimal
 
   enum mark_type: [ :figuratif, :verbal, :figuratif_and_verbal ]
 
@@ -22,5 +24,21 @@ class MarkReceipt < MdReceipt
 
   def pictured?
     mark_type == 'figuratif'
+  end
+
+  def tax_calculate
+    if self.colored? then
+      self.base_tax = 15000
+    else
+      self.base_tax = 14000
+    end
+    self.class_tax = 2000
+
+    if self.rev_pri? then
+      self.rev_tax = 1000
+    else
+      self.rev_tax = 0
+    end
+    self.total = self.base_tax + (self.class_tax * self.classes) + self.rev_tax
   end
 end

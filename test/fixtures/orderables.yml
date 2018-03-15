@@ -2,10 +2,10 @@
 
 one:
   type: 
-  payement_order: one
+  order: one
   receipt: one
 
 two:
   type: 
-  payement_order: two
+  order: two
   receipt: two

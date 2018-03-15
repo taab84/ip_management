@@ -12,8 +12,8 @@ $(document).on('turbolinks:load', function() {
           select_order.selectize()[0].selectize.clearOptions();
       if (!query.length) return callback();
         $.ajax({
-            url: '/orders/select_request',
-            type: 'POST',
+            url: '/orders/list',
+            type: 'get',
             dataType: 'json',
             data: {
                 id: query,
@@ -24,6 +24,7 @@ $(document).on('turbolinks:load', function() {
             },
             success: function(res) {
               callback(res);
+              // console.log(res);
             }
         });
       },
@@ -37,11 +38,11 @@ $(document).on('turbolinks:load', function() {
          $('.datepicker').datepicker();
       });
 
-  $("#new_payement_order").on("submit", function(e){
+  $("#new_order").on("submit", function(e){
     e.preventDefault();
     $.ajax({
       method: "POST",
-      url: '/payement_orders/',
+      url: '/orders/',
       data: $(this).serialize(),
       success: function(res){
         selectizeCallback(res);

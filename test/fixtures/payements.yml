@@ -7,7 +7,7 @@ one:
   date: 2017-10-02
   data: 
   image_data: 
-  payement_order: one
+  order: one
 
 two:
   type: 
@@ -16,4 +16,4 @@ two:
   date: 2017-10-02
   data: 
   image_data: 
-  payement_order: two
+  order: two

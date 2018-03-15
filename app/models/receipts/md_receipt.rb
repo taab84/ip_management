@@ -1,6 +1,6 @@
 class MdReceipt < Receipt
-  has_many :orderables, class_name: "MdOrderable", inverse_of: 'receipt', :foreign_key => "receipt_id", dependent: :destroy
-  has_many :orders, through: :orderables, class_name: "MdOrder", inverse_of: 'receipts'
+  # has_many :orderables, class_name: "MdOrderable", inverse_of: 'receipt', dependent: :destroy
+  # has_many :orders, through: :orderables, class_name: "MdOrder", inverse_of: 'receipts'
 
   validates :number, uniqueness: { scope: :serie }
   def set_number
@@ -10,3 +10,4 @@ class MdReceipt < Receipt
 end
 require_dependency 'mark_receipt'
 require_dependency 'similar_search_receipt'
+require_dependency 'identical_search_receipt'

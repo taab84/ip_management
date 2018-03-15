@@ -29,24 +29,24 @@ ActiveRecord::Schema.define(version: 20171002135353) do
 
   create_table "orderables", force: :cascade do |t|
     t.string "type"
-    t.bigint "payement_order_id"
+    t.bigint "order_id"
     t.bigint "receipt_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["payement_order_id"], name: "index_orderables_on_payement_order_id"
+    t.index ["order_id"], name: "index_orderables_on_order_id"
     t.index ["receipt_id"], name: "index_orderables_on_receipt_id"
     t.index ["type"], name: "index_orderables_on_type"
   end
 
-  create_table "payement_orders", force: :cascade do |t|
+  create_table "orders", force: :cascade do |t|
     t.string "type"
     t.integer "number"
     t.decimal "remain", precision: 10, scale: 2, default: "0.0", null: false
     t.jsonb "image_data"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["number"], name: "index_payement_orders_on_number"
-    t.index ["type"], name: "index_payement_orders_on_type"
+    t.index ["number"], name: "index_orders_on_number"
+    t.index ["type"], name: "index_orders_on_type"
   end
 
   create_table "payements", force: :cascade do |t|
@@ -56,13 +56,13 @@ ActiveRecord::Schema.define(version: 20171002135353) do
     t.date "date"
     t.jsonb "data"
     t.jsonb "image_data"
-    t.bigint "payement_order_id"
+    t.bigint "order_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["data"], name: "index_payements_on_data", using: :gin
     t.index ["date"], name: "index_payements_on_date"
     t.index ["name"], name: "index_payements_on_name"
-    t.index ["payement_order_id"], name: "index_payements_on_payement_order_id"
+    t.index ["order_id"], name: "index_payements_on_order_id"
     t.index ["type"], name: "index_payements_on_type"
   end
 
@@ -124,9 +124,9 @@ ActiveRecord::Schema.define(version: 20171002135353) do
     t.index ["username"], name: "index_users_on_username", unique: true
   end
 
-  add_foreign_key "orderables", "payement_orders"
+  add_foreign_key "orderables", "orders"
   add_foreign_key "orderables", "receipts"
-  add_foreign_key "payements", "payement_orders"
+  add_foreign_key "payements", "orders"
   add_foreign_key "receipts", "representatives"
   add_foreign_key "receipts", "users"
   add_foreign_key "users", "groups"

@@ -1,5 +1,6 @@
 <% if params[:type]=="MarkReceipt" %>
   <div class='row'>
+    <%= f.input :type, as: :hidden, input_html: {value: "MarkReceipt"} %>
     <div class="col col-md-6"> <%= f.input :mark_name %> </div>
     <div class="col col-md-6"> <%= f.input :mark_type, include_blank: false %> </div>
   </div>

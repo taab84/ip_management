@@ -1,12 +1,13 @@
-class PayementOrder < ApplicationRecord
+class Order < ApplicationRecord
   # include ImageUploader::Attachment.new(:image)
+  has_many :orderables, inverse_of: 'order'
+  has_many :receipts, through: :orderables, inverse_of: 'orders'
   has_one :payement
   has_one :transfer_payement
   has_one :check_payement
   accepts_nested_attributes_for :payement, :allow_destroy => true
   # accepts_nested_attributes_for :transfer_payement, :allow_destroy => true
   # accepts_nested_attributes_for :check_payement, :allow_destroy => true
-
 
   before_validation :initiate, on: :create
 
@@ -17,7 +18,7 @@ class PayementOrder < ApplicationRecord
   end
 
   def set_number
-    number = PayementOrder.count() + 1
+    number = Order.count() + 1
     return number
   end
 

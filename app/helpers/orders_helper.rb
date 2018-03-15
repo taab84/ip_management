@@ -1,6 +1,6 @@
 module OrdersHelper
   def new_order
-    @order = PayementOrder.new
+    @order = Order.new
   end
 
   def order_types
