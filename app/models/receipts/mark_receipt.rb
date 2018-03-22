@@ -7,8 +7,11 @@ class MarkReceipt < MdReceipt
     rev_pri: [:boolean, default: false],
     ipas_num: :integer,
     base_tax: :decimal,
+    base_description: :string,
     class_tax: :decimal,
-    rev_tax: :decimal
+    class_description: :string,
+    rev_tax: :decimal,
+    rev_description: :string
 
   enum mark_type: [ :figuratif, :verbal, :figuratif_and_verbal ]
 
@@ -28,14 +31,19 @@ class MarkReceipt < MdReceipt
 
   def tax_calculate
     if self.colored? then
-      self.base_tax = 15000
+      tax_line = Tax.where(code: "746-01", category: "colored").first
     else
-      self.base_tax = 14000
+      tax_line = Tax.where(code: "746-01", category: "uncolored").first
     end
-    self.class_tax = 2000
-
+    self.base_tax = tax_line.current_tax
+    self.base_description = tax_line.description
+    tax_line = Tax.where(code: "746-02").first
+    self.class_tax = tax_line.current_tax
+    self.class_description =  tax_line.description
     if self.rev_pri? then
-      self.rev_tax = 1000
+      tax_line = Tax.where(code: "746-03").first
+      self.rev_tax = tax_line.current_tax
+      self.rev_description = tax_line.description
     else
       self.rev_tax = 0
     end

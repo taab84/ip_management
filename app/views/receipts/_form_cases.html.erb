@@ -11,12 +11,14 @@
     <div class="col col-md-3"> <%= f.input :rev_pri %> </div>
   </div>
 <% elsif params[:type]=="IdenticalSearchReceipt" %>
+<%= f.input :type, as: :hidden, input_html: {value: "IdenticalSearchReceipt"} %>
   <div class="row">
     <div class="col col-md-6"> <%= f.input :number_searches %> </div>
     <div class="col col-md-6"> <%= f.input :number_classes %> </div>
   </div>
 <% elsif params[:type]=="SimilarSearchReceipt" %>
   <div class="row">
+  <%= f.input :type, as: :hidden, input_html: {value: "SimilarSearchReceipt"} %>
     <div class="col col-md-6"> <%= f.input :number_searches %> </div>
     <div class="col col-md-6"> <%= f.input :number_classes %> </div>
   </div>

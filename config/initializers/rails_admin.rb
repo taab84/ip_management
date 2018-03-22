@@ -4,7 +4,7 @@ RailsAdmin.config do |config|
   config.parent_controller = 'ApplicationController'
 
   # Models to exclude from dashboard
-  config.included_models = ["Group", "User", "Representative"]
+  config.included_models = ["Group", "User", "Representative", "Tax", "Whitelist"]
   ### Popular gems integration
 
   ## == Devise ==
@@ -15,6 +15,13 @@ RailsAdmin.config do |config|
 
   ## == Cancan ==
   config.authorize_with :cancan
+
+  # == IP address resctiction
+  # config.authorize_with do
+  #   if Whitelist.find_by(ip_adress: request.remote_ip).nil?
+  #     redirect_to main_app.root_path, :alert => I18n.t('unauthorized_ip'), :class => "alert"
+  #   end
+  # end
 
   ## == Pundit ==
   # config.authorize_with :pundit

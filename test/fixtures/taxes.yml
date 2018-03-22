@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  code: MyString
+  description: MyString
+  category: MyString
+  current_tax: 
+  current_tax: 
+  next_tax: 
+  next_tax: 
+  date_app: 2018-03-20
+
+two:
+  code: MyString
+  description: MyString
+  category: MyString
+  current_tax: 
+  current_tax: 
+  next_tax: 
+  next_tax: 
+  date_app: 2018-03-20

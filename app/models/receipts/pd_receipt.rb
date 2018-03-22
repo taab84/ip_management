@@ -4,7 +4,12 @@ class PdReceipt < Receipt
 
   validates :number, uniqueness: { scope: :serie }
   def set_number
-    number = PdReceipt.where(serie: Date.current.year).count() + 1
-    return number
+    number = PdReceipt.where(serie: Date.current.year).count()
+    if number == 0 then
+      return 1
+    else
+      number = PdReceipt.where(serie: Date.current.year).maximum(:number) + 1
+      return number
+    end
   end
 end

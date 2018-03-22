@@ -1,0 +1,6 @@
+<% if params[:type] == "MarkReceipt" then %>
+    <strong>Classes:</strong> <%= @receipt.classes %><br />
+<% elsif params[:type] == "IdenticalSearchReceipt" then %>
+    <strong>Nombre de recherches: </strong> <%= @receipt.number_searches %><br />
+    <strong>Nombre de classes: </strong> <%= @receipt.number_classes %><br />
+<% end %>

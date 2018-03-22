@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171002135353) do
+ActiveRecord::Schema.define(version: 20180322072335) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -100,6 +100,17 @@ ActiveRecord::Schema.define(version: 20171002135353) do
     t.index ["fullname"], name: "index_representatives_on_fullname", unique: true
   end
 
+  create_table "taxes", force: :cascade do |t|
+    t.string "code"
+    t.string "description"
+    t.string "category"
+    t.decimal "current_tax", precision: 10, scale: 2, default: "0.0", null: false
+    t.decimal "next_tax", precision: 10, scale: 2, default: "0.0", null: false
+    t.date "date_app"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -122,6 +133,14 @@ ActiveRecord::Schema.define(version: 20171002135353) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["type"], name: "index_users_on_type"
     t.index ["username"], name: "index_users_on_username", unique: true
+  end
+
+  create_table "whitelists", force: :cascade do |t|
+    t.inet "ip_adress"
+    t.string "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["ip_adress"], name: "index_whitelists_on_ip_adress"
   end
 
   add_foreign_key "orderables", "orders"

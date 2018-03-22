@@ -7,7 +7,7 @@
       <div class="col col-md-4">
       <p>
         <strong>Number :</strong> <%= @receipt.number %>/<%= @receipt.serie %><br />
-        <strong>Type:</strong> <%= @receipt.type %><br />
+        <strong>Type:</strong> <%= @receipt.class.model_name.human %><br />
         <strong>Owner:</strong> <%= @receipt.owner_name %><br />
         <strong>Address:</strong> <%= @receipt.owner_street %>, <%= @receipt.owner_wilaya %><br />
       </p>
@@ -15,7 +15,7 @@
     <div class="col col-md-4">
     <p>
       <strong>Total :</strong> <%= @receipt.total %><br />
-      <strong>Classes:</strong> <%= @receipt.classes %><br />
+      <%= render 'show_cases', receipt: @receipt %>
     </p>
   </div>
     <div class="col col-md-4">

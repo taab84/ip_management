@@ -1,6 +1,12 @@
 en:
   activerecord:
     models:
+      tax:
+        one: Tax
+        other: Taxes
+      whitelist:
+        one: Whitelist
+        other: Whitelist
       group:
         one: Group
         other: Groups
@@ -26,6 +32,15 @@ en:
       payement:
         add: Ajouter un Payement
         remove: Supprimer le Payement
+      identical_search_receipt:
+        one: Identical Search Receipt
+        other: Identical Search Receipts
+      similar_search_receipt:
+        one: Similar Search Receipt
+        other: Similar Search Receipts
+      mark_receipt:
+        one: Mark App Receipt
+        other: Mark App Receipts
     attributes:
       group:
         name: "Name"

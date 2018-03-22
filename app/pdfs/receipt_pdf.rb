@@ -4,7 +4,7 @@ require 'arabic-letter-connector'
 require 'money'
 require 'humanize'
 require_relative 'mark_details'
-# require "bidi"
+require "bidi"
 # bidi.to_visual
 class ReceiptPdf < Prawn::Document
   def initialize(receipt)
@@ -19,10 +19,10 @@ class ReceiptPdf < Prawn::Document
     font "Amiri"
     self.text_direction = :ltr
     @receipt = receipt
-    # bidi = Bidi.new
+    bidi = Bidi.new
 
-    header_ar_radp = "République Algérienne Démocratique et Populaire" + (" الجمهورية الجزائرية الديموقراطية الشعبية ".connect_arabic_letters)
-    header_ar_inapi = "Institut National Algérien de la Propriété Industrielle" + ("المعهد الوطني الجزائري للملكية الصناعية ".connect_arabic_letters)
+    header_ar_radp = "République Algérienne Démocratique et Populaire" + bidi.to_visual(" الجمهورية الجزائرية الديموقراطية الشعبية ".connect_arabic_letters)
+    header_ar_inapi = "Institut National Algérien de la Propriété Industrielle" + bidi.to_visual("المعهد الوطني الجزائري للملكية الصناعية ".connect_arabic_letters)
     receipt_header =
       [[{:image => logo, :fit => [75, 75], :rowspan => 2},
         header_ar_radp,{:content => "Code R1-FO/01", :colspan => 2}],
@@ -68,7 +68,7 @@ class ReceiptPdf < Prawn::Document
 
     move_down 20
     formatted_text [{:text => "Arrête la presente quittance a la somme de:", :styles => [:bold, :underline]}, 
-      {:text => " " + 16000.humanize(locale: :fr).humanize + " dinars algérien"}
+      {:text => " " + @receipt.total.humanize(locale: :fr).humanize + " dinars algérien"}
     ]
 
     move_down 40

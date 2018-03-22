@@ -1,4 +1,5 @@
 en:
+  unauthorized_ip: "Unauthorized IP"
   number:
     currency:
       symbol:

@@ -1,6 +1,12 @@
 fr:
   activerecord:
     models:
+      tax:
+        one: Taxe
+        other: Taxes
+      whitelist:
+        one: Liste Blanche
+        other: Liste Blanche
       group:
         one: Groupe
         other: Groupes
@@ -26,6 +32,15 @@ fr:
       payement:
         add: Ajouter un Payement
         remove: Supprimer le Payement
+      identical_search_receipt:
+        one: Quittance Recherche à l'identique
+        other: Quittances Recherches à l'identiques
+      similar_search_receipt:
+        one: Quittance Recherche de Similitude
+        other: Quittances Recherches de Similitudes
+      mark_receipt:
+        one: Quittance de Depot Marque
+        other: Quittances de Depots Marques
     attributes:
       group:
         name: "Nom"

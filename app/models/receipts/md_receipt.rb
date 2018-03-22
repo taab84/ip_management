@@ -4,8 +4,13 @@ class MdReceipt < Receipt
 
   validates :number, uniqueness: { scope: :serie }
   def set_number
-    number = MdReceipt.where(serie: Date.current.year).count() + 1
-    return number
+    number = MdReceipt.where(serie: Date.current.year).count()
+    if number == 0 then
+      return 1
+    else
+      number = MdReceipt.where(serie: Date.current.year).maximum(:number) + 1
+      return number
+    end
   end
 end
 require_dependency 'mark_receipt'

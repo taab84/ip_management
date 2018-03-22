@@ -1,4 +1,4 @@
-<%= simple_form_for @receipt, wrapper: :inline_form do |f| %>
+<%= simple_form_for(@receipt, wrapper: :inline_form) do |f| %>
   <%= f.error_notification %>
 
   <div class="form-inputs">
@@ -7,8 +7,8 @@
       <div class="col col-md-6"> <%= f.association :representative, label_method: :fullname, prompt: t('simple_form.prompts.receipt.representative') %> </div>
     </div>
     <div class="row">
-    <div class="col col-md-8"> <%= f.input :owner_street %> </div>
-    <div class="col col-md-4"> <%= f.input :owner_wilaya %> </div>
+      <div class="col col-md-8"> <%= f.input :owner_street %> </div>
+      <div class="col col-md-4"> <%= f.input :owner_wilaya %> </div>
     </div>
     <%= render :partial => "form_cases", :locals=>{:f=>f} %>
     <%= f.input :image, as: :hidden, input_html: {value: @receipt.cached_image_data} %>
