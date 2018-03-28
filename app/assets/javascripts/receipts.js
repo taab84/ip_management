@@ -2,7 +2,7 @@ $(document).on('turbolinks:load', function() {
   var selectizeCallback = null;
   $('.datepicker').datepicker();
 
-  var select_order = $(".receipt_orders").selectize({
+  var select_order = $(".selectize").selectize({
       plugins: ['remove_button', 'drag_drop'],
       valueField: 'id',
       labelField: 'number',
@@ -31,6 +31,7 @@ $(document).on('turbolinks:load', function() {
       create: function(input, callback){
         selectizeCallback = callback;
         $(".order-modal").modal();
+        $("#new_order").trigger("reset");
       }
   });
 
@@ -48,6 +49,7 @@ $(document).on('turbolinks:load', function() {
         selectizeCallback(res);
         selectizeCallback = null;
         $(".order-modal").modal('toggle');
+        $.rails.enableFormElement($("#new_order"));
       }
     });
   });

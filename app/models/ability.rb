@@ -5,6 +5,7 @@ class Ability
     # Define abilities for the passed in user here. For example:
     #
       alias_action :create, :read, :update, :destroy, to: :crud
+      alias_action :create, :update, :destroy, to: :cud
       #
       user ||= User.new # guest user (not logged in)
       if user.type=="Administrator"
@@ -12,8 +13,14 @@ class Ability
         can :access, :rails_admin   # grant access to rails_admin
         can :dashboard              # grant access to the dashboard
       elsif user.type=="Employee"
-        can :crud, Receipt
+        can :read, Receipt
+        can :cud, Receipt, user_id: user.id
         can :crud, Order
+      elsif user.type=="Accountant"
+        can :read, Receipt
+        can :read, :update, Order
+      elsif user.type=="Executive"
+        can :read, Order
       else
         cannot :manage, :all
         # cannot :crud, User

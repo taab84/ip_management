@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180322072335) do
+ActiveRecord::Schema.define(version: 20180325123100) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(version: 20180322072335) do
     t.bigint "receipt_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.decimal "used", precision: 10, scale: 2, default: "0.0"
     t.index ["order_id"], name: "index_orderables_on_order_id"
     t.index ["receipt_id"], name: "index_orderables_on_receipt_id"
     t.index ["type"], name: "index_orderables_on_type"

@@ -5,7 +5,7 @@ class OrdersController < ApplicationController
 
   def list
   	number = params[:number]
-  	@orders = [Order.where(number: number)]
+  	@orders = [Order.where('number = ? AND remain > 0', number)]
   	render json: @orders
   end
 

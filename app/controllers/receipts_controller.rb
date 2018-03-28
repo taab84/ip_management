@@ -48,6 +48,25 @@ class ReceiptsController < ApplicationController
       @receipt.user_id = current_user.id
       respond_to do |format|
         if @receipt.save
+          @receipt.setting_op
+          # total = @receipt.total
+          # @receipt.orders.each do |order|
+          #   if (total > 0) && (order.remain > 0)
+          #     if order.remain >= total
+          #       orderable = order.orderables.new(used: total, receipt_id: @receipt.id, order_id: order.id)
+          #       orderable.save
+          #       order.remain = order.remain - total
+          #       total = 0
+          #       order.save
+          #     elsif order.remain < total
+          #       total = total - order.remain
+          #       orderable = order.orderables.new(used: order.remain, receipt_id: @receipt.id, order_id: order.id)
+          #       orderable.save
+          #       order.remain = 0
+          #       order.save
+          #     end
+          #   end
+          # end
           format.html { redirect_to @receipt, notice: 'Receipt was successfully created.' }
           format.json { render :show, status: :created, location: @receipt }
         else
@@ -61,7 +80,7 @@ class ReceiptsController < ApplicationController
   # PATCH/PUT /receipts/1.json
   def update
     respond_to do |format|
-      if @receipt.update(receipt_params(params[:type]))
+      if @receipt.update(receipt_params)
         format.html { redirect_to @receipt, notice: 'Receipt was successfully updated.' }
         format.json { render :show, status: :ok, location: @receipt }
       else
@@ -88,7 +107,7 @@ class ReceiptsController < ApplicationController
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
-    def receipt_params()
+    def receipt_params
       if params[:type] == "MarkReceipt" then
         params.require(:mark_receipt).permit(:owner_name, :type, :owner_adress, :representative_id, :owner_street, :owner_wilaya, :mark_name, :image,
       :mark_type, :colored, :classes, :rev_pri, :ipas_num, :order_ids => [])

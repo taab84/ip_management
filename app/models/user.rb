@@ -46,7 +46,11 @@ class User < ApplicationRecord
   def type_enum
     # ['Public', 'Employee', 'Administrator']
     # [ %w(Public Public), %w(Employee Employee), %w(Administrator Administrator) ]
-    { I18n.t('activerecord.models.public.one') => 'Public', I18n.t('activerecord.models.employee.one') => 'Employee', I18n.t('activerecord.models.administrator.one') => 'Administrator' }
+    { I18n.t('activerecord.models.public.one') => 'Public', 
+    I18n.t('activerecord.models.employee.one') => 'Employee', 
+    I18n.t('activerecord.models.administrator.one') => 'Administrator',
+    I18n.t('activerecord.models.accountant.one') => 'Accountant',
+    I18n.t('activerecord.models.executive.one') => 'Executive' }
   end
 
   def self.find_for_database_authentication(warden_conditions)
@@ -65,6 +69,14 @@ class Administrator < User
 end
 
 class Employee < User
+  belongs_to :group, required: true
+end
+
+class Accountant < User
+  belongs_to :group, required: true
+end
+
+class Executive < User
   belongs_to :group, required: true
 end
 

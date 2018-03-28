@@ -29,6 +29,12 @@ en:
       public:
         one: Public
         other: Publics
+      accountant:
+        one: Accountant
+        other: Accountants
+      executive:
+        one: Executive
+        other: Executives
       payement:
         add: Ajouter un Payement
         remove: Supprimer le Payement
@@ -75,3 +81,7 @@ en:
         created_at: "Créé le"
         current_sign_in_at: "Derniére Connexion"
         type: "Type"
+    errors:
+      receipt:
+        total:
+          not_enough: "Not enough payement"

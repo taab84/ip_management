@@ -29,6 +29,12 @@ fr:
       public:
         one: Publique
         other: Publiques
+      accountant:
+        one: Comptable
+        other: Comptables
+      executive:
+        one: Directeur
+        other: Directeurs
       payement:
         add: Ajouter un Payement
         remove: Supprimer le Payement
@@ -75,3 +81,7 @@ fr:
         created_at: "Créé le"
         current_sign_in_at: "Derniére Connexion"
         type: "Type"
+    errors:
+      receipt:
+        total:
+          not_enough: "Versement insufisant"

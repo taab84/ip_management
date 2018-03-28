@@ -13,7 +13,7 @@
     <%= render :partial => "form_cases", :locals=>{:f=>f} %>
     <%= f.input :image, as: :hidden, input_html: {value: @receipt.cached_image_data} %>
     <%= f.input :image, as: :file %>
-    <%= f.select :order_ids, {}, { prompt: "Selectionner un ordre de paiement"}, {multiple: true, class: "receipt_orders"} %>
+    <%= f.input_field :order_ids, as: :select, collection: Order.last(3), :label_method => 'number', :multiple => true, :class => "selectize", :prompt => "Selectionnez un order de payement" %>
   </div>
 
   <div class="form-actions">

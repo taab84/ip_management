@@ -6,8 +6,9 @@ class Order < ApplicationRecord
   has_one :transfer_payement
   has_one :check_payement
   accepts_nested_attributes_for :payement, :allow_destroy => true
-  # accepts_nested_attributes_for :transfer_payement, :allow_destroy => true
-  # accepts_nested_attributes_for :check_payement, :allow_destroy => true
+
+  validates :payement, presence: true
+  validates_associated :payement
 
   before_validation :initiate, on: :create
 
@@ -15,10 +16,16 @@ class Order < ApplicationRecord
 
   def initiate()
     self.number = set_number()
+    self.remain = self.payement.value
   end
 
   def set_number
-    number = Order.count() + 1
+    number = Order.count()
+    if number == 0 then
+      return 1
+    else
+    number = Order.maximum(:number) + 1
+    end
     return number
   end
 
