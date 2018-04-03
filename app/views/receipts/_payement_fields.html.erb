@@ -7,7 +7,7 @@
 <% if f.object.type == "TransferPayement" %>
   <div>
     <%= f.hidden_field :type, :value => "TransferPayement" %>
-    <%= f.input :date, as: :string, input_html: {class: "datepicker"} %>
+    <%= f.input :date, as: :string, input_html: { class: "datepicker"}  %>
     <%= f.input :value, placeholder: 'Value' %>
     <%= f.input :name %>
     <%= f.input :ref, placeholder: 'Ref' %>
@@ -16,7 +16,7 @@
 <% elsif f.object.type  == "CheckPayement" %>
   <div>
     <%= f.hidden_field :type, :value => "CheckPayement" %>
-    <%= f.input :date, as: :string, input_html: {class: "datepicker"} %>
+    <%= f.input :date, as: :string, input_html: { class: "datepicker"}  %>
     <%= f.input :value, wrapper: :horizontal_form %>
     <%= f.input :name %>
     <%= f.input :number, wrapper: :horizontal_form %>

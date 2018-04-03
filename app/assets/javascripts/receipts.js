@@ -1,6 +1,5 @@
 $(document).on('turbolinks:load', function() {
   var selectizeCallback = null;
-  $('.datepicker').datepicker();
 
   var select_order = $(".selectize").selectize({
       plugins: ['remove_button', 'drag_drop'],
@@ -8,6 +7,11 @@ $(document).on('turbolinks:load', function() {
       labelField: 'number',
       searchField: 'number',
       delimiter: ',',
+      render: {
+        option_create: function (data, escape) {
+            return '<div class="create">' + I18n.t("javascript.add") + '&hellip;<strong>' + escape(data.input) + '</strong></div>';
+        }
+      },
       load: function(query, callback) {
           select_order.selectize()[0].selectize.clearOptions();
       if (!query.length) return callback();

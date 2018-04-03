@@ -5,8 +5,12 @@ class OrdersController < ApplicationController
 
   def list
   	number = params[:number]
-  	@orders = [Order.where('number = ? AND remain > 0', number)]
-  	render json: @orders
+    @orders = [Order.where('number = ? AND remain > 0', number)]
+    if @orders.count > 0 then
+      render json: @orders
+    else
+      render json: Order.last(3)
+    end
   end
 
   def new

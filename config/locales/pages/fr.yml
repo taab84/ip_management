@@ -1,4 +1,6 @@
 fr:
+  javascript:
+    add: "Ajouter"
   pdf:
     print: "Imprimer (PDF)"
   menu:

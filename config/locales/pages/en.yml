@@ -1,4 +1,6 @@
 en:
+  javascript:
+    add: "Add"
   pdf:
     print: "Print (PDF)"
   menu:

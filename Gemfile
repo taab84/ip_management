@@ -60,6 +60,9 @@ gem 'shrine'
 # jQuery UI gem
 gem 'jquery-ui-rails'
 # Use i18n task to manage translations
+# Using Bootstrap datepicker gem
+gem 'bootstrap-datepicker-rails', :require => 'bootstrap-datepicker-rails',
+                              :git => 'git://github.com/Nerian/bootstrap-datepicker-rails.git'
 # Use Prawn for PDF documents
 gem 'prawn'
 gem 'prawn-table'
@@ -71,6 +74,8 @@ gem 'responders'
 gem 'money', '~> 6.10', '>= 6.10.1'
 # Humanize gem from number to letters
 gem 'humanize'
+# Localize Javascript
+gem "i18n-js"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
