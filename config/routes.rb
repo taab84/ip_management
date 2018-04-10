@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   root to: "home#index"
   get 'home/info'
   get 'home/help'
-  get '/orders/list'
+  post '/orders/list' , to: 'orders#list'
 
   # resources routes
   resources :receipts, :controller => "receipts", :type => "Receipt"
@@ -17,8 +17,10 @@ Rails.application.routes.draw do
   resources :identical_search_receipts, :controller => "receipts", :type => "IdenticalSearchReceipt", :branch => "M"
   resources :similar_search_receipts, :controller => "receipts", :type => "SimilarSearchReceipt", :branch => "M"
   resources :orders, :controller => "orders", only: [:new, :create, :show]
-  resources :md_orders, :controller => "orders", only: [:new, :create, :show]
-  resources :pd_orders, :controller => "orders", only: [:new, :create, :show]
+  resources :md_orders, :controller => "orders", only: [:new, :show]
+  resources :pd_orders, :controller => "orders", only: [:new, :show]
+  resources :md_orders, :controller => "orders", only: [:create,], :formats=>[:json]
+  resources :pd_orders, :controller => "orders", only: [:create], :formats=>[:json]
 
   # Cahnge locale routes
   get '/change_locale/:locale', to: 'settings#change_locale', as: :change_locale

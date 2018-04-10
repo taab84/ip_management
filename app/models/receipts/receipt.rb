@@ -5,10 +5,10 @@ class Receipt < ApplicationRecord
   has_many :orderables, inverse_of: 'receipt', dependent: :destroy
   has_many :orders, through: :orderables, inverse_of: 'receipts'
 
-  # validates_associated :orderables
+  validates_presence_of :orders
+  validate :sum_remain_must_be_enough
   
   before_validation :valuate, on: :create
-  # after_validation :setting_op, on: :create
 
   jsonb_accessor :owner_adress,
     owner_street: :string,
@@ -18,6 +18,7 @@ class Receipt < ApplicationRecord
 
   def setting_op
     self.transaction do
+      self.save
       value_comp = self.total
       id = self.id
       self.orders.each do |order|
@@ -41,18 +42,24 @@ class Receipt < ApplicationRecord
   end
 
   def paid_sum
-    self.orders.sum(:remain)
+    total = 0
+    self.orders.each do |order|
+      total += order.remain
+    end
+    return total
   end
 
   private
+  def sum_remain_must_be_enough
+    if (self.total > self.paid_sum)
+      self.errors.add(:orders, :not_enough)
+    end
+  end
 
   def valuate()
     self.serie = Date.current.year
     self.number = set_number()
     self.tax_calculate()
-    if (self.total < self.orders.sum(:remain))
-      self.errors.add(:total, :not_enough)
-    end
   end
 
 end

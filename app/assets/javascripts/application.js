@@ -17,11 +17,11 @@
 //= require jquery-ui/widget
 //= require jquery-ui/position
 //= require jquery-ui/sortable
+//= require selectize
 //= require bootstrap-sprockets
 //= require bootstrap-datepicker/core
 //= require bootstrap-datepicker/locales/bootstrap-datepicker.fr.js 
 //= require cocoon
-//= require selectize
 //= require i18n
 //= require i18n/translations
 //= require localization

@@ -83,5 +83,5 @@ fr:
         type: "Type"
     errors:
       receipt:
-        total:
+        order_ids:
           not_enough: "Versement insufisant"

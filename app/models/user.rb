@@ -65,19 +65,23 @@ class User < ApplicationRecord
 end
 
 class Administrator < User
-  belongs_to :group, required: true
+  belongs_to :group
+  validates :group, presence: true
 end
 
 class Employee < User
-  belongs_to :group, required: true
+  belongs_to :group
+  validates :group, presence: true
 end
 
 class Accountant < User
-  belongs_to :group, required: true
+  belongs_to :group
+  validates :group, presence: true
 end
 
 class Executive < User
-  belongs_to :group, required: true
+  belongs_to :group
+  validates :group, presence: true
 end
 
 class Public < User

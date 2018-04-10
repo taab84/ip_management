@@ -5,11 +5,9 @@ class OrdersController < ApplicationController
 
   def list
   	number = params[:number]
-    @orders = [Order.where('number = ? AND remain > 0', number)]
-    if @orders.count > 0 then
-      render json: @orders
-    else
-      render json: Order.last(3)
+    @orders = Order.where('number = ? AND remain > 0', number)
+    respond_to do |format|
+        format.json {render json: @orders}
     end
   end
 
@@ -19,15 +17,13 @@ class OrdersController < ApplicationController
 
   def create
     @order = Order.new(order_params)
-    # respond_to do |format|
+    respond_to do |format|
       if @order.save
-        render json:@order
-        # format.json { render @order }
+        format.json { render json: @order }
       else
-        render json: {errors: @order.errors.full_messages}
-        # format.json { render json: @order.errors }
+        format.json { render json: @order.errors }
       end
-    # end
+    end
   end
 
   def show

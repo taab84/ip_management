@@ -76,6 +76,8 @@ gem 'money', '~> 6.10', '>= 6.10.1'
 gem 'humanize'
 # Localize Javascript
 gem "i18n-js"
+# Valid mail 2
+gem "valid_email2"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

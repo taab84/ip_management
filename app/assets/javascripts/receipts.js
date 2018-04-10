@@ -1,7 +1,8 @@
 $(document).on('turbolinks:load', function() {
   var selectizeCallback = null;
+  var AUTH_TOKEN = $('meta[name=csrf-token]').attr('content');
 
-  var select_order = $(".selectize").selectize({
+  var select_order = $("#receipt_orders").selectize({
       plugins: ['remove_button', 'drag_drop'],
       valueField: 'id',
       labelField: 'number',
@@ -12,31 +13,31 @@ $(document).on('turbolinks:load', function() {
             return '<div class="create">' + I18n.t("javascript.add") + '&hellip;<strong>' + escape(data.input) + '</strong></div>';
         }
       },
+      create: function(input, callback){
+        selectizeCallback = callback;
+        $("#new_order").trigger("reset");
+        $(".order-modal").modal();
+      },
       load: function(query, callback) {
           select_order.selectize()[0].selectize.clearOptions();
       if (!query.length) return callback();
         $.ajax({
-            url: '/orders/list',
-            type: 'get',
+            url: '/orders/list/',
+            type: 'POST',
             dataType: 'json',
             data: {
                 id: query,
                 number: query,
+                authenticity_token: AUTH_TOKEN,
               },
-              error: function() {
-                callback();
+            error: function() {
+              callback();
             },
             success: function(res) {
               callback(res);
-              // console.log(res);
-            }
+            },
         });
       },
-      create: function(input, callback){
-        selectizeCallback = callback;
-        $(".order-modal").modal();
-        $("#new_order").trigger("reset");
-      }
   });
 
   $('#payement').on('cocoon:after-insert', function(e, insertedItem) {
@@ -46,15 +47,18 @@ $(document).on('turbolinks:load', function() {
   $("#new_order").on("submit", function(e){
     e.preventDefault();
     $.ajax({
-      method: "POST",
+      method: "post",
       url: '/orders/',
       data: $(this).serialize(),
+      dataType: 'json',
       success: function(res){
         selectizeCallback(res);
         selectizeCallback = null;
+        select_order.selectize()[0].selectize.addOption(res);
+        select_order.selectize()[0].selectize.setValue(res.id, false);
         $(".order-modal").modal('toggle');
-        $.rails.enableFormElement($("#new_order"));
-      }
+        $("#new_order_submit").removeAttr("disabled");
+      },
     });
   });
 
@@ -65,4 +69,5 @@ $(document).on('turbolinks:load', function() {
     }
   });
 
+  select_order.selectize()[0].selectize.clearOptions();
 });

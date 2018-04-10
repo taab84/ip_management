@@ -83,5 +83,5 @@ en:
         type: "Type"
     errors:
       receipt:
-        total:
+        order_ids:
           not_enough: "Not enough payement"

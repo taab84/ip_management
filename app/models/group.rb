@@ -1,4 +1,14 @@
 class Group < ApplicationRecord
+  has_many :users
+  jsonb_accessor :contact,
+    phone: :integer,
+    mobile: :integer,
+    fax: :integer
+  
+  validates :name, :tenant, :adress, :email, presence: true
+  validates :email, 'valid_email_2/email': true
+  validates :phone, :mobile, :fax, numericality: true
+  
   rails_admin do
     weight 2
     list do
@@ -18,9 +28,4 @@ class Group < ApplicationRecord
       field :fax
     end
   end
-  has_many :users
-  jsonb_accessor :contact,
-    phone: :integer,
-    mobile: :integer,
-    fax: :integer
 end

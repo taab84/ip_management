@@ -47,26 +47,8 @@ class ReceiptsController < ApplicationController
       @receipt = receipt_type.new(receipt_params)
       @receipt.user_id = current_user.id
       respond_to do |format|
-        if @receipt.save
+        if @receipt.valid?
           @receipt.setting_op
-          # total = @receipt.total
-          # @receipt.orders.each do |order|
-          #   if (total > 0) && (order.remain > 0)
-          #     if order.remain >= total
-          #       orderable = order.orderables.new(used: total, receipt_id: @receipt.id, order_id: order.id)
-          #       orderable.save
-          #       order.remain = order.remain - total
-          #       total = 0
-          #       order.save
-          #     elsif order.remain < total
-          #       total = total - order.remain
-          #       orderable = order.orderables.new(used: order.remain, receipt_id: @receipt.id, order_id: order.id)
-          #       orderable.save
-          #       order.remain = 0
-          #       order.save
-          #     end
-          #   end
-          # end
           format.html { redirect_to @receipt, notice: 'Receipt was successfully created.' }
           format.json { render :show, status: :created, location: @receipt }
         else

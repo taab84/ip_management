@@ -16,6 +16,7 @@
 /node_modules
 /yarn-error.log
 /public/uploads
+/public/assets
 /public/localhost
 /config/database.yml
 

@@ -15,7 +15,7 @@
     wrap_object: Proc.new { |payement| payement.type = "CheckPayement"; payement = CheckPayement.new }) %>
     </div>
     <div class="col col-md-4">
-      <%= f.submit class: "btn btn-info pull-right" %>
+      <%= f.submit class: "btn btn-info pull-right", id: "new_order_submit" %>
     </div>
   </div>
 
