@@ -27,8 +27,13 @@ en:
         date: "Payement Date"
       mark_receipt:
         mark_name: "Mark name"
-        classes: "Class numbers (Entre 1 et 45)"
         ipas_num: "IPAS Number"
+      identical_search_receipt:
+        number_searches: "Searches numbers"
+        number_classes: "Classes number"
+      similar_search_receipt:
+        number_searches: "Searches numbers"
+        number_classes: "Classes number"
       transfer_payement:
         ref: "Transfer reference"
       check_payement:
@@ -36,3 +41,9 @@ en:
     prompts:
       receipt:
         representative: "Select a Representative if exists"
+        orders: "Select payement orders"
+    hints:
+      mark_receipt:
+        classes: "Class numbers (between 1 & 45)"
+      payement:
+        

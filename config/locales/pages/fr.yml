@@ -15,6 +15,8 @@ fr:
     show: "Afficher"
     destroy: "Supprimer"
     edit: "Editer"
+    edit_profile: "Edtier Mon profil"
+    admin : "Panneau d'Administrateur"
     if_sure: "Etes vous sure?"
     action:
       one: "Action"
@@ -22,6 +24,7 @@ fr:
     receipt:
       all: "Toutes les Quittances"
       new: "Nouvelle Quittance"
+      edit: "Editer Quittance"
       mark:
         new: "Dépôt Marque"
         list_mark: "Dépôts Marques"

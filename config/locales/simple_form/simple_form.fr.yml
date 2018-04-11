@@ -26,12 +26,20 @@ fr:
         date: "Date de Paiement"
       mark_receipt:
         mark_name: "Nom de la Marque"
-        classes: "Nombre de Classes (Entre 1 et 45)"
         ipas_num: "Numéro IPAS"
-      transfer_payement:
+      identical_search_receipt:
+        number_searches: "Nombre de recherches"
+        number_classes: "Nombre de classes total"
+      similar_search_receipt:
+        number_searches: "Nombre de recherches"
+        number_classes: "Nombre de classes total"
+      payement:
         ref: "Réference de Versement"
-      check_payement:
         number: "Numéro de Chèque"
     prompts:
       receipt:
         representative: "Selectionnez un Mandataire s'il existe"
+        orders: "Selectionnez les orders de paiements"
+    hints:
+      mark_receipt:
+        classes: "Nombre de Classes (Entre 1 et 45)"

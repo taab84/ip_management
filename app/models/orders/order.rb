@@ -6,11 +6,16 @@ class Order < ApplicationRecord
   has_one :transfer_payement
   has_one :check_payement
   accepts_nested_attributes_for :payement, :allow_destroy => true
+  attr_accessor :name
 
   validates :payement, presence: true
   validates_associated :payement
 
   before_validation :initiate, on: :create
+
+  def name
+    return self.payement.name
+  end
 
   private
 

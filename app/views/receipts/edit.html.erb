@@ -1,6 +1,8 @@
-<h1>Editing Receipt</h1>
+<div class="panel panel-info">
+  <div class="panel-heading"><%= I18n.t('menu.receipt.edit') %></div>
+  <div class="panel-body">
 
-<%= render 'form', receipt: @receipt %>
+<%= render 'form', receipt: @receipt, receipt_new:"old" %>
 
-<%= link_to 'Show', @receipt %> |
-<%= link_to 'Back', receipts_path %>
+</div>
+</div>

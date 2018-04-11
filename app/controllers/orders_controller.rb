@@ -4,10 +4,10 @@ class OrdersController < ApplicationController
   load_and_authorize_resource
 
   def list
-  	number = params[:number]
-    @orders = Order.where('number = ? AND remain > 0', number)
+  	name = params[:name]
+    @orders = Order.joins(:payement).where('payements.name ILIKE ? AND remain > 0', "%#{name}%")
     respond_to do |format|
-        format.json {render json: @orders}
+        format.json {render json: @orders.to_json(:methods => [:id, :number, :name, :remain])}
     end
   end
 

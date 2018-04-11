@@ -15,6 +15,8 @@ en:
     show: "Show"
     destroy: "Destroy"
     edit: "Edit"
+    edit_profile: "Profile Edit"
+    admin : "Admin Dashboard"
     if_sure: "Are you sure?"
     action:
       one: "Action"
@@ -22,6 +24,7 @@ en:
     receipt:
       all: "All Receipts"
       new: "New Receipt"
+      edit: "Edit Receipt"
       mark:
         new: "New Applicant Mark"
         list_mark: "Applicants Marks"

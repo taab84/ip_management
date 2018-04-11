@@ -5,12 +5,30 @@ $(document).on('turbolinks:load', function() {
   var select_order = $("#receipt_orders").selectize({
       plugins: ['remove_button', 'drag_drop'],
       valueField: 'id',
-      labelField: 'number',
-      searchField: 'number',
+      labelField: 'name',
+      searchField: 'name',
       delimiter: ',',
       render: {
         option_create: function (data, escape) {
             return '<div class="create">' + I18n.t("javascript.add") + '&hellip;<strong>' + escape(data.input) + '</strong></div>';
+        },
+        option: function(item, escape) {
+          return '<div>'
+            + '<strong>'       
+            + escape(item.number) + ': ' 
+            + '</strong>' 
+            + escape(item.name) + ' (' 
+            + escape(item.remain)  + ') '
+            + '</div>';
+        },
+        item: function(item, escape){
+          return '<div>'
+            + '<strong>'       
+            + escape(item.number) + ': ' 
+            + '</strong>' 
+            + escape(item.name) + ' (' 
+            + escape(item.remain)  + ' Da) '
+            + '</div>';
         }
       },
       create: function(input, callback){
@@ -26,8 +44,7 @@ $(document).on('turbolinks:load', function() {
             type: 'POST',
             dataType: 'json',
             data: {
-                id: query,
-                number: query,
+                name: query,
                 authenticity_token: AUTH_TOKEN,
               },
             error: function() {

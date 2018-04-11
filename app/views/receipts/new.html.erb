@@ -1,8 +1,8 @@
 <div class="panel panel-info">
-  <div class="panel-heading">New Receipt</div>
+  <div class="panel-heading"><%= I18n.t('menu.receipt.new') %></div>
   <div class="panel-body">
 
-<%= render 'form', receipt: @receipt %>
+<%= render 'form', receipt: @receipt, receipt_new:"new" %>
 
  <!-- <%= link_to 'Back', receipts_path %> -->
 </div>
