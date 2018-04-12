@@ -7,7 +7,7 @@ class Receipt < ApplicationRecord
 
   validates_presence_of :orders
   validate :sum_remain_must_be_enough
-  
+
   before_validation :valuate, on: :create
 
   jsonb_accessor :owner_adress,
@@ -17,22 +17,24 @@ class Receipt < ApplicationRecord
   validates :owner_name, :owner_street, :owner_wilaya, :type, presence: true
 
   def setting_op
-    self.transaction do
-      self.save
-      value_comp = self.total
+    transaction do
+      save
+      value_comp = total
       id = self.id
-      self.orders.each do |order|
-        if (value_comp > 0) && (order.remain > 0)
+      orders.each do |order|
+        if value_comp.positive? && order.remain.positive?
           if order.remain >= value_comp
-            @orderable = order.orderables.new(used: value_comp, receipt_id: id, order_id: order.id)
-            @orderable.save
+            @orderable = order.orderables.create(
+              used: value_comp, receipt_id: id, order_id: order.id
+            )
             order.remain = order.remain - value_comp
             value_comp = 0
             order.save
           elsif order.remain < value_comp
-            value_comp = value_comp - order.remain
-            @orderable = order.orderables.new(used: order.remain, receipt_id: id, order_id: order.id)
-            @orderable.save
+            value_comp -= order.remain
+            @orderable = order.orderables.create(
+              used: order.remain, receipt_id: id, order_id: order.id
+            )
             order.remain = 0
             order.save
           end
@@ -43,23 +45,22 @@ class Receipt < ApplicationRecord
 
   def paid_sum
     total = 0
-    self.orders.each do |order|
+    orders.each do |order|
       total += order.remain
     end
-    return total
+    total
   end
 
   private
+
   def sum_remain_must_be_enough
-    if (self.total > self.paid_sum)
-      self.errors.add(:orders, :not_enough)
-    end
+    errors.add(:orders, :not_enough) if total > paid_sum
   end
 
-  def valuate()
+  def valuate
     self.serie = Date.current.year
-    self.number = set_number()
-    self.tax_calculate()
+    self.number = set_number
+    tax_calculate
   end
 
 end

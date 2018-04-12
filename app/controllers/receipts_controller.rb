@@ -94,7 +94,9 @@ class ReceiptsController < ApplicationController
         params.require(:mark_receipt).permit(:owner_name, :type, :owner_adress, :representative_id, :owner_street, :owner_wilaya, :mark_name, :image,
       :mark_type, :colored, :classes, :rev_pri, :ipas_num, :order_ids => [])
       elsif params[:type] == "IdenticalSearchReceipt" then params.require(:identical_search_receipt).permit(:owner_name, :type, :owner_adress, :representative_id, :owner_street, :owner_wilaya, :image,
-      :number_searches, :number_classes, :order_ids => [])
+        :number_searches, :number_classes, :order_ids => [])
+      elsif params[:type] == "SimilarSearchReceipt" then params.require(:similar_search_receipt).permit(:owner_name, :type, :owner_adress, :representative_id, :owner_street, :owner_wilaya, :image,
+        :number_searches, :number_classes, :order_ids => [])
       end
     end
 

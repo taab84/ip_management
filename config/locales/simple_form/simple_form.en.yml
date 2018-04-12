@@ -30,10 +30,10 @@ en:
         ipas_num: "IPAS Number"
       identical_search_receipt:
         number_searches: "Searches numbers"
-        number_classes: "Classes number"
+        number_classes: "Classes number suppl"
       similar_search_receipt:
         number_searches: "Searches numbers"
-        number_classes: "Classes number"
+        number_classes: "Searches numbers beyond 3 classes"
       transfer_payement:
         ref: "Transfer reference"
       check_payement:

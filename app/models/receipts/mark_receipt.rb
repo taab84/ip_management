@@ -13,12 +13,12 @@ class MarkReceipt < MdReceipt
     rev_tax: :decimal,
     rev_description: :string
 
-  enum mark_type: [ :figuratif, :verbal, :figuratif_and_verbal ]
+  enum mark_type: [:figuratif, :verbal, :figuratif_and_verbal]
 
 
   validates :mark_name, presence: true, unless: :pictured?
   validates :mark_name, absence: true, if: :pictured?
-  validates :colored, exclusion: { in: [true]}, if: :verbalized?
+  validates :colored, exclusion: { in: [true] }, if: :verbalized?
   validates :classes, inclusion: { in: 1..45 }
 
   def verbalized?

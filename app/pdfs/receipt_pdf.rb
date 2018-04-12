@@ -4,6 +4,8 @@ require 'arabic-letter-connector'
 require 'money'
 require 'humanize'
 require_relative 'mark_details'
+require_relative 'mark_similar_search_details'
+require_relative 'mark_identical_search_details'
 require "bidi"
 # bidi.to_visual
 class ReceiptPdf < Prawn::Document
@@ -64,6 +66,10 @@ class ReceiptPdf < Prawn::Document
     
     if (@receipt.type == "MarkReceipt") then
       mark_detail(@receipt)
+    elsif (@receipt.type == "SimilarSearchReceipt") then
+      mark_similar_search_detail(@receipt)
+    elsif (@receipt.type == "IdenticalSearchReceipt") then
+      mark_identical_search_detail(@receipt)
     end
 
     move_down 20
@@ -80,5 +86,5 @@ private
     return Money.new(value*100, "DZ").format(:translate => true, :symbol_position => :after)
   end
 
-
+  
 end

@@ -44,7 +44,7 @@ $(document).on('turbolinks:load', function() {
             type: 'POST',
             dataType: 'json',
             data: {
-                name: query,
+                query: query,
                 authenticity_token: AUTH_TOKEN,
               },
             error: function() {

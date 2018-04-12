@@ -29,10 +29,10 @@ fr:
         ipas_num: "Numéro IPAS"
       identical_search_receipt:
         number_searches: "Nombre de recherches"
-        number_classes: "Nombre de classes total"
+        number_classes: "Nombre de classes supplementaires"
       similar_search_receipt:
         number_searches: "Nombre de recherches"
-        number_classes: "Nombre de classes total"
+        number_classes: "Nombre de recherches au dela de 3 classes"
       payement:
         ref: "Réference de Versement"
         number: "Numéro de Chèque"

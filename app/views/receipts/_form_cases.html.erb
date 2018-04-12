@@ -13,13 +13,13 @@
 <% elsif params[:type]=="IdenticalSearchReceipt" %>
 <%= f.input :type, as: :hidden, input_html: {value: "IdenticalSearchReceipt"} %>
   <div class="row">
-    <div class="col col-md-6"> <%= f.input :number_searches %> </div>
-    <div class="col col-md-6"> <%= f.input :number_classes %> </div>
+    <div class="col col-md-6"> <%= f.input :number_searches, input_html:{value: 1} %> </div>
+    <div class="col col-md-6"> <%= f.input :number_classes, input_html:{value: 0} %> </div>
   </div>
 <% elsif params[:type]=="SimilarSearchReceipt" %>
   <div class="row">
   <%= f.input :type, as: :hidden, input_html: {value: "SimilarSearchReceipt"} %>
-    <div class="col col-md-6"> <%= f.input :number_searches %> </div>
-    <div class="col col-md-6"> <%= f.input :number_classes %> </div>
+    <div class="col col-md-6"> <%= f.input :number_searches, input_html:{value: 1} %> </div>
+    <div class="col col-md-6"> <%= f.input :number_classes, input_html:{value: 0} %> </div>
   </div>
 <% end %>
