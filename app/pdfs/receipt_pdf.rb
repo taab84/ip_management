@@ -1,13 +1,11 @@
 require 'prawn'
 require 'prawn/table'
-require 'arabic-letter-connector'
 require 'money'
 require 'humanize'
 require_relative 'mark_details'
 require_relative 'mark_similar_search_details'
 require_relative 'mark_identical_search_details'
-require "bidi"
-# bidi.to_visual
+
 class ReceiptPdf < Prawn::Document
   def initialize(receipt)
     super()
@@ -19,12 +17,11 @@ class ReceiptPdf < Prawn::Document
     :bold => file2,
     })
     font "Amiri"
-    self.text_direction = :ltr
     @receipt = receipt
-    bidi = Bidi.new
-
-    header_ar_radp = "République Algérienne Démocratique et Populaire" + bidi.to_visual(" الجمهورية الجزائرية الديموقراطية الشعبية ".connect_arabic_letters)
-    header_ar_inapi = "Institut National Algérien de la Propriété Industrielle" + bidi.to_visual("المعهد الوطني الجزائري للملكية الصناعية ".connect_arabic_letters)
+    header_ar_radp_ar = Prawn::Rtl::Connector.connect(" الجمهورية الجزائرية الديموقراطية الشعبية ")
+    header_ar_inapi_ar = Prawn::Rtl::Connector.connect("المعهد الوطني الجزائري للملكية الصناعية ")
+    header_ar_radp = header_ar_radp_ar  + " " + "République Algérienne Démocratique et Populaire"
+    header_ar_inapi = header_ar_inapi_ar + " " + "Institut National Algérien de la Propriété Industrielle"
     receipt_header =
       [[{:image => logo, :fit => [75, 75], :rowspan => 2},
         header_ar_radp,{:content => "Code R1-FO/01", :colspan => 2}],

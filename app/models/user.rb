@@ -4,7 +4,7 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable, :authentication_keys => [:login]
+         :rememberable, :trackable, :validatable, :authentication_keys => [:login]
   # Rails Admin config
   rails_admin do
     weight 1
@@ -27,6 +27,7 @@ class User < ApplicationRecord
   attr_accessor :login
 
   validate :validate_username
+  validates :group, presence: true, on: :update, unless: :public_type?
 
   def validate_username
     if User.where(email: username).exists?
@@ -62,26 +63,26 @@ class User < ApplicationRecord
       end
   end
 
+  def public_type?
+    type == "Public"
+  end
+
 end
 
 class Administrator < User
   belongs_to :group
-  validates :group, presence: true
 end
 
 class Employee < User
   belongs_to :group
-  validates :group, presence: true
 end
 
 class Accountant < User
   belongs_to :group
-  validates :group, presence: true
 end
 
 class Executive < User
   belongs_to :group
-  validates :group, presence: true
 end
 
 class Public < User

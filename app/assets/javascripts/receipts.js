@@ -40,7 +40,7 @@ $(document).on('turbolinks:load', function() {
           select_order.selectize()[0].selectize.clearOptions();
       if (!query.length) return callback();
         $.ajax({
-            url: '/orders/list/',
+            url: '/orders/load/',
             type: 'POST',
             dataType: 'json',
             data: {

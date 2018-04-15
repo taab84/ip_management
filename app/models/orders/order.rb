@@ -2,6 +2,8 @@ class Order < ApplicationRecord
   # include ImageUploader::Attachment.new(:image)
   has_many :orderables, inverse_of: 'order'
   has_many :receipts, through: :orderables, inverse_of: 'orders'
+  belongs_to :user
+  belongs_to :group
   has_one :payement
   has_one :transfer_payement
   has_one :check_payement

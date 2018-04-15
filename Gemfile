@@ -66,8 +66,7 @@ gem 'bootstrap-datepicker-rails', :require => 'bootstrap-datepicker-rails',
 # Use Prawn for PDF documents
 gem 'prawn'
 gem 'prawn-table'
-gem 'arabic-letter-connector', '~> 0.1.1'
-gem 'bidi', '~> 0.0.2'
+gem 'prawn-rtl-support'
 # Using Reponders
 gem 'responders'
 # Money gem for currency formatting

@@ -3,7 +3,7 @@ class OrdersController < ApplicationController
   protect_from_forgery with: :null_session
   load_and_authorize_resource
 
-  def list
+  def load
     query = params[:query]
     number = query.to_i
     @orders = Order.joins(:payement).where('(payements.name ILIKE ? OR number= ?) AND remain > 0', "%#{query}%", number)
@@ -18,6 +18,8 @@ class OrdersController < ApplicationController
 
   def create
     @order = Order.new(order_params)
+    @order.user_id = current_user.id
+    @order.group_id = current_user.group.id
     respond_to do |format|
       if @order.save
         format.json { render json: @order.to_json(:methods => [:id, :number, :name, :remain]) }

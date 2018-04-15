@@ -10,8 +10,8 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.1]
       t.references :group,   foreign_key: true, index: true
 
       ## Recoverable
-      t.string   :reset_password_token
-      t.datetime :reset_password_sent_at
+      # t.string   :reset_password_token
+      # t.datetime :reset_password_sent_at
 
       ## Rememberable
       t.datetime :remember_created_at
@@ -39,7 +39,6 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.1]
     end
 
     add_index :users, :email,                unique: true
-    add_index :users, :reset_password_token, unique: true
     add_index :users, :username,             unique: true
     add_index :users, :type,                 unique: false
     # add_index :users, :confirmation_token,   unique: true

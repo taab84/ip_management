@@ -46,6 +46,7 @@ class ReceiptsController < ApplicationController
   def create
       @receipt = receipt_type.new(receipt_params)
       @receipt.user_id = current_user.id
+      @receipt.group_id = current_user.group.id
       respond_to do |format|
         if @receipt.valid?
           @receipt.setting_op

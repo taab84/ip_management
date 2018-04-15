@@ -7,7 +7,7 @@ class Group < ApplicationRecord
   
   validates :name, :tenant, :adress, :email, presence: true
   validates :email, 'valid_email_2/email': true
-  validates :phone, :mobile, :fax, numericality: true
+  validates :phone, :mobile, :fax, numericality: true, :allow_nil => true
   
   rails_admin do
     weight 2

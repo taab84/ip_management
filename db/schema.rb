@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180325123100) do
+ActiveRecord::Schema.define(version: 20180415115253) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -46,8 +46,12 @@ ActiveRecord::Schema.define(version: 20180325123100) do
     t.jsonb "image_data"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "group_id"
+    t.bigint "user_id"
+    t.index ["group_id"], name: "index_orders_on_group_id"
     t.index ["number"], name: "index_orders_on_number"
     t.index ["type"], name: "index_orders_on_type"
+    t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
   create_table "payements", force: :cascade do |t|
@@ -80,7 +84,9 @@ ActiveRecord::Schema.define(version: 20180325123100) do
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "group_id"
     t.index ["data"], name: "index_receipts_on_data", using: :gin
+    t.index ["group_id"], name: "index_receipts_on_group_id"
     t.index ["number"], name: "index_receipts_on_number"
     t.index ["owner_adress"], name: "index_receipts_on_owner_adress", using: :gin
     t.index ["owner_name"], name: "index_receipts_on_owner_name"
@@ -119,8 +125,6 @@ ActiveRecord::Schema.define(version: 20180325123100) do
     t.string "fullname", default: "", null: false
     t.string "type", default: "Public", null: false
     t.bigint "group_id"
-    t.string "reset_password_token"
-    t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.integer "sign_in_count", default: 0, null: false
     t.datetime "current_sign_in_at"
@@ -131,7 +135,6 @@ ActiveRecord::Schema.define(version: 20180325123100) do
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["group_id"], name: "index_users_on_group_id"
-    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["type"], name: "index_users_on_type"
     t.index ["username"], name: "index_users_on_username", unique: true
   end
@@ -146,7 +149,10 @@ ActiveRecord::Schema.define(version: 20180325123100) do
 
   add_foreign_key "orderables", "orders"
   add_foreign_key "orderables", "receipts"
+  add_foreign_key "orders", "groups"
+  add_foreign_key "orders", "users"
   add_foreign_key "payements", "orders"
+  add_foreign_key "receipts", "groups"
   add_foreign_key "receipts", "representatives"
   add_foreign_key "receipts", "users"
   add_foreign_key "users", "groups"

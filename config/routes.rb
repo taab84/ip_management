@@ -2,14 +2,14 @@ Rails.application.routes.draw do
   get 'settings/change_locale'
 
   # gems generated routes
-  mount RailsAdmin::Engine => '/admin', as: 'rails_admin' #, :constraint => Whitelist.new
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :users
 
   # custom routes
   root to: "home#index"
   get 'home/info'
   get 'home/help'
-  post '/orders/list' , to: 'orders#list'
+  post '/orders/load' , to: 'orders#load'
 
   # resources routes
   resources :receipts, :controller => "receipts", :type => "Receipt"
@@ -25,17 +25,4 @@ Rails.application.routes.draw do
   # Cahnge locale routes
   get '/change_locale/:locale', to: 'settings#change_locale', as: :change_locale
 
-  # class Whitelist
-  #   def initialize
-  #     @ips = Wl.retrieve_ips
-  #   end
-  
-  #   def matches?(request)
-  #     @ips.include?(request.remote_ip)
-  #   end
-  
-  #   def retrieve_ips
-  #     Whitelist.select(:ip_adress).all
-  #   end
-  # end
 end

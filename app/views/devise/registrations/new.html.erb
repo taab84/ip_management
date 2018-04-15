@@ -13,13 +13,17 @@
     <%= f.input :password_confirmation, required: true, placeholder: "Confirmez votre mot de passe" %>
   </div>
 
+  <div class="row">
+  <div class="col col-md-6">
+    <%= render "devise/shared/links" %>
+  </div>
+  <div class="col col-md-6">
   <div class="form-actions">
-    <%= f.button :submit, "Enregistrer" %>
+    <%= f.button :submit, I18n.t("menu.register"), :class => 'pull-right' %>
+  </div>
+  </div>
   </div>
 <% end %>
-<div class="col-md-12">
-<%= render "devise/shared/links" %>
-</div>
 </div>
 </div>
 </div>

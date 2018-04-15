@@ -2,6 +2,7 @@ class Receipt < ApplicationRecord
   include ImageUploader::Attachment.new(:image)
   belongs_to :representative, optional: true
   belongs_to :user
+  belongs_to :group
   has_many :orderables, inverse_of: 'receipt', dependent: :destroy
   has_many :orders, through: :orderables, inverse_of: 'receipts'
 
