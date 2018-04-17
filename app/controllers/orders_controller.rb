@@ -6,7 +6,7 @@ class OrdersController < ApplicationController
   def load
     query = params[:query]
     number = query.to_i
-    @orders = Order.joins(:payement).where('(payements.name ILIKE ? OR number= ?) AND remain > 0', "%#{query}%", number)
+    @orders = Order.joins(:payement).selectized(query, number)
     respond_to do |format|
         format.json {render json: @orders.to_json(:methods => [:id, :number, :name, :remain])}
     end

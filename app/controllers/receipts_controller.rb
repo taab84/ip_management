@@ -20,12 +20,13 @@ class ReceiptsController < ApplicationController
       respond_to do |format|
         format.html
         format.pdf do
-        pdf = ReceiptPdf.new(@receipt)
-        send_data pdf.render,
-          filename: "receipt_#{@receipt.serie}_#{@receipt.number}",
-          type: 'application/pdf',
-          disposition: 'inline'
-    end
+          @payements = @receipt.payements
+          pdf = ReceiptPdf.new(@receipt, @payements)
+          send_data pdf.render,
+            filename: "receipt_#{@receipt.serie}_#{@receipt.number}",
+            type: 'application/pdf',
+            disposition: 'inline'
+        end
       end
     else
       redirect_to root_url

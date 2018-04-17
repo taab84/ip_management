@@ -15,6 +15,8 @@ class Order < ApplicationRecord
 
   before_validation :initiate, on: :create
 
+  scope :selectized, ->(query, number) { where('(payements.name ILIKE ? OR number= ?) AND remain > 0', "%#{query}%", number) }
+
   def name
     return self.payement.name
   end

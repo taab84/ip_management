@@ -16,9 +16,9 @@ Rails.application.routes.draw do
   resources :mark_receipts, :controller => "receipts", :type => "MarkReceipt", :branch => "M"
   resources :identical_search_receipts, :controller => "receipts", :type => "IdenticalSearchReceipt", :branch => "M"
   resources :similar_search_receipts, :controller => "receipts", :type => "SimilarSearchReceipt", :branch => "M"
-  resources :orders, :controller => "orders", only: [:new, :create, :show]
-  resources :md_orders, :controller => "orders", only: [:new, :show]
-  resources :pd_orders, :controller => "orders", only: [:new, :show]
+  resources :orders, :controller => "orders", only: [:new, :create, :show, :index]
+  resources :md_orders, :controller => "orders", only: [:new, :show, :index]
+  resources :pd_orders, :controller => "orders", only: [:new, :show, :index]
   resources :md_orders, :controller => "orders", only: [:create,], :formats=>[:json]
   resources :pd_orders, :controller => "orders", only: [:create], :formats=>[:json]
 

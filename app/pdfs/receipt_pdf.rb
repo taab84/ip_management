@@ -7,7 +7,7 @@ require_relative 'mark_similar_search_details'
 require_relative 'mark_identical_search_details'
 
 class ReceiptPdf < Prawn::Document
-  def initialize(receipt)
+  def initialize(receipt, payements)
     super()
     file = Rails.root.join('app', 'assets', 'fonts', 'Amiri-Regular.ttf')
     file2 = Rails.root.join('app', 'assets', 'fonts', 'Amiri-Bold.ttf')
@@ -18,6 +18,7 @@ class ReceiptPdf < Prawn::Document
     })
     font "Amiri"
     @receipt = receipt
+    @payements = payements
     header_ar_radp_ar = Prawn::Rtl::Connector.connect(" الجمهورية الجزائرية الديموقراطية الشعبية ")
     header_ar_inapi_ar = Prawn::Rtl::Connector.connect("المعهد الوطني الجزائري للملكية الصناعية ")
     header_ar_radp = header_ar_radp_ar  + " " + "République Algérienne Démocratique et Populaire"
@@ -73,6 +74,10 @@ class ReceiptPdf < Prawn::Document
     formatted_text [{:text => "Arrête la presente quittance a la somme de:", :styles => [:bold, :underline]}, 
       {:text => " " + @receipt.total.humanize(locale: :fr).humanize + " dinars algérien"}
     ]
+    move_down 20
+    formatted_text [{:text => "RV_CNEP N°:", :styles => [:bold, :underline]}, 
+      {:text => " " + trnsf_string}
+    ]
 
     move_down 40
     formatted_text [{:text => "Signature: ", :styles => [:bold, :underline]}], :align => :right
@@ -83,5 +88,12 @@ private
     return Money.new(value*100, "DZ").format(:translate => true, :symbol_position => :after)
   end
 
+  def trnsf_string
+    final_string = " "
+      @payements.each do |p|
+        final_string += p.number.to_s + "/" + p.serie.to_s + ". " if (p.type=="TransferPayement")
+      end
+    return final_string
+  end
   
 end

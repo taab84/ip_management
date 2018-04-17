@@ -36,6 +36,8 @@ en:
         one: Executive
         other: Executives
       payement:
+        one: "Payement"
+        other: "Payements"
         add: Ajouter un Payement
         remove: Supprimer le Payement
       identical_search_receipt:

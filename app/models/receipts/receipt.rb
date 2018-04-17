@@ -5,6 +5,7 @@ class Receipt < ApplicationRecord
   belongs_to :group
   has_many :orderables, inverse_of: 'receipt', dependent: :destroy
   has_many :orders, through: :orderables, inverse_of: 'receipts'
+  has_many :payements, through: :orders
 
   validates_presence_of :orders
   validate :sum_remain_must_be_enough
@@ -25,17 +26,17 @@ class Receipt < ApplicationRecord
       orders.each do |order|
         if value_comp.positive? && order.remain.positive?
           if order.remain >= value_comp
-            @orderable = order.orderables.create(
-              used: value_comp, receipt_id: id, order_id: order.id
-            )
+            @orderable = order.orderables.where(receipt_id: id, order_id: order.id).update(
+              used: value_comp
+              )
             order.remain = order.remain - value_comp
             value_comp = 0
             order.save
           elsif order.remain < value_comp
             value_comp -= order.remain
-            @orderable = order.orderables.create(
-              used: order.remain, receipt_id: id, order_id: order.id
-            )
+            @orderable = order.orderables.where(receipt_id: id, order_id: order.id).update(
+              used: order.remain
+              )
             order.remain = 0
             order.save
           end

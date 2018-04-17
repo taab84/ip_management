@@ -77,6 +77,8 @@ gem 'humanize'
 gem "i18n-js"
 # Valid mail 2
 gem "valid_email2"
+# Filterrific for listing and filtering results
+gem 'filterrific'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

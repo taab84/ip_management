@@ -36,6 +36,8 @@ fr:
         one: Directeur
         other: Directeurs
       payement:
+        one: "Paiement"
+        other: "Paiements"
         add: Ajouter un Payement
         remove: Supprimer le Payement
       identical_search_receipt:
