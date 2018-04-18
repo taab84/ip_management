@@ -1,33 +1,60 @@
 <div class="panel panel-info">
   <div class="panel-heading">
-    <h1 class="panel-title">Receipt info</h1>
+    <h1 class="panel-title"><%= I18n.t('menu.receipt.info') %></h1>
   </div>
   <div class="panel-body">
     <div class="row">
       <div class="col col-md-4">
       <p>
-        <strong>Number :</strong> <%= @receipt.number %>/<%= @receipt.serie %><br />
+        <strong><%= I18n.t('menu.receipt.attributes.number') %>:</strong> <%= @receipt.number %>/<%= @receipt.serie %><br />
         <strong>Type:</strong> <%= @receipt.class.model_name.human %><br />
-        <strong>Owner:</strong> <%= @receipt.owner_name %><br />
+        <strong><%= I18n.t('menu.receipt.attributes.owner') %>:</strong> <%= @receipt.owner_name %><br />
         <strong>Address:</strong> <%= @receipt.owner_street %>, <%= @receipt.owner_wilaya %><br />
       </p>
+      </div>
+      <div class="col col-md-4">
+      <p>
+        <strong>Total :</strong> <%= number_to_currency(@receipt.total) %><br />
+        <%= render 'show_cases', receipt: @receipt %>
+      </p>
     </div>
-    <div class="col col-md-4">
-    <p>
-      <strong>Total :</strong> <%= @receipt.total %><br />
-      <%= render 'show_cases', receipt: @receipt %>
-    </p>
-  </div>
     <div class="col col-md-4">
       <p>
       <% if @receipt.representative %>
       <strong>Representative:</strong> <%= @receipt.representative.fullname %><br />
       <% end %>
-      <strong>Created By:</strong> <%= @receipt.user.fullname %><br />
-      <strong>Group:</strong> <%= @receipt.group.name %><br />
+      <strong><%= I18n.t('menu.receipt.attributes.created_by') %>:</strong> <%= @receipt.user.fullname %><br />
+      <strong><%= I18n.t('menu.receipt.attributes.group') %>:</strong> <%= @receipt.group.name %><br />
       </p>
     </div>
     </div>
+    <div>
+      <h2><u><%= I18n.t('activerecord.models.payement.other') %></u>:</h2>
+      <table class="table table-bordered">
+        <thead class="alert-warning">
+          <tr>
+            <th><%= I18n.t('menu.payement.order') %></th>
+            <th><%= I18n.t('menu.payement.inserted') %></th>
+            <th><%= I18n.t('menu.payement.date') %></th>
+            <th><%= I18n.t('menu.payement.paid') %></th>
+            <th><%= I18n.t('menu.payement.used') %></th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @receipt.orders.each do |order| %>
+            <tr>
+              <td><%= order.number %></td>
+              <td><%= I18n.l order.created_at, format: :long %></td>
+              <td><%= I18n.l order.payement.date, format: :long %></td>
+              <td class="text-right"><%= number_to_currency(order.payement.value) %></td>
+              <td class="text-right"><%= number_to_currency(Orderable.where(receipt_id: @receipt.id, order_id: order.id).first.used) %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table> 
+    </div>
     <%= link_to(I18n.t('pdf.print'), receipt_path(@receipt, format: 'pdf'), class: "btn btn-info pull-right btn-sm", target: :_blank) %>
 </div>
+  
 </div>

@@ -22,4 +22,9 @@
     <div class="col col-md-6"> <%= f.input :number_searches, input_html:{value: 1} %> </div>
     <div class="col col-md-6"> <%= f.input :number_classes, input_html:{value: 0} %> </div>
   </div>
+<% elsif params[:type]=="RectificationMarkReceipt" %>
+  <div class="row">
+  <%= f.input :type, as: :hidden, input_html: {value: "RectificationMarkReceipt"} %>
+    <div class="col col-md-12"> <%= f.input :number_marks, input_html:{value: 1} %> </div>
+  </div>
 <% end %>

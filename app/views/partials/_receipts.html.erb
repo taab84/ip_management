@@ -2,7 +2,7 @@
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= I18n.t('activerecord.models.receipt.new') %><span class="caret"></span></a>
   <ul class="dropdown-menu">
     <li><%= link_to(I18n.t('menu.receipt.mark.new'), '/mark_receipts/new') %></li>
-    <li><a href="#"><%= t('menu.receipt.mark.correction') %></a></li>
+    <li><%= link_to(I18n.t('menu.receipt.mark.rectification'), '/rectification_mark_receipts/new') %></li>
     <li role="separator" class="divider"></li>
     <li><%= link_to(I18n.t('menu.receipt.search.identical'), '/identical_search_receipts/new') %></li>
     <li><%= link_to(I18n.t('menu.receipt.search.similitude'), '/similar_search_receipts/new') %></li>
@@ -14,6 +14,7 @@
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= I18n.t('activerecord.models.receipt.other') %><span class="caret"></span></a>
   <ul class="dropdown-menu">
     <li><%= link_to(I18n.t('menu.receipt.mark.list_mark'), '/mark_receipts/') %></li>
+    <li><%= link_to(I18n.t('menu.receipt.mark.list_rectification'), '/rectification_mark_receipts/') %></li>
     <li><a href="#"><%= t('menu.receipt.mark.list_correction') %></a></li>
     <li role="separator" class="divider"></li>
     <li><%= link_to(I18n.t('menu.receipt.search.identical_list'), '/identical_search_receipts/') %></li>

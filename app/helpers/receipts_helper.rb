@@ -6,6 +6,6 @@ module ReceiptsHelper
 
   private
   def receipt_types
-    ["MarkReceipt", "IdenticalSearchReceipt", "SimilarSearchReceipt"]
+    ["MarkReceipt", "IdenticalSearchReceipt", "SimilarSearchReceipt", "RectificationMarkReceipt"]
   end
 end

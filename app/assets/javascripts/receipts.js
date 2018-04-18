@@ -72,7 +72,7 @@ $(document).on('turbolinks:load', function() {
         selectizeCallback(res);
         selectizeCallback = null;
         select_order.selectize()[0].selectize.addOption(res);
-        select_order.selectize()[0].selectize.setValue(res.id, false);
+        select_order.selectize()[0].selectize.addItem(res.id, false);
         $(".order-modal").modal('toggle');
         $("#new_order_submit").removeAttr("disabled");
       },

@@ -21,15 +21,34 @@ en:
     action:
       one: "Action"
       other: "Actions"
+    payement:
+      order: "Payement Order"
+      inserted: "Inserted on"
+      date: "Paid on"
+      paid: "Paid"
+      used: "Used"
     receipt:
       all: "All Receipts"
       new: "New Receipt"
       edit: "Edit Receipt"
+      info: "Receipt Data"
+      attributes:
+        created_by: "Created by"
+        group: "Group"
+        owner: "Owner"
+        number: "Number"
+        classes: "Classes"
+        number_searches: "Searches Numbers"
+        classes_plus: "Additional Classes"
+        classes_plus_three: "Searches Numbers (more than 3 classes)"
+        number_marks: "Marks number"
       mark:
         new: "New Applicant Mark"
         list_mark: "Applicants Marks"
         correction: "Mark Correction Form"
+        rectification: "Mark Rectification Form"
         list_correction: "Corrections Marks"
+        list_rectification: "Rectifications Marks"
       search:
         identical: "Identical Search"
         identical_list: "Identical Searches"

@@ -49,6 +49,9 @@ fr:
       mark_receipt:
         one: Quittance de Depot Marque
         other: Quittances de Depots Marques
+      rectification_mark_receipt:
+        one: Rectification d'erreurs materiels
+        other: Rectifications d'erreur materiel
     attributes:
       group:
         name: "Nom"

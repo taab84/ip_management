@@ -21,15 +21,34 @@ fr:
     action:
       one: "Action"
       other: "Actions"
+    payement:
+      order: "Ordre de Paiement"
+      inserted: "Inséré le"
+      date: "Payé le"
+      paid: "Somme versé"
+      used: "Somme utilisé"
     receipt:
       all: "Toutes les Quittances"
       new: "Nouvelle Quittance"
       edit: "Editer Quittance"
+      info: "Données Quittance"
+      attributes:
+        created_by: "Crée par"
+        group: "Groupe"
+        owner: "Demandeur"
+        number: "Numéro"
+        classes: "Classes"
+        number_searches: Nombre de Recherches
+        classes_plus: "Classes Supplementaires"
+        classes_plus_three: "Nombre de recherches (plus de 3 classes)"
+        number_marks: "Nombre de marques"
       mark:
         new: "Dépôt Marque"
         list_mark: "Dépôts Marques"
         correction: "Correction d'erreur Materiel (Marque)"
+        rectification: "Rectification d'erreur Materiel (Marque)"
         list_correction: "Corrections Marques"
+        list_rectification: "Rectifications Marques"
       search:
         identical: "Recherche à Identique"
         identical_list: "Recherches à Identique"

@@ -1,7 +1,6 @@
-<p id="notice"><%= notice %></p>
-
 <div class="panel panel-info">
-<div class="panel-heading">Receipts</div>
+<div class="panel-heading">
+<h1 class="panel-title"><%= I18n.t('activerecord.models.receipt.other') %></h1></div>
 <div class="panel-body">
 
 <table class="table table-bordered">
@@ -18,7 +17,7 @@
   <tbody>
     <% @receipts.each do |receipt| %>
       <tr>
-        <td><%= receipt.serie %>/<%= receipt.number %></td>
+        <td><%= receipt.number %>/<%= receipt.serie %></td>
         <td><%= receipt.owner_name %></td>
         <td><%= receipt.owner_street %>, <%= receipt.owner_wilaya %></td>
         <td><%= receipt.representative %></td>

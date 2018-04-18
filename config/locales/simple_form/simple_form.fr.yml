@@ -33,6 +33,8 @@ fr:
       similar_search_receipt:
         number_searches: "Nombre de recherches"
         number_classes: "Nombre de recherches au dela de 3 classes"
+      rectification_mark_receipt:
+        number_marks: "Nombre de Marques"
       payement:
         ref: "Réference de Versement"
         number: "Numéro de Chèque"

@@ -62,6 +62,7 @@ class Receipt < ApplicationRecord
   def valuate
     self.serie = Date.current.year
     self.number = set_number
+    Tax.updating
     tax_calculate
   end
 

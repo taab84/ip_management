@@ -34,6 +34,8 @@ en:
       similar_search_receipt:
         number_searches: "Searches numbers"
         number_classes: "Searches numbers beyond 3 classes"
+      rectification_mark_receipt:
+        number_marks: "Marks Numbers"
       transfer_payement:
         ref: "Transfer reference"
       check_payement:

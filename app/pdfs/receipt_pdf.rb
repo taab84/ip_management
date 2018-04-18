@@ -5,6 +5,7 @@ require 'humanize'
 require_relative 'mark_details'
 require_relative 'mark_similar_search_details'
 require_relative 'mark_identical_search_details'
+require_relative 'mark_rect_details'
 
 class ReceiptPdf < Prawn::Document
   def initialize(receipt, payements)
@@ -68,16 +69,21 @@ class ReceiptPdf < Prawn::Document
       mark_similar_search_detail(@receipt)
     elsif (@receipt.type == "IdenticalSearchReceipt") then
       mark_identical_search_detail(@receipt)
+    elsif (@receipt.type == "RectificationMarkReceipt") then
+      mark_rect_detail(@receipt)
     end
 
     move_down 20
-    formatted_text [{:text => "Arrête la presente quittance a la somme de:", :styles => [:bold, :underline]}, 
+    formatted_text [{:text => "Arrête la presente quittance à la somme de:", :styles => [:bold, :underline]}, 
       {:text => " " + @receipt.total.humanize(locale: :fr).humanize + " dinars algérien"}
     ]
     move_down 20
-    formatted_text [{:text => "RV_CNEP N°:", :styles => [:bold, :underline]}, 
-      {:text => " " + trnsf_string}
-    ]
+    formatted_text [{:text => "RV_CNEP N°:", :styles => [:bold]}, 
+      {:text => "  " + trnsf_string, :styles => [:bold]}
+    ] unless trnsf_string == ""
+    formatted_text [{:text => "Chèque N°:", :styles => [:bold]}, 
+      {:text => "  " + chq_string, :styles => [:bold]}
+    ] unless chq_string == ""
 
     move_down 40
     formatted_text [{:text => "Signature: ", :styles => [:bold, :underline]}], :align => :right
@@ -89,11 +95,11 @@ private
   end
 
   def trnsf_string
-    final_string = " "
-      @payements.each do |p|
-        final_string += p.number.to_s + "/" + p.serie.to_s + ". " if (p.type=="TransferPayement")
-      end
-    return final_string
+    @payements.select {|p| p.type == 'TransferPayement'}.map{ |p| p.number.to_s + "/" + p.serie.to_s }.join(" - ")
+  end
+
+  def chq_string
+    @payements.select {|p| p.type == 'CheckPayement'}.map{ |p| "%07d" % p.number.to_s }.join(" - ")
   end
   
 end

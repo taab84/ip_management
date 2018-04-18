@@ -49,6 +49,9 @@ en:
       mark_receipt:
         one: Mark App Receipt
         other: Mark App Receipts
+      rectification_mark_receipt:
+        one: Marks Rectifications Receipt
+        other: Marks Rectifications Receipts
     attributes:
       group:
         name: "Name"

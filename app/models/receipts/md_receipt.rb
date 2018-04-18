@@ -16,3 +16,4 @@ end
 require_dependency 'mark_receipt'
 require_dependency 'similar_search_receipt'
 require_dependency 'identical_search_receipt'
+require_dependency 'rectification_mark_receipt'
