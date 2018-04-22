@@ -1,4 +1,4 @@
-<%= simple_form_for(@receipt, wrapper: :inline_form) do |f| %>
+<%= simple_form_for(@receipt, wrapper: :inline_form, :html => {:id => "receipt"}) do |f| %>
   <%= f.error_notification %>
 
   <div class="form-inputs">
@@ -17,10 +17,21 @@
     <%= f.input_field :order_ids, as: :select, collection: Order.where('remain > 0').last(1), :multiple => true, :id => "receipt_orders", :prompt => I18n.t('simple_form.prompts.receipt.orders') %>
     <% end %>
   </div>
-
+</div>
+<div class="panel-footer">
+  <div class="row">
+  <div class="col col-md-6" id="total-tax">
+    <% if receipt_new == "new" then %>
+     Total: <div id="total-value"><%= number_to_currency(@receipt.tax_calculate) %></div>
+    <% end %>
+  </div>
+  <div class="col col-md-6">
   <div class="form-actions">
     <%= f.button :submit, :class => 'pull-right' %>
   </div>
+  </div>
+  </div>
+</div>
 
 <% end %>
 <%= render :partial => "orders/order_modal" %>

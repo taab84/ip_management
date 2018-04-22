@@ -27,3 +27,4 @@
 //= require localization
 //= require home
 //= require receipts
+//= require taxes

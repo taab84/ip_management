@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   get 'home/info'
   get 'home/help'
   post '/orders/load' , to: 'orders#load'
+  post '/receipts/tax_evaluation' , to: 'receipts#tax_evaluation'
 
   # resources routes
   resources :receipts, :controller => "receipts", :type => "Receipt"

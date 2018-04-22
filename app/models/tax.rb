@@ -3,6 +3,7 @@ class Tax < ApplicationRecord
   validates :current_tax, :next_tax, numericality: true
   validates :date_app, presence: true, if: :new_tax?
   validates :date_app, absence: true, unless: :new_tax?
+  validates :code, uniqueness: { scope: :category}
 
   rails_admin do
     weight 4

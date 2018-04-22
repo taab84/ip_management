@@ -1,6 +1,6 @@
 <% if params[:type]=="MarkReceipt" %>
   <div class='row'>
-    <%= f.input :type, as: :hidden, input_html: {value: "MarkReceipt"} %>
+    <%= f.input :type, as: :hidden, input_html: {id:"receipt_type", value: "MarkReceipt"} %>
     <div class="col col-md-6"> <%= f.input :mark_name %> </div>
     <div class="col col-md-6"> <%= f.input :mark_type, include_blank: false %> </div>
   </div>
@@ -11,20 +11,20 @@
     <div class="col col-md-3"> <%= f.input :rev_pri %> </div>
   </div>
 <% elsif params[:type]=="IdenticalSearchReceipt" %>
-<%= f.input :type, as: :hidden, input_html: {value: "IdenticalSearchReceipt"} %>
+<%= f.input :type, as: :hidden, input_html: {id:"receipt_type", value: "IdenticalSearchReceipt"} %>
   <div class="row">
     <div class="col col-md-6"> <%= f.input :number_searches, input_html:{value: 1} %> </div>
     <div class="col col-md-6"> <%= f.input :number_classes, input_html:{value: 0} %> </div>
   </div>
 <% elsif params[:type]=="SimilarSearchReceipt" %>
   <div class="row">
-  <%= f.input :type, as: :hidden, input_html: {value: "SimilarSearchReceipt"} %>
+  <%= f.input :type, as: :hidden, input_html: {id:"receipt_type", value: "SimilarSearchReceipt"} %>
     <div class="col col-md-6"> <%= f.input :number_searches, input_html:{value: 1} %> </div>
     <div class="col col-md-6"> <%= f.input :number_classes, input_html:{value: 0} %> </div>
   </div>
 <% elsif params[:type]=="RectificationMarkReceipt" %>
   <div class="row">
-  <%= f.input :type, as: :hidden, input_html: {value: "RectificationMarkReceipt"} %>
+  <%= f.input :type, as: :hidden, input_html: {id:"receipt_type", value: "RectificationMarkReceipt"} %>
     <div class="col col-md-12"> <%= f.input :number_marks, input_html:{value: 1} %> </div>
   </div>
 <% end %>

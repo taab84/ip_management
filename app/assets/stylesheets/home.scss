@@ -2,3 +2,13 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 body { padding-top: 70px; }
+
+#total-tax {
+    font-size: 2rem;
+    font-weight: bold;
+    color: red;
+}
+
+#total-value {
+    display:inline;
+}

@@ -35,6 +35,7 @@ class ReceiptsController < ApplicationController
 
   # GET /receipts/new
   def new
+    Tax.updating
     @receipt = receipt_type.new
   end
 
@@ -82,6 +83,14 @@ class ReceiptsController < ApplicationController
       format.html { redirect_to customized_url, notice: 'Receipt was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def tax_evaluation
+    @receipt = Receipt.new(receipt_params)
+      @receipt.tax_calculate
+      respond_to do |format|
+        format.json { render 'receipts/tax_evaluation' }
+      end
   end
 
   private
