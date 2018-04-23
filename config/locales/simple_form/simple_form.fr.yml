@@ -45,3 +45,9 @@ fr:
     hints:
       mark_receipt:
         classes: "Nombre de Classes (Entre 1 et 45)"
+      identical_search_receipt:
+        number_searches: "Nombre de recherches"
+        number_classes: "Nombre de classes supplementaires"
+      similar_search_receipt:
+        number_searches: "Nombre de recherches"
+        number_classes: "Nombre de recherches au dela de 3 classes"

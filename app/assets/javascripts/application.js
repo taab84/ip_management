@@ -11,8 +11,9 @@
 // about supported directives.
 //
 //= require rails-ujs
-//= require turbolinks
 //= require jquery
+//= require turbolinks
+//= require init
 //= require jquery-ui/core
 //= require jquery-ui/widget
 //= require jquery-ui/position

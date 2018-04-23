@@ -1,9 +1,9 @@
 class IdenticalSearchReceipt < MdReceipt
   jsonb_accessor :data,
-    number_searches: :integer,
-    number_classes: :integer,
-    base_tax: [:decimal, default: 1],
-    class_tax: [:decimal, default: 0]
+    number_searches: [:integer, default: 1],
+    number_classes: [:integer, default: 0],
+    base_tax: :decimal,
+    class_tax: :decimal
 
   validates_presence_of :number_searches, :number_classes
 

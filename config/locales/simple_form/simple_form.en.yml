@@ -47,5 +47,10 @@ en:
     hints:
       mark_receipt:
         classes: "Class numbers (between 1 & 45)"
-      payement:
+      identical_search_receipt:
+        number_searches: "Searches numbers"
+        number_classes: "Classes number suppl"
+      similar_search_receipt:
+        number_searches: "Searches numbers"
+        number_classes: "Searches numbers beyond 3 classes"
         

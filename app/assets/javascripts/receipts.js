@@ -1,7 +1,9 @@
 $(document).on('turbolinks:load', function() {
+  if (!($(".receipts.new").length > 0)) {
+    return;
+  }
+  
   var selectizeCallback = null;
-  var AUTH_TOKEN = $('meta[name=csrf-token]').attr('content');
-
   var select_order = $("#receipt_orders").selectize({
       plugins: ['remove_button', 'drag_drop'],
       valueField: 'id',
@@ -37,22 +39,22 @@ $(document).on('turbolinks:load', function() {
         $(".order-modal").modal();
       },
       load: function(query, callback) {
-          select_order.selectize()[0].selectize.clearOptions();
-      if (!query.length) return callback();
-        $.ajax({
-            url: '/orders/load/',
-            type: 'POST',
-            dataType: 'json',
-            data: {
-                query: query,
-                authenticity_token: AUTH_TOKEN,
+        select_order.selectize()[0].selectize.clearOptions();
+        if (!query.length) return callback();
+          $.ajax({
+              url: '/orders/load/',
+              type: 'POST',
+              dataType: 'json',
+              data: {
+                  query: query,
+                  authenticity_token: AUTH_TOKEN,
+                },
+              error: function() {
+                callback();
               },
-            error: function() {
-              callback();
-            },
-            success: function(res) {
-              callback(res);
-            },
+              success: function(res) {
+                callback(res);
+              },
         });
       },
   });
