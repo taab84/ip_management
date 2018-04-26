@@ -52,6 +52,15 @@ en:
       rectification_mark_receipt:
         one: Marks Rectifications Receipt
         other: Marks Rectifications Receipts
+      order:
+        one: Payement Order
+        other: Payement Orders
+      md_order:
+        one: Mark Payement Order
+        other: Mark Payement Orders
+      pd_order:
+        one: Patent Payement Order
+        other: Patent Payement Orders
     attributes:
       group:
         name: "Name"

@@ -77,8 +77,13 @@ gem 'humanize'
 gem "i18n-js"
 # Valid mail 2
 gem "valid_email2"
-# Filterrific for listing and filtering results
+# Filterrific for listing and filtering results with will_paginate and chardinjs
 gem 'filterrific'
+gem 'will_paginate'
+gem 'will_paginate-bootstrap'
+gem "chardinjs-rails"
+# By_star gem to handle dates easily
+gem 'by_star', git: "git://github.com/radar/by_star"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

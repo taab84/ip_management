@@ -3,8 +3,23 @@ en:
     add: "Add"
   pdf:
     print: "Print (PDF)"
+  loading: "Loading"
+  tables:
+    headers:
+      timestamped: "Time Stamped at"
+      number: "Number"
+      by: "By"
+      value: "Value"
   menu:
+    filter:
+      head: "Search Filter"
+      type: "Type"
+      all: "All"
+    order:
+      one: "Payement Order"
+      other: "Payement Orders"
     home: "Home"
+    accounting: "Accounting"
     languages:
       lang: "Language"
       fr: "French"

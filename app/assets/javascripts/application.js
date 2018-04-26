@@ -26,6 +26,9 @@
 //= require i18n
 //= require i18n/translations
 //= require localization
+//= require filterrific/filterrific-jquery
+//= require chardinjs
 //= require home
 //= require receipts
 //= require taxes
+//= require orders

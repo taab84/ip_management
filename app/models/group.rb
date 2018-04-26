@@ -4,6 +4,10 @@ class Group < ApplicationRecord
     phone: :integer,
     mobile: :integer,
     fax: :integer
+
+    def self.options_for_select
+      order('name').map { |e| [e.name, e.id] }
+    end
   
   validates :name, :tenant, :adress, :email, presence: true
   validates :email, 'valid_email_2/email': true

@@ -52,6 +52,15 @@ fr:
       rectification_mark_receipt:
         one: Rectification d'erreurs materiels
         other: Rectifications d'erreur materiel
+      order:
+        one: Ordre de Paiement
+        other: Ordres de Paiements
+      md_order:
+        one: Ordre de Paiement Marque
+        other: Ordres de Paiements Marque
+      pd_order:
+        one: Ordre de Paiement Brevet
+        other: Ordres de Paiements brevet
     attributes:
       group:
         name: "Nom"

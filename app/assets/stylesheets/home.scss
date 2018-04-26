@@ -4,11 +4,19 @@
 body { padding-top: 70px; }
 
 #total-tax {
-    font-size: 2rem;
-    font-weight: bold;
-    color: red;
+  font-size: 2rem;
+  font-weight: bold;
+  color: red;
 }
 
 #total-value {
-    display:inline;
+  display:inline;
+}
+
+.value{
+  text-align: right;
+}
+
+.centered {
+  text-align: center;
 }

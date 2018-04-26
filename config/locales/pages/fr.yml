@@ -3,8 +3,23 @@ fr:
     add: "Ajouter"
   pdf:
     print: "Imprimer (PDF)"
+  loading: "Chargement"
+  tables:
+    headers:
+      timestamped: "horodatée le"
+      number: "Numéro"
+      by: "Par"
+      value: "Valeur"
   menu:
+    filter:
+      head: "Filtre de Recherche"
+      type: "Type"
+      all: "Tous"
+    order:
+      one: "Ordre de paiement"
+      other: "Ordres de paiements"
     home: "Acceuil"
+    accounting: "Comptabilité"
     languages:
       lang: "Langue"
       fr: "Français"

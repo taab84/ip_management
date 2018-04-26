@@ -12,6 +12,28 @@ class OrdersController < ApplicationController
     end
   end
 
+  def index
+    @filterrific = initialize_filterrific(
+      Order,
+      params[:filterrific],
+      select_options: {
+        with_group_id: Group.options_for_select,
+        with_type: Order.options_for_with_type,
+        by_month: Order.options_for_by_month
+      },
+    ) or return
+    @orders = @filterrific.find.page(params[:page]).includes(:payement)
+
+    respond_to do |format|
+      format.html
+      format.js
+    end
+
+    rescue ActiveRecord::RecordNotFound => e
+      puts "Had to reset filter params: #{ e.message }"
+      redirect_to(reset_filterrific_url(format: :html)) and return
+  end
+
   def new
     @order = order_type.new
   end
