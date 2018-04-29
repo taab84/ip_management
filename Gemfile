@@ -84,6 +84,10 @@ gem 'will_paginate-bootstrap'
 gem "chardinjs-rails"
 # By_star gem to handle dates easily
 gem 'by_star', git: "git://github.com/radar/by_star"
+#gems to export data to xlsx files
+gem 'rubyzip', '>= 1.2.1'
+gem 'axlsx', git: 'https://github.com/randym/axlsx.git', ref: 'c8ac844'
+gem 'axlsx_rails'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

@@ -15,6 +15,7 @@ fr:
       head: "Filtre de Recherche"
       type: "Type"
       all: "Tous"
+      order: "Tri"
     order:
       one: "Ordre de paiement"
       other: "Ordres de paiements"

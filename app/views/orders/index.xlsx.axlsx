@@ -1,0 +1,15 @@
+wb = xlsx_package.workbook
+wb.add_worksheet(name: "Receipts") do |sheet|
+  styles = wb.styles
+  empty = styles.add_style
+  default = styles.add_style :border => Axlsx::STYLE_THIN_BORDER
+  header = styles.add_style :bg_color => 'EEEEEE', :fg_color => '000000', :b => true, :border => Axlsx::STYLE_THIN_BORDER
+  money = styles.add_style :format_code => '# ###,00', :border => Axlsx::STYLE_THIN_BORDER
+  total = styles.add_style :bg_color => 'FFFF00', :b => true, :border => Axlsx::STYLE_THIN_BORDER
+  total_money = styles.add_style :bg_color => 'FFFF00', :b => true, :format_code => '# ###,00', :border => Axlsx::STYLE_THIN_BORDER
+  sheet.add_row ["Numéro OP","Au nom de","Daté le","Valeur"], :style => header
+  @orders.each do |order|
+    sheet.add_row [order.number, order.payement.name, I18n.l(order.created_at), order.payement.value], :style => [default, default, default, money, money]
+  end
+  sheet.add_row ["","","Total", @orders.sum(:value)], :style => [empty, empty, total, total_money]
+end

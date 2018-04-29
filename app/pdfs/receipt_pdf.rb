@@ -1,11 +1,4 @@
-require 'prawn'
-require 'prawn/table'
-require 'money'
-require 'humanize'
-require_relative 'mark_details'
-require_relative 'mark_similar_search_details'
-require_relative 'mark_identical_search_details'
-require_relative 'mark_rect_details'
+require 'receipts/included_receipt'
 
 class ReceiptPdf < Prawn::Document
   def initialize(receipt, payements)

@@ -15,6 +15,7 @@ en:
       head: "Search Filter"
       type: "Type"
       all: "All"
+      order: "Ordering"
     order:
       one: "Payement Order"
       other: "Payement Orders"

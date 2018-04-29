@@ -19,14 +19,26 @@ class OrdersController < ApplicationController
       select_options: {
         with_group_id: Group.options_for_select,
         with_type: Order.options_for_with_type,
-        by_month: Order.options_for_by_month
+        by_month: Order.options_for_by_month,
+        sorted_by: Order.options_for_sorted_by
       },
+      default_filter_params: { sorted_by: 'created_at_asc' },
     ) or return
-    @orders = @filterrific.find.page(params[:page]).includes(:payement)
 
     respond_to do |format|
-      format.html
-      format.js
+      format.html {
+        @orders = @filterrific.find.page(params[:page]).includes(:payement)
+      }
+      format.js {
+        @orders = @filterrific.find.page(params[:page]).includes(:payement)
+      }
+      format.xlsx {
+        @orders = @filterrific.find.includes(:payement)
+        render xlsx: "orders", 
+        template: 'orders/index', 
+        disposition: 'inline', 
+        locals: {xlsx_author: current_user.fullname}
+      }
     end
 
     rescue ActiveRecord::RecordNotFound => e

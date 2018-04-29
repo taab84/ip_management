@@ -17,7 +17,9 @@ class Order < ApplicationRecord
   before_validation :initiate, on: :create
 
   filterrific(
+    default_filter_params: { sorted_by: 'created_at_asc' },
     available_filters: [
+      :sorted_by,
       :by_month,
       :by_year,
       :with_group_id,
@@ -28,9 +30,22 @@ class Order < ApplicationRecord
   scope :selectized, ->(query, number) { where('(payements.name ILIKE ? OR number= ?) AND remain > 0', "%#{query}%", number) }
   scope :with_group_id, ->(id) {where(group_id: id)}
   scope :with_type, ->(type) {where(type: type)}
-  # scope :with_group_id, lambda { |group_ids|
-  #   where(:group_id => [*group_ids])
-  # }
+  scope :sorted_by, lambda { |sort_option|
+    direction = (sort_option =~ /desc$/) ? 'desc' : 'asc'
+    case sort_option.to_s
+    when /^created_at_/
+      order("orders.created_at #{ direction }")
+    else
+      raise(ArgumentError, "Invalid sort option: #{ sort_option.inspect }")
+    end
+  }
+
+  def self.options_for_sorted_by
+    [
+      [I18n.t('tables.headers.timestamped')+ ' (asc)', 'created_at_asc'],
+      [I18n.t('tables.headers.timestamped') + ' (desc)', 'created_at_desc']
+    ]
+  end
 
   def self.options_for_with_type
     [
