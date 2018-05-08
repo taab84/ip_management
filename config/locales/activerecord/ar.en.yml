@@ -96,6 +96,8 @@ en:
         current_sign_in_at: "Derniére Connexion"
         type: "Type"
     errors:
-      receipt:
-        order_ids:
-          not_enough: "Not enough payement"
+      models:
+        receipt:
+          attributes:
+            order_ids:
+              not_enough: "Not enough payement"

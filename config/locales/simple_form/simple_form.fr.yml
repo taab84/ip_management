@@ -24,6 +24,7 @@ fr:
         value: "Valeur Total"
         name: "au Nom de"
         date: "Date de Paiement"
+        orders: "Selectionnez les orders de paiements"
       mark_receipt:
         mark_name: "Nom de la Marque"
         ipas_num: "Numéro IPAS"

@@ -8,7 +8,6 @@ class Receipt < ApplicationRecord
   has_many :payements, through: :orders
 
   validates :order_ids, presence: true
-  validates_associated :orders
   validate :sum_remain_must_be_enough
 
   before_validation :valuate, on: :create
@@ -107,7 +106,7 @@ class Receipt < ApplicationRecord
   private
 
   def sum_remain_must_be_enough
-    errors.add(:orders, :not_enough) if total > paid_sum
+    errors.add(:order_ids, :not_enough) if total > paid_sum
   end
 
   def valuate

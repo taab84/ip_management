@@ -25,6 +25,7 @@ en:
         value: "Total Valeur"
         name: "By"
         date: "Payement Date"
+        orders: "Select payement orders"
       mark_receipt:
         mark_name: "Mark name"
         ipas_num: "IPAS Number"

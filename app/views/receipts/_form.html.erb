@@ -1,4 +1,4 @@
-<%= simple_form_for(@receipt, remote: true, validate: true, wrapper: :inline_form, :html => {:id => "receipt"}) do |f| %>
+<%= simple_form_for(@receipt, remote: true, :validate => true, wrapper: :inline_form, :html => {:id => "receipt"}) do |f| %>
   <%= f.error_notification %>
 
   <div class="form-inputs">
@@ -13,9 +13,12 @@
     <%= render :partial => "form_cases", :locals=>{:f=>f} %>
     <%= f.input :image, as: :hidden, input_html: {value: @receipt.cached_image_data} %>
     <%= f.input :image, as: :file %>
+    <hr />
     <% if receipt_new == "new" then %>
-    <%= f.input_field :order_ids, as: :select, collection: {}, :multiple => true, :id => "receipt_orders", :prompt => I18n.t('simple_form.prompts.receipt.orders') %>
+      <%= f.association :orders, as: :select, collection: {}, :multiple => true, 
+      wrapper: :selectize_mutlti, :placeholder => true, input_html: {:id => "receipt_orders"} %>
     <% end %>
+    <hr />
     <div class="row">
     <div class="col col-md-6" id="total-tax">
       <% if receipt_new == "new" then %>
