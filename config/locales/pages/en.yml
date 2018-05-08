@@ -73,3 +73,6 @@ en:
       design:
         new: "New Applicant Industrial Design"
         list: "Industrial Design Applicants"
+  notices:
+    receipt:
+      created: 'Receipt was successfully created.'

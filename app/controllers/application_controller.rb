@@ -29,7 +29,6 @@ class ApplicationController < ActionController::Base
   end
 
   def verify_ip_address
-    # head :unauthorized if Whitelist.find_by(ip_adress: request.remote_ip).nil?
     if Whitelist.find_by(ip_adress: request.remote_ip).nil?
       redirect_to main_app.root_path, alert: I18n.t('unauthorized_ip')
     end

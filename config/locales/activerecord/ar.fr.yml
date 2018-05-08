@@ -99,3 +99,6 @@ fr:
       receipt:
         order_ids:
           not_enough: "Versement insufisant"
+  unauthorized:
+    manage:
+      all: "Vous n'êtes pas autorisé a accéder à cette ressource"

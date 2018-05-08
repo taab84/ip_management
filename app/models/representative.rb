@@ -5,9 +5,9 @@ class Representative < ApplicationRecord
     mobile: :integer,
     fax: :integer
 
-  validates :fullname, :adress, :wilaya, :email, :phone, :mobile, presence: true
+  validates :fullname, :adress, :wilaya, :email, presence: true
   validates :email, 'valid_email_2/email': true
-  validates :phone, :mobile, :fax, numericality: true
+  validates_numericality_of :phone, :mobile, :fax, allow_blank: true
 
   rails_admin do
     weight 3

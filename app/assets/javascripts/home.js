@@ -1,7 +1,7 @@
-$(function() {
-  setTimeout(function(){
-    $('.alert').slideUp(400);
-  }, 1800);
+$(document).on('turbolinks:load', function() {
+    setTimeout(function(){
+      $('.alert').slideUp(400);
+    }, 1800);
 });
 
 $.fn.datepicker.defaults.daysOfWeekDisabled = "5,6";

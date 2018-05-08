@@ -73,3 +73,6 @@ fr:
       design:
         new: "Dépôt de Dessin & Modèle"
         list: "Dépôts Dessins/Modéles"
+  notices:
+    receipt:
+      created: 'Quittance créé avec succéess.'

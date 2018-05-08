@@ -7,7 +7,8 @@ class Receipt < ApplicationRecord
   has_many :orders, through: :orderables, inverse_of: 'receipts'
   has_many :payements, through: :orders
 
-  validates_presence_of :orders
+  validates :order_ids, presence: true
+  validates_associated :orders
   validate :sum_remain_must_be_enough
 
   before_validation :valuate, on: :create
@@ -17,6 +18,56 @@ class Receipt < ApplicationRecord
     owner_wilaya: :string
 
   validates :owner_name, :owner_street, :owner_wilaya, :type, presence: true
+
+  enum owner_wilaya: { "Adrar" => "Adrar",
+    "Chlef"           => "Chlef",
+    "Laghouat"   => "Laghouat",
+    "Oum El Bouaghi"     => "Oum El Bouaghi",
+    "Batna" => "Batna",
+    "Béjaïa" => "Béjaïa",
+    "Biskra" => "Biskra",
+    "Béchar" => "Béchar",
+    "Blida" => "Blida",
+    "Bouira" => "Bouira",
+    "Tamanrasset" => "Tamanrasset",
+    "Tébessa" => "Tébessa",
+    "Tlemcen" => "Tlemcen",
+    "Tiaret" => "Tiaret",
+    "Tizi Ouzou" => "Tizi Ouzou",
+    "Alger" => "Alger",
+    "Djelfa" => "Djelfa",
+    "Jijel" => "Jijel",
+    "Sétif" => "Sétif",
+    "Saïda" => "Saïda",
+    "Skikda" => "Skikda",
+    "Sidi Bel Abbès" => "Sidi Bel Abbès",
+    "Annaba" => "Annaba",
+    "Guelma" => "Guelma",
+    "Constantine" => "Constantine",
+    "Médéa" => "Médéa",
+    "Mostaganem" => "Mostaganem",
+    "M'Sila" => "M'Sila",
+    "Mascara" => "Mascara",
+    "Ouargla" => "Ouargla",
+    "Oran" => "Oran",
+    "El Bayadh" => "El Bayadh",
+    "Illizi" => "Illizi",
+    "Bordj Bou Arreridj" => "Bordj Bou Arreridj",
+    "Boumerdès" => "Boumerdès",
+    "El Tarf" => "El Tarf",
+    "Tindouf" => "Tindouf",
+    "Tissemsilt" => "Tissemsilt",
+    "El Oued" => "El Oued",
+    "Khenchela" => "Khenchela",
+    "Souk Ahras" => "Souk Ahras",
+    "Tipaza" => "Tipaza",
+    "Mila" => "Mila",
+    "Aïn Defla" => "Aïn Defla",
+    "Naâma" => "Naâma",
+    "Aïn Témouchent" => "Aïn Témouchent",
+    "Ghardaïa" => "Ghardaïa",
+    "Relizane" => "Relizane"
+    }
 
   def setting_op
     transaction do

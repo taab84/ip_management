@@ -6,7 +6,7 @@ class ReceiptsController < ApplicationController
   # GET /receipts.json
   def index
     if receipt_type
-      @receipts = receipt_type.all
+      @receipts = receipt_type.includes(:representative).all
     else
       redirect_to root_url
     end
@@ -52,7 +52,8 @@ class ReceiptsController < ApplicationController
       respond_to do |format|
         if @receipt.valid?
           @receipt.setting_op
-          format.html { redirect_to @receipt, notice: 'Receipt was successfully created.' }
+          format.html { redirect_to @receipt, notice: I18n.t('notices.receipt.created') }
+          format.js { redirect_to @receipt, notice: I18n.t('notices.receipt.created') }
           format.json { render :show, status: :created, location: @receipt }
         else
           format.html { render :new }

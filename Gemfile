@@ -59,6 +59,9 @@ gem 'enum_help'
 gem 'shrine'
 # jQuery UI gem
 gem 'jquery-ui-rails'
+# Use Client side validation for ajax posts
+gem 'client_side_validations'
+gem 'client_side_validations-simple_form'
 # Use i18n task to manage translations
 # Using Bootstrap datepicker gem
 gem 'bootstrap-datepicker-rails', :require => 'bootstrap-datepicker-rails',
