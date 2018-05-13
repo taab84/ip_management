@@ -17,6 +17,8 @@ en:
         ipas_num: "IPAS Number"
       order:
         image: "Upload Order File"
+      user:
+        remember_me: "Remember me"
     placeholders:
       defaults:
         owner_name: "Applicant Name"
@@ -25,7 +27,7 @@ en:
         value: "Total Valeur"
         name: "By"
         date: "Payement Date"
-        orders: "Select payement orders"
+        orders: "Select or add payement orders"
       mark_receipt:
         mark_name: "Mark name"
         ipas_num: "IPAS Number"
@@ -41,10 +43,18 @@ en:
         ref: "Transfer reference"
       check_payement:
         number: "Check Number"
+      user:
+        login: "Your username or email"
+        password: "Your Password"
+        fullname: "Your Full name"
+        username: "Your Username"
+        email: "Your email"
+        password_confirmation: "Confirm Your Password"
+        current_password: "Your current password"
     prompts:
       receipt:
         representative: "Select a Representative if exists"
-        orders: "Select payement orders"
+        orders: "Select or add payement orders"
     hints:
       mark_receipt:
         classes: "Class numbers (between 1 & 45)"
@@ -54,4 +64,7 @@ en:
       similar_search_receipt:
         number_searches: "Searches numbers"
         number_classes: "Searches numbers beyond 3 classes"
+      user:
+        password: "Minimum characters of %{count}"
+        current_password: "Required if you want to change informations"
         

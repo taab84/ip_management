@@ -34,6 +34,7 @@ en:
     edit_profile: "Profile Edit"
     admin : "Admin Dashboard"
     if_sure: "Are you sure?"
+    please_connect: "Please connect"
     action:
       one: "Action"
       other: "Actions"

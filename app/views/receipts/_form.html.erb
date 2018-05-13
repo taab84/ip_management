@@ -1,14 +1,16 @@
-<%= simple_form_for(@receipt, remote: true, :validate => true, wrapper: :inline_form, :html => {:id => "receipt"}) do |f| %>
+<%= simple_form_for(@receipt, wrapper: :inline_form, :html => {:id => "receipt"}) do |f| %>
   <%= f.error_notification %>
 
   <div class="form-inputs">
     <div class="row">
       <div class="col col-md-6"> <%= f.input :owner_name %> </div>
-      <div class="col col-md-6"> <%= f.association :representative, label_method: :fullname, prompt: t('simple_form.prompts.receipt.representative') %> </div>
+      <div class="col col-md-6"> <%= f.association :representative, label_method: :fullname, input_html: { class: "representative" },
+      prompt: t('simple_form.prompts.receipt.representative'), wrapper: :selectize_mutlti %> </div>
     </div>
     <div class="row">
       <div class="col col-md-8"> <%= f.input :owner_street %> </div>
-      <div class="col col-md-4"> <%= f.input :owner_wilaya, collection: Receipt.owner_wilayas, selected: current_user.group.name %> </div>
+      <div class="col col-md-4"> <%= f.input :owner_wilaya, as: :select, wrapper: :selectize_mutlti,
+      collection: Receipt.owner_wilayas, selected: current_user.group.name, input_html: { class: "wilaya" } %> </div>
     </div>
     <%= render :partial => "form_cases", :locals=>{:f=>f} %>
     <%= f.input :image, as: :hidden, input_html: {value: @receipt.cached_image_data} %>

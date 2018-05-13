@@ -34,6 +34,7 @@ fr:
     edit_profile: "Edtier Mon profil"
     admin : "Panneau d'Administrateur"
     if_sure: "Etes vous sure?"
+    please_connect: "Veuillez vous connecter"
     action:
       one: "Action"
       other: "Actions"

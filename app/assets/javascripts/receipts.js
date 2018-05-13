@@ -1,5 +1,14 @@
 $(document).on('turbolinks:load', function() {
-  if (!($(".receipts.new").length > 0)) {
+  if (($("#receipt").length > 0)) {
+    $(".wilaya").selectize({
+      maxOptions: 5
+    });
+    $(".representative").selectize({
+      maxOptions: 5
+    });
+  }
+
+  if ((!($("#receipt").length > 0)) || ($(".receipts.edit").length > 0)) {
     return;
   }
   
@@ -40,6 +49,7 @@ $(document).on('turbolinks:load', function() {
       },
       load: function(query, callback) {
         select_order.selectize()[0].selectize.clearOptions();
+        AUTH_TOKEN = $('meta[name=csrf-token]').attr('content');
         if (!query.length) return callback();
           $.ajax({
               url: '/orders/load/',
@@ -89,4 +99,5 @@ $(document).on('turbolinks:load', function() {
   });
 
   select_order.selectize()[0].selectize.clearOptions();
+  
 });

@@ -1,7 +1,6 @@
 //= require rails-ujs
 //= require jquery
 //= require turbolinks
-//= require init
 //= require jquery-ui/core
 //= require jquery-ui/widget
 //= require jquery-ui/position
@@ -12,12 +11,13 @@
 //= require bootstrap-sprockets
 //= require bootstrap-datepicker/core
 //= require bootstrap-datepicker/locales/bootstrap-datepicker.fr.js 
+//= require filterrific/filterrific-jquery
+//= require chardinjs
 //= require cocoon
 //= require i18n
 //= require i18n/translations
 //= require localization
-//= require filterrific/filterrific-jquery
-//= require chardinjs
+//= require init
 //= require home
 //= require receipts
 //= require taxes

@@ -2,23 +2,8 @@
 <div class="panel panel-info">
 <div class="panel-heading"><h2>Connexion</h2></div>
 <div class="panel-body">
-<%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="form-inputs">
-    <%= f.input :login, autofocus: true, placeholder: "Votre nom d'utilisateur ou votre email" %>
-    <%= f.input :password, placeholder: "Votre mot de passe" %>
-    <%= f.input :remember_me, as: :boolean if devise_mapping.rememberable? %>
-  </div>
-  <div class="row">
-  <div class="col-md-6">
-    <%= render "devise/shared/links" %>
-  </div>
-  <div class="col col-md-6">
-  <div class="form-actions">
-    <%= f.button :submit, I18n.t("menu.login"), :class => 'pull-right' %>
-  </div>
-  </div>
-  </div>
-<% end %>
+<%= render 'devise/sessions/user_form', place: "plain_page" %>
+</div>
 </div>
 </div>
 </div>

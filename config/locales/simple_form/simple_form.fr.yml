@@ -16,6 +16,8 @@ fr:
         rev_pri: "Avec Revendication de Priorité"
       order:
         image: "Televerser l'Ordre de Paiement"
+      user:
+        remember_me: "Se souvenir de moi"
     placeholders:
       defaults:
         owner_name: "Nom du Demandeur"
@@ -24,7 +26,7 @@ fr:
         value: "Valeur Total"
         name: "au Nom de"
         date: "Date de Paiement"
-        orders: "Selectionnez les orders de paiements"
+        orders: "Selectionnez ou ajoutez les ordres de paiements"
       mark_receipt:
         mark_name: "Nom de la Marque"
         ipas_num: "Numéro IPAS"
@@ -39,10 +41,18 @@ fr:
       payement:
         ref: "Réference de Versement"
         number: "Numéro de Chèque"
+      user:
+        login: "Votre nom d'utilisateur ou email"
+        password: "Votre mot de passe"
+        fullname: "Votre nom Complet"
+        username: "Votre nom d'utilisateur"
+        email: "Votre email"
+        password_confirmation: "Confirmez votre mot de passe"
+        current_password: "Votre mot de passe actuel"
     prompts:
       receipt:
         representative: "Selectionnez un Mandataire s'il existe"
-        orders: "Selectionnez les orders de paiements"
+        orders: "Selectionnez ou ajoutez les ordres de paiements"
     hints:
       mark_receipt:
         classes: "Nombre de Classes (Entre 1 et 45)"
@@ -52,3 +62,6 @@ fr:
       similar_search_receipt:
         number_searches: "Nombre de recherches"
         number_classes: "Nombre de recherches au dela de 3 classes"
+      user:
+        password: "Caractères minimum de %{count}"
+        current_password: "Requis si vous voulez changer vos informations"
