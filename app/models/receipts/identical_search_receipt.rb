@@ -5,7 +5,10 @@ class IdenticalSearchReceipt < MdReceipt
     base_tax: :decimal,
     class_tax: :decimal
 
-  validates_presence_of :number_searches, :number_classes
+  validates :number_searches, :number_classes, presence: true
+  validates :number_searches, :numericality => { :greater_than_or_equal_to => 1 }
+  validates :number_classes, :numericality => { :greater_than_or_equal_to => 0 }
+  validates_numericality_of :number_classes,  less_than_or_equal_to: ->(identical_search_receipt) { identical_search_receipt.number_searches * 44 }
 
   def tax_calculate
     tax_line = Tax.where(code: "746-07", category: "base").first

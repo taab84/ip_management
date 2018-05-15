@@ -23,13 +23,15 @@ class Order < ApplicationRecord
       :by_month,
       :by_year,
       :with_group_id,
-      :with_type
+      :with_type,
+      :with_payement_type
     ]
   )
 
   scope :selectized, ->(query, number) { where('(payements.name ILIKE ? OR number= ?) AND remain > 0', "%#{query}%", number) }
   scope :with_group_id, ->(id) {where(group_id: id)}
   scope :with_type, ->(type) {where(type: type)}
+  scope :with_payement_type, ->(payement_type) { where('payements.type = ?', payement_type ) }
   scope :sorted_by, lambda { |sort_option|
     direction = (sort_option =~ /desc$/) ? 'desc' : 'asc'
     case sort_option.to_s
@@ -51,6 +53,13 @@ class Order < ApplicationRecord
     [
       ['OP Marque', 'MdOrder'],
       ['OP Brevet', 'PdOrder']
+    ]
+  end
+
+  def self.options_for_with_payement_type
+    [
+      ['Chèque', 'CheckPayement'],
+      ['Versement', 'TransferPayement']
     ]
   end
 

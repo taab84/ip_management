@@ -5,13 +5,12 @@ class MarkReceipt < MdReceipt
     colored: [:boolean, default: true],
     classes: [:integer, default: 1],
     rev_pri: [:boolean, default: false],
+    international: [:boolean, default: false],
     ipas_num: :integer,
     base_tax: :decimal,
-    base_description: :string,
     class_tax: :decimal,
-    class_description: :string,
     rev_tax: :decimal,
-    rev_description: :string
+    int_tax: :decimal
 
   enum mark_type: [:figuratif, :verbal, :figuratif_and_verbal]
 
@@ -36,17 +35,20 @@ class MarkReceipt < MdReceipt
       tax_line = Tax.where(code: "746-01", category: "uncolored").first
     end
     self.base_tax = tax_line.current_tax
-    self.base_description = tax_line.description
     tax_line = Tax.where(code: "746-02").first
     self.class_tax = tax_line.current_tax
-    self.class_description =  tax_line.description
     if self.rev_pri? then
       tax_line = Tax.where(code: "746-03").first
       self.rev_tax = tax_line.current_tax
-      self.rev_description = tax_line.description
     else
       self.rev_tax = 0
     end
-    self.total = self.base_tax + (self.class_tax * self.classes) + self.rev_tax
+    if self.international? then
+      tax_line = Tax.where(code: "746-15").first
+      self.int_tax = tax_line.current_tax
+    else
+      self.int_tax = 0
+    end
+    self.total = self.base_tax + (self.class_tax * self.classes) + self.rev_tax + self.int_tax
   end
 end

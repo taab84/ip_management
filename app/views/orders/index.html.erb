@@ -25,13 +25,17 @@
         <label><%= I18n.t('menu.filter.type') %></label>
         <%= f.select(:with_type, @filterrific.select_options[:with_type], { :include_blank => '- ' + I18n.t('menu.filter.all') + ' -' }, { :class => 'form-control' }) %>
       </div>
+      <div class="form-group chardin_box" data-intro="Filter by payement type." data-position="left">
+        <label><%= I18n.t('menu.filter.payement.type') %></label>
+        <%= f.select(:with_payement_type, @filterrific.select_options[:with_payement_type], { :include_blank => '- ' + I18n.t('menu.filter.all') + ' -' }, { :class => 'form-control' }) %>
+      </div>
       <div class="form-group chardin_box" data-intro="Change the sorting." data-position="left">
         <label><%= I18n.t('menu.filter.order') %></label>
         <%= f.select(:sorted_by, @filterrific.select_options[:sorted_by], {}, { :class => 'form-control' }) %>
       </div>
     </div>
     <div class="chardin_box" data-intro="Export orders data to xlsx file." data-position="bottom">
-      <%= link_to "Download(Excel)", orders_path(:format => :xlsx, :filterrific => params[:filterrific]), :class => 'btn btn-primary btn-sm', data: {turbolinks: false}, target: :_blank  %>
+      <%= link_to "Download(Excel)", orders_path(:format => :xlsx), :class => 'btn btn-primary btn-sm', target: :_blank  %>
       <%= link_to "Reset", orders_url + "?filterrific%5Breset_filterrific%5D=true", :class => 'btn btn-default btn-sm pull-right' %>
     </div>
   <% end %>

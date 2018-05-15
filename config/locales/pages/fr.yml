@@ -16,6 +16,8 @@ fr:
       type: "Type"
       all: "Tous"
       order: "Tri"
+      payement:
+        type: "Type de paiement"
     order:
       one: "Ordre de paiement"
       other: "Ordres de paiements"

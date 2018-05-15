@@ -16,6 +16,8 @@ en:
       type: "Type"
       all: "All"
       order: "Ordering"
+      payement:
+        type: "Payement type"
     order:
       one: "Payement Order"
       other: "Payement Orders"

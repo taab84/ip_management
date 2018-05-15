@@ -1,4 +1,4 @@
-<%= simple_form_for(@receipt, wrapper: :inline_form, :html => {:id => "receipt"}) do |f| %>
+<%= simple_form_for(@receipt, remote: true, validate: true, wrapper: :inline_form, :html => {:id => "receipt"}) do |f| %>
   <%= f.error_notification %>
 
   <div class="form-inputs">

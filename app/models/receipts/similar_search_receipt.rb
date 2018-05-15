@@ -6,6 +6,9 @@ class SimilarSearchReceipt < MdReceipt
     class_tax: :decimal
 
   validates_presence_of :number_searches, :number_classes
+  validates :number_searches, :numericality => { :greater_than_or_equal_to => 1 }
+  validates :number_classes, :numericality => { :greater_than_or_equal_to => 0 }
+  validates_numericality_of :number_classes,  less_than_or_equal_to: ->(similar_search_receipt) { similar_search_receipt.number_searches }
 
   def tax_calculate
     tax_line = Tax.where(code: "746-08", category: "base").first

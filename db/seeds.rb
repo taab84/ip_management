@@ -14,7 +14,9 @@ tax_list = [
     [ "746-07", "Taxe de Recherche a l'identique par marque", "base",  1600],
     [ "746-07", "Taxe de Recherche a l'identique au delà d'une classe supplémentaire", "class",  400],
     [ "746-08", "Taxe de Recherche de Similitude / ou par déposant dans 3 classes", "base",  3000],
-    [ "746-08", "Taxe au delà de la 3ème classe/ ou par déposant dans 3 classes", "class",  3000]
+    [ "746-08", "Taxe au delà de la 3ème classe/ ou par déposant dans 3 classes", "class",  3000],
+    [ "746-09", "Taxe de rectification d'erreur materiel", "error",  400],
+    [ "746-15", "Taxe National pour la demande d'enregistrement international ou de renouvellement", "int",  4000]
   ]
 
   tax_list.each do |code, description, category, current_tax|

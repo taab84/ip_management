@@ -14,11 +14,12 @@ class OrdersController < ApplicationController
 
   def index
     @filterrific = initialize_filterrific(
-      Order,
+      Order.joins(:payement).includes(:payement),
       params[:filterrific],
       select_options: {
         with_group_id: Group.options_for_select,
         with_type: Order.options_for_with_type,
+        with_payement_type: Order.options_for_with_payement_type,
         by_month: Order.options_for_by_month,
         sorted_by: Order.options_for_sorted_by
       },
@@ -27,13 +28,13 @@ class OrdersController < ApplicationController
 
     respond_to do |format|
       format.html {
-        @orders = @filterrific.find.page(params[:page]).includes(:payement)
+        @orders = @filterrific.find.page(params[:page])
       }
       format.js {
-        @orders = @filterrific.find.page(params[:page]).includes(:payement)
+        @orders = @filterrific.find.page(params[:page])
       }
       format.xlsx {
-        @orders = @filterrific.find.includes(:payement)
+        @orders = @filterrific.find
         render xlsx: "orders", 
         template: 'orders/index', 
         disposition: 'inline', 
@@ -74,7 +75,8 @@ class OrdersController < ApplicationController
   end
 
   def order_params
-    params.require(:order).permit(:image, :type, payement_attributes:[:type, :value, :name, :date, :image, :serie, :number, :ref, :state, :_destroy])
+    params.require(:order).permit(:image, :type, payement_attributes:[:type,
+      :value, :name, :date, :image, :serie, :number, :ref, :state, :_destroy])
   end
 
 end

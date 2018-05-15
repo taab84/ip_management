@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180415115253) do
+ActiveRecord::Schema.define(version: 20180515104246) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,8 +48,10 @@ ActiveRecord::Schema.define(version: 20180415115253) do
     t.datetime "updated_at", null: false
     t.bigint "group_id"
     t.bigint "user_id"
+    t.index ["created_at"], name: "index_orders_on_created_at"
     t.index ["group_id"], name: "index_orders_on_group_id"
     t.index ["number"], name: "index_orders_on_number"
+    t.index ["remain"], name: "index_orders_on_remain"
     t.index ["type"], name: "index_orders_on_type"
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
@@ -64,6 +66,7 @@ ActiveRecord::Schema.define(version: 20180415115253) do
     t.bigint "order_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["created_at"], name: "index_payements_on_created_at"
     t.index ["data"], name: "index_payements_on_data", using: :gin
     t.index ["date"], name: "index_payements_on_date"
     t.index ["name"], name: "index_payements_on_name"
@@ -85,6 +88,7 @@ ActiveRecord::Schema.define(version: 20180415115253) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "group_id"
+    t.index ["created_at"], name: "index_receipts_on_created_at"
     t.index ["data"], name: "index_receipts_on_data", using: :gin
     t.index ["group_id"], name: "index_receipts_on_group_id"
     t.index ["number"], name: "index_receipts_on_number"
