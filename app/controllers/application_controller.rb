@@ -15,7 +15,7 @@ class ApplicationController < ActionController::Base
   end
 
   rescue_from CanCan::AccessDenied do |exception|
-    redirect_to main_app.root_path, alert: exception.message
+    redirect_back(fallback_location: root_path, alert: exception.message)
   end
 
   def set_locale
@@ -30,7 +30,7 @@ class ApplicationController < ActionController::Base
 
   def verify_ip_address
     if Whitelist.find_by(ip_adress: request.remote_ip).nil?
-      redirect_to main_app.root_path, alert: I18n.t('unauthorized_ip')
+      redirect_back(fallback_location: root_path, alert: I18n.t('unauthorized_ip'))
     end
   end
 

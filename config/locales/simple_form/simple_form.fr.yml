@@ -27,16 +27,11 @@ fr:
         name: "au Nom de"
         date: "Date de Paiement"
         orders: "Selectionnez ou ajoutez les ordres de paiements"
-      mark_receipt:
+      receipt:
         mark_name: "Nom de la Marque"
         ipas_num: "Numéro IPAS"
-      identical_search_receipt:
         number_searches: "Nombre de recherches"
         number_classes: "Nombre de classes supplementaires"
-      similar_search_receipt:
-        number_searches: "Nombre de recherches"
-        number_classes: "Nombre de recherches au dela de 3 classes"
-      rectification_mark_receipt:
         number_marks: "Nombre de Marques"
       payement:
         ref: "Réference de Versement"
@@ -54,14 +49,13 @@ fr:
         representative: "Selectionnez un Mandataire s'il existe"
         orders: "Selectionnez ou ajoutez les ordres de paiements"
     hints:
-      mark_receipt:
+      receipt:
         classes: "Nombre de Classes (Entre 1 et 45)"
-      identical_search_receipt:
         number_searches: "Nombre de recherches"
-        number_classes: "Nombre de classes supplementaires"
-      similar_search_receipt:
-        number_searches: "Nombre de recherches"
-        number_classes: "Nombre de recherches au dela de 3 classes"
+        number_additional_classes: "Nombre de classes supplementaires"
+        number_searches_with_more_than_three_classes: "Nombre de recherche avec plus de 3 classes"
       user:
-        password: "Caractères minimum de %{count}"
+        password: 
+          new_session: "Caractères minimum de %{count}"
+          change: "Laisser ce champ vide si vous ne vouslez pas changer votre mot de passe"
         current_password: "Requis si vous voulez changer vos informations"

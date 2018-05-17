@@ -80,6 +80,8 @@ en:
         adress: "Adress"
         total: "Total"
         created_at: "Created on"
+        colored: "Colored"
+        rev_pri: "Priority revendication"
       representative:
         fullname: "Full Name"
         adress: "Adress"

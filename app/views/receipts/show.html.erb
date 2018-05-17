@@ -54,7 +54,12 @@
         </tbody>
       </table> 
     </div>
-    <%= link_to(I18n.t('pdf.print'), receipt_path(@receipt, format: 'pdf'), class: "btn btn-info pull-right btn-sm", target: :_blank) %>
-</div>
+    </div>
+    <div class="panel-footer">
+    <%= link_to(I18n.t('menu.back'), :back, class: "btn btn-default btn-sm") %>
+    <%= link_to(I18n.t('pdf.print'), receipt_path(:type => @receipt.type, :id => @receipt.id, 
+    format: 'pdf'), class: "btn btn-info pull-right btn-sm", target: :_blank) %>
+    </div>
+
   
 </div>

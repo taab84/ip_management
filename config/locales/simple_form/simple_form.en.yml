@@ -28,16 +28,11 @@ en:
         name: "By"
         date: "Payement Date"
         orders: "Select or add payement orders"
-      mark_receipt:
+      receipt:
         mark_name: "Mark name"
         ipas_num: "IPAS Number"
-      identical_search_receipt:
         number_searches: "Searches numbers"
         number_classes: "Classes number suppl"
-      similar_search_receipt:
-        number_searches: "Searches numbers"
-        number_classes: "Searches numbers beyond 3 classes"
-      rectification_mark_receipt:
         number_marks: "Marks Numbers"
       transfer_payement:
         ref: "Transfer reference"
@@ -56,15 +51,14 @@ en:
         representative: "Select a Representative if exists"
         orders: "Select or add payement orders"
     hints:
-      mark_receipt:
+      receipt:
         classes: "Class numbers (between 1 & 45)"
-      identical_search_receipt:
         number_searches: "Searches numbers"
-        number_classes: "Classes number suppl"
-      similar_search_receipt:
-        number_searches: "Searches numbers"
-        number_classes: "Searches numbers beyond 3 classes"
+        number_additional_classes: "Classes number suppl"
+        number_searches_with_more_than_three_classes: "Searches numbers with more than 3 classes"
       user:
-        password: "Minimum characters of %{count}"
+        password: 
+          new_session: "Minimum characters of %{count}"
+          change: "Leave this field empty if you don't want to change your password"
         current_password: "Required if you want to change informations"
         

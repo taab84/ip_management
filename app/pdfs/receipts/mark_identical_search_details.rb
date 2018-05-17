@@ -14,8 +14,8 @@ def mark_identical_search_detail(receipt)
     data =
       [["Code", "Désignation", "Nombre", "Montant", "Total"],
       ["746-07", "Taxe de Recherche a l'identique par marque", "%02d" % @receipt.number_searches, money_format(@receipt.base_tax), money_format(@receipt.base_tax*@receipt.number_searches)]]
-      if @receipt.number_classes.positive?
-        data += [["746-07", "Taxe de Recherche a l'identique au delà d'une classe supplémentaire", "%02d" % @receipt.number_classes, money_format(@receipt.class_tax), money_format(@receipt.class_tax*@receipt.number_classes)]]
+      if @receipt.number_additional_classes.positive?
+        data += [["746-07", "Taxe de Recherche a l'identique au delà d'une classe supplémentaire", "%02d" % @receipt.number_additional_classes, money_format(@receipt.class_tax), money_format(@receipt.class_tax*@receipt.number_additional_classes)]]
       end
 
     # Last line of the table with total

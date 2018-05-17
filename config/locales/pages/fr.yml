@@ -31,6 +31,8 @@ fr:
     register: "Enregistrer"
     login: "Connexion"
     show: "Afficher"
+    back: "Retour"
+    change: "Modifier"
     destroy: "Supprimer"
     edit: "Editer"
     edit_profile: "Edtier Mon profil"

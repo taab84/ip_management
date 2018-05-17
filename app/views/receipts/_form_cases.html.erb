@@ -13,14 +13,15 @@
 <% elsif params[:type]=="IdenticalSearchReceipt" %>
 <%= f.input :type, as: :hidden, input_html: {id:"receipt_type", value: "IdenticalSearchReceipt"} %>
   <div class="row receipt_tax_value_inputs">
-    <div class="col col-md-6"> <%= f.input :number_searches, input_html:{value: 1} %> </div>
-    <div class="col col-md-6"> <%= f.input :number_classes, input_html:{value: 0} %> </div>
+    <div class="col col-md-6"> <%= f.input :number_searches %> </div>
+    <div class="col col-md-6"> <%= f.input :number_additional_classes %> </div>
   </div>
 <% elsif params[:type]=="SimilarSearchReceipt" %>
   <div class="row receipt_tax_value_inputs">
   <%= f.input :type, as: :hidden, input_html: {id:"receipt_type", value: "SimilarSearchReceipt"} %>
-    <div class="col col-md-6"> <%= f.input :number_searches, input_html:{value: 1} %> </div>
-    <div class="col col-md-6"> <%= f.input :number_classes, input_html:{value: 0} %> </div>
+    <div class="col col-md-6"> <%= f.input :number_searches %> </div>
+    <div class="col col-md-6"> <%= f.input :number_searches_with_more_than_three_classes %>
+    </div>
   </div>
 <% elsif params[:type]=="RectificationMarkReceipt" %>
   <div class="row receipt_tax_value_inputs">

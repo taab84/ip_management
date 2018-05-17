@@ -8,7 +8,8 @@ class Receipt < ApplicationRecord
   has_many :payements, through: :orders
 
   validates :order_ids, presence: true
-  validate :sum_remain_must_be_enough
+  validate :sum_remain_must_be_enough, on: :create
+  validate :sum_used_must_be_enough, on: :update
 
   before_validation :valuate, on: :create
 
@@ -103,10 +104,22 @@ class Receipt < ApplicationRecord
     total
   end
 
+  def used_sum
+    total = 0
+    orderables.each do |orderable|
+      total += orderable.used
+    end
+    total
+  end
+
   private
 
   def sum_remain_must_be_enough
     errors.add(:order_ids, :not_enough) if total > paid_sum
+  end
+
+  def sum_used_must_be_enough
+    errors.add(:order_ids, :not_enough_used) if total > used_sum
   end
 
   def valuate

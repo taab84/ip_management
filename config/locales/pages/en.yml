@@ -31,6 +31,8 @@ en:
     register: "Sign-in"
     login: "Log-in"
     show: "Show"
+    back: "Back"
+    change: "Change"
     destroy: "Destroy"
     edit: "Edit"
     edit_profile: "Profile Edit"

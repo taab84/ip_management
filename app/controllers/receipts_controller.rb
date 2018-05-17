@@ -52,8 +52,8 @@ class ReceiptsController < ApplicationController
       respond_to do |format|
         if @receipt.valid?
           @receipt.setting_op
-          format.html { redirect_to @receipt, notice: I18n.t('notices.receipt.created') }
-          format.js { redirect_to @receipt, notice: I18n.t('notices.receipt.created') }
+          format.html { redirect_to receipt_url({ :type => @receipt.type, :id => @receipt.id }), notice: I18n.t('notices.receipt.created') }
+          format.js { redirect_to receipt_url({ :type => @receipt.type, :id => @receipt.id }), notice: I18n.t('notices.receipt.created') }
           format.json { render :show, status: :created, location: @receipt }
         else
           format.html { render :new }
@@ -66,8 +66,9 @@ class ReceiptsController < ApplicationController
   # PATCH/PUT /receipts/1.json
   def update
     respond_to do |format|
-      if @receipt.update(receipt_params)
-        format.html { redirect_to @receipt, notice: 'Receipt was successfully updated.' }
+      if @receipt.update(receipt_update_params)
+        format.html { redirect_to receipt_url({ :type => @receipt.type, :id => @receipt.id }), notice: 'Receipt was successfully updated.' }
+        format.js { redirect_to receipt_url({ :type => @receipt.type, :id => @receipt.id }), notice: 'Receipt was successfully updated.' }
         format.json { render :show, status: :ok, location: @receipt }
       else
         format.html { render :edit }
@@ -103,14 +104,27 @@ class ReceiptsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def receipt_params
       if params[:type] == "MarkReceipt" then
-        params.require(:mark_receipt).permit(:owner_name, :type, :owner_adress, :representative_id, :owner_street, :owner_wilaya, :mark_name, :image,
+        params.require(:receipt).permit(:owner_name, :type, :owner_adress, :representative_id, :owner_street, :owner_wilaya, :mark_name, :image,
       :mark_type, :colored, :classes, :rev_pri, :ipas_num, :order_ids => [])
-      elsif params[:type] == "IdenticalSearchReceipt" then params.require(:identical_search_receipt).permit(:owner_name, :type, :owner_adress, :representative_id, :owner_street, :owner_wilaya, :image,
+      elsif params[:type] == "IdenticalSearchReceipt" then params.require(:receipt).permit(:owner_name, :type, :owner_adress, :representative_id, :owner_street, :owner_wilaya, :image,
         :number_searches, :number_classes, :order_ids => [])
-      elsif params[:type] == "SimilarSearchReceipt" then params.require(:similar_search_receipt).permit(:owner_name, :type, :owner_adress, :representative_id, :owner_street, :owner_wilaya, :image,
+      elsif params[:type] == "SimilarSearchReceipt" then params.require(:receipt).permit(:owner_name, :type, :owner_adress, :representative_id, :owner_street, :owner_wilaya, :image,
         :number_searches, :number_classes, :order_ids => [])
-      elsif params[:type] == "RectificationMarkReceipt" then params.require(:rectification_mark_receipt).permit(:owner_name, :type, :owner_adress, :representative_id, :owner_street, :owner_wilaya, :image,
+      elsif params[:type] == "RectificationMarkReceipt" then params.require(:receipt).permit(:owner_name, :type, :owner_adress, :representative_id, :owner_street, :owner_wilaya, :image,
         :number_marks, :order_ids => [])
+      end
+    end
+
+    def receipt_update_params
+      if params[:type] == "MarkReceipt" then
+        params.require(:mark_receipt).permit(:owner_name, :type, :owner_adress, :representative_id, :owner_street, :owner_wilaya, :mark_name, :image,
+      :mark_type, :colored, :classes, :rev_pri, :ipas_num)
+      elsif params[:type] == "IdenticalSearchReceipt" then params.require(:identical_search_receipt).permit(:owner_name, :type, :owner_adress, :representative_id, :owner_street, :owner_wilaya, :image,
+        :number_searches, :number_classes)
+      elsif params[:type] == "SimilarSearchReceipt" then params.require(:similar_search_receipt).permit(:owner_name, :type, :owner_adress, :representative_id, :owner_street, :owner_wilaya, :image,
+        :number_searches, :number_classes)
+      elsif params[:type] == "RectificationMarkReceipt" then params.require(:rectification_mark_receipt).permit(:owner_name, :type, :owner_adress, :representative_id, :owner_street, :owner_wilaya, :image,
+        :number_marks)
       end
     end
 

@@ -13,11 +13,13 @@ Rails.application.routes.draw do
   post '/receipts/tax_evaluation' , to: 'receipts#tax_evaluation'
 
   # resources routes
-  resources :receipts, :controller => "receipts", :type => "Receipt"
-  resources :mark_receipts, :controller => "receipts", :type => "MarkReceipt", :branch => "M"
-  resources :identical_search_receipts, :controller => "receipts", :type => "IdenticalSearchReceipt", :branch => "M"
-  resources :similar_search_receipts, :controller => "receipts", :type => "SimilarSearchReceipt", :branch => "M"
-  resources :rectification_mark_receipts, :controller => "receipts", :type => "RectificationMarkReceipt", :branch => "M"
+  # for receipts
+  resources :receipts
+  # resources :mark_receipts, as: "receipts", :controller => "receipts", :type => "MarkReceipt", :branch => "M",
+  # resources :identical_search_receipts, :controller => "receipts", :type => "IdenticalSearchReceipt", :branch => "M", :path => 'receipts'
+  # resources :similar_search_receipts, :controller => "receipts", :type => "SimilarSearchReceipt", :branch => "M", :path => 'receipts'
+  # resources :rectification_mark_receipts, :controller => "receipts", :type => "RectificationMarkReceipt", :branch => "M", :path => 'receipts'
+  # for orders
   resources :orders, :controller => "orders", only: [:new, :create, :show, :index]
   resources :md_orders, :controller => "orders", only: [:new, :show, :index]
   resources :pd_orders, :controller => "orders", only: [:new, :show, :index]

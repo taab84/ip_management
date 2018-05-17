@@ -2,10 +2,10 @@
     <strong><%= I18n.t('menu.receipt.attributes.classes') %>:</strong> <%= @receipt.classes %><br />
 <% elsif params[:type] == "IdenticalSearchReceipt" then %>
     <strong><%= I18n.t('menu.receipt.attributes.number_searches') %>: </strong> <%= @receipt.number_searches %><br />
-    <strong><%= I18n.t('menu.receipt.attributes.classes_plus') %>: </strong> <%= @receipt.number_classes %><br />
+    <strong><%= I18n.t('menu.receipt.attributes.classes_plus') %>: </strong> <%= @receipt.number_additional_classes %><br />
 <% elsif params[:type] == "SimilarSearchReceipt" then %>
     <strong><%= I18n.t('menu.receipt.attributes.number_searches') %>: </strong> <%= @receipt.number_searches %><br />
-    <strong><%= I18n.t('menu.receipt.attributes.classes_plus_three') %>: </strong> <%= @receipt.number_classes %><br />
+    <strong><%= I18n.t('menu.receipt.attributes.classes_plus_three') %>: </strong> <%= @receipt.number_searches_with_more_than_three_classes %><br />
 <% elsif params[:type] == "RectificationMarkReceipt" then %>
     <strong><%= I18n.t('menu.receipt.attributes.number_marks') %>: </strong> <%= @receipt.number_marks %><br />
 <% end %>

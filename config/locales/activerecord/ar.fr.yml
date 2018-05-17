@@ -80,6 +80,8 @@ fr:
         adress: "Adresse"
         total: "Total"
         created_at: "Créé le"
+        colored: "En Couleur"
+        rev_pri: "Revendication de priorité"
       representative:
         fullname: "Nom Complet"
         adress: "Adresse"
