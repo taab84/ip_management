@@ -8,7 +8,7 @@ end
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.1.5'
+gem 'rails', '~> 5.2'
 # Page caching system
 gem "actionpack-page_caching"
 # Use postgresql as the database for Active Record
@@ -16,7 +16,7 @@ gem 'pg', '~> 0.18'
 # Use jsonb accessor with postgresql
 gem 'jsonb_accessor', '~> 1.0'
 # Use Devise
-gem 'devise'
+gem 'devise', '~> 4.4', '>= 4.4.3'
 # Use CanCanCan
 gem 'cancancan'
 # Use Puma as the app server
@@ -46,7 +46,7 @@ gem 'bcrypt', '~> 3.1.11'
 # Use rails admin
 gem 'rails_admin', '~> 1.3'
 # Use Simple Form
-gem 'simple_form'
+gem 'simple_form', '~> 4.0', '>= 4.0.1'
 # Use Cocoon gem for nested forms
 gem 'cocoon'
 # Use Selectize for select field
@@ -71,7 +71,7 @@ gem 'prawn'
 gem 'prawn-table'
 gem 'prawn-rtl-support'
 # Using Reponders
-gem 'responders'
+gem 'responders', '~> 2.4'
 # Money gem for currency formatting
 gem 'money', '~> 6.10', '>= 6.10.1'
 # Humanize gem from number to letters

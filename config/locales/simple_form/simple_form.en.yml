@@ -59,6 +59,7 @@ en:
       user:
         password: 
           new_session: "Minimum characters of %{count}"
+          registration: "Minimum characters of %{count}"
           change: "Leave this field empty if you don't want to change your password"
         current_password: "Required if you want to change informations"
         

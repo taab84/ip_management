@@ -34,6 +34,7 @@ en:
     back: "Back"
     change: "Change"
     destroy: "Destroy"
+    disable: "Disable"
     edit: "Edit"
     edit_profile: "Profile Edit"
     admin : "Admin Dashboard"

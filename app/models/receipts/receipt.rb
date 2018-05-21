@@ -19,6 +19,8 @@ class Receipt < ApplicationRecord
 
   validates :owner_name, :owner_street, :owner_wilaya, :type, presence: true
 
+  enum status: { active: 0, inactive: 1 }
+
   enum owner_wilaya: { "Adrar" => "Adrar",
     "Chlef"           => "Chlef",
     "Laghouat"   => "Laghouat",
@@ -92,6 +94,20 @@ class Receipt < ApplicationRecord
             order.save
           end
         end
+      end
+    end
+  end
+
+  def making_credit
+    transaction do
+      self.inactive
+      save
+      id = self.id
+      orders.each do |order|
+        @orderable = order.orderables.where(receipt_id: id, order_id: order.id)
+        order.remain += @orderable.used
+        order.save
+        @orderable.destroy
       end
     end
   end

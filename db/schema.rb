@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180515104246) do
+ActiveRecord::Schema.define(version: 2018_05_20_123041) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -88,6 +88,7 @@ ActiveRecord::Schema.define(version: 20180515104246) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "group_id"
+    t.integer "status", default: 0
     t.index ["created_at"], name: "index_receipts_on_created_at"
     t.index ["data"], name: "index_receipts_on_data", using: :gin
     t.index ["group_id"], name: "index_receipts_on_group_id"

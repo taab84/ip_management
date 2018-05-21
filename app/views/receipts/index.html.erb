@@ -23,7 +23,7 @@
         <td><%= receipt.representative.fullname unless receipt.representative.nil?  %></td>
         <td><%= link_to t('menu.show'), receipt_path({:type => receipt.type, :id => receipt.id}), class: "btn btn-success btn-xs btn-block" %></td>
         <td><%= link_to t('menu.edit'), edit_receipt_path({:type => receipt.type, :id => receipt.id}), class: "btn btn-warning btn-xs btn-block" %></td>
-        <td><%= link_to t('menu.destroy'), receipts_path({:type => receipt.type, :id => receipt.id}), method: :delete, data: { confirm: t('menu.if_sure') }, class: "btn btn-danger btn-xs btn-block" %></td>
+        <td><%= link_to t('menu.disable'), receipts_path({:type => receipt.type, :id => receipt.id}), method: :delete, data: { confirm: t('menu.if_sure') }, class: "btn btn-danger btn-xs btn-block" %></td>
       </tr>
     <% end %>
   </tbody>

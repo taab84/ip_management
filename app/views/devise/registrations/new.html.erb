@@ -9,7 +9,7 @@
     <%= f.input :fullname, required: true, autofocus: true, placeholder: true %>
     <%= f.input :username, required: true, placeholder: true %>
     <%= f.input :email, required: true, placeholder: true %>
-    <%= f.input :password, required: true, hint: (t('simple_form.hints.user.password', count: @minimum_password_length) if @minimum_password_length), placeholder: true %>
+    <%= f.input :password, required: true, hint: (t('simple_form.hints.user.password.registration', count: @minimum_password_length) if @minimum_password_length), placeholder: true %>
     <%= f.input :password_confirmation, required: true, placeholder: true %>
   </div>
 

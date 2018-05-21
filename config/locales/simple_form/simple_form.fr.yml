@@ -57,5 +57,6 @@ fr:
       user:
         password: 
           new_session: "Caractères minimum de %{count}"
+          registration: "Caractères minimum de %{count}"
           change: "Laisser ce champ vide si vous ne vouslez pas changer votre mot de passe"
         current_password: "Requis si vous voulez changer vos informations"

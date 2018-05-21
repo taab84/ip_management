@@ -80,7 +80,7 @@ class ReceiptsController < ApplicationController
   # DELETE /receipts/1
   # DELETE /receipts/1.json
   def destroy
-    @receipt.destroy!
+    @receipt.making_credit
     respond_to do |format|
       format.html { redirect_to customized_url, notice: 'Receipt was successfully destroyed.' }
       format.json { head :no_content }
@@ -88,7 +88,7 @@ class ReceiptsController < ApplicationController
   end
 
   def tax_evaluation
-    @receipt = Receipt.new(receipt_params)
+    @receipt = receipt_type.new(receipt_update_params)
       @receipt.tax_calculate
       respond_to do |format|
         format.json { render 'receipts/tax_evaluation' }
@@ -104,13 +104,13 @@ class ReceiptsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def receipt_params
       if params[:type] == "MarkReceipt" then
-        params.require(:receipt).permit(:owner_name, :type, :owner_adress, :representative_id, :owner_street, :owner_wilaya, :mark_name, :image,
+        params.require(:mark_receipt).permit(:owner_name, :type, :owner_adress, :representative_id, :owner_street, :owner_wilaya, :mark_name, :image,
       :mark_type, :colored, :classes, :rev_pri, :ipas_num, :order_ids => [])
-      elsif params[:type] == "IdenticalSearchReceipt" then params.require(:receipt).permit(:owner_name, :type, :owner_adress, :representative_id, :owner_street, :owner_wilaya, :image,
-        :number_searches, :number_classes, :order_ids => [])
-      elsif params[:type] == "SimilarSearchReceipt" then params.require(:receipt).permit(:owner_name, :type, :owner_adress, :representative_id, :owner_street, :owner_wilaya, :image,
-        :number_searches, :number_classes, :order_ids => [])
-      elsif params[:type] == "RectificationMarkReceipt" then params.require(:receipt).permit(:owner_name, :type, :owner_adress, :representative_id, :owner_street, :owner_wilaya, :image,
+      elsif params[:type] == "IdenticalSearchReceipt" then params.require(:identical_search_receipt).permit(:owner_name, :type, :owner_adress, :representative_id, :owner_street, :owner_wilaya, :image,
+        :number_searches, :number_additional_classes, :order_ids => [])
+      elsif params[:type] == "SimilarSearchReceipt" then params.require(:similar_search_receipt).permit(:owner_name, :type, :owner_adress, :representative_id, :owner_street, :owner_wilaya, :image,
+        :number_searches, :number_searches_with_more_than_three_classes, :order_ids => [])
+      elsif params[:type] == "RectificationMarkReceipt" then params.require(:rectification_mark_receipt).permit(:owner_name, :type, :owner_adress, :representative_id, :owner_street, :owner_wilaya, :image,
         :number_marks, :order_ids => [])
       end
     end
@@ -120,9 +120,9 @@ class ReceiptsController < ApplicationController
         params.require(:mark_receipt).permit(:owner_name, :type, :owner_adress, :representative_id, :owner_street, :owner_wilaya, :mark_name, :image,
       :mark_type, :colored, :classes, :rev_pri, :ipas_num)
       elsif params[:type] == "IdenticalSearchReceipt" then params.require(:identical_search_receipt).permit(:owner_name, :type, :owner_adress, :representative_id, :owner_street, :owner_wilaya, :image,
-        :number_searches, :number_classes)
+        :number_searches, :number_additional_classes)
       elsif params[:type] == "SimilarSearchReceipt" then params.require(:similar_search_receipt).permit(:owner_name, :type, :owner_adress, :representative_id, :owner_street, :owner_wilaya, :image,
-        :number_searches, :number_classes)
+        :number_searches, :number_searches_with_more_than_three_classes)
       elsif params[:type] == "RectificationMarkReceipt" then params.require(:rectification_mark_receipt).permit(:owner_name, :type, :owner_adress, :representative_id, :owner_street, :owner_wilaya, :image,
         :number_marks)
       end
