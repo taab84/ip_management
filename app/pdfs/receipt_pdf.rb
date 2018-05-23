@@ -64,6 +64,8 @@ class ReceiptPdf < Prawn::Document
       mark_identical_search_detail(@receipt)
     elsif (@receipt.type == "RectificationMarkReceipt") then
       mark_rect_detail(@receipt)
+    elsif (@receipt.type == "DesignReceipt") then
+      design_detail(@receipt)
     end
 
     move_down 20

@@ -49,11 +49,18 @@ fr:
         representative: "Selectionnez un Mandataire s'il existe"
         orders: "Selectionnez ou ajoutez les ordres de paiements"
     hints:
-      receipt:
+      mark_receipt:
         classes: "Nombre de Classes (Entre 1 et 45)"
+      identical_search_receipt:
         number_searches: "Nombre de recherches"
         number_additional_classes: "Nombre de classes supplementaires"
+      similar_search_receipt:
+        number_searches: "Nombre de recherches"
         number_searches_with_more_than_three_classes: "Nombre de recherche avec plus de 3 classes"
+      design_receipt:
+        models: "Nombre de modèles"
+        draws: "Nombre de vues (Dessin industriel"
+        pics: "Nombre de vues (Photographie)"
       user:
         password: 
           new_session: "Caractères minimum de %{count}"

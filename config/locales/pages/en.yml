@@ -64,6 +64,9 @@ en:
         classes_plus: "Additional Classes"
         classes_plus_three: "Searches Numbers (more than 3 classes)"
         number_marks: "Marks number"
+        models: "Models numbers"
+        draws: "View numbers by industrial draws"
+        pics: "View numbers by photography"
       mark:
         new: "New Applicant Mark"
         list_mark: "Applicants Marks"

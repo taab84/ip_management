@@ -31,16 +31,7 @@ def mark_detail(receipt)
     data += [["","","", "Total", money_format(@receipt.total)]]
 
     # Drawing mark taxe table
-      table(data, :header => true, :position => :right, width: bounds.width, :cell_style => { size: 11 }) do
-        last_cell = cells.columns(0..2).rows(-1)
-        last_cell.borders = [:top]
-        style(row(-1).columns(0..-1), :font_style => :bold)
-        style(columns(2), :align => :center)
-        style(row(0), :align => :center)
-        style(row(1..-2).columns(3..4), :align => :right)
-        style(row(-1).columns(-2), :align => :center)
-        style(row(-1).columns(-1), :align => :right)
-      end
+    detail_table_setting(data)
 end
 
 # generate text for mark type

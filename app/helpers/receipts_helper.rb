@@ -6,7 +6,7 @@ module ReceiptsHelper
 
   private
   def receipt_types
-    ["MarkReceipt", "IdenticalSearchReceipt", "SimilarSearchReceipt", "RectificationMarkReceipt"]
+    ["MarkReceipt", "IdenticalSearchReceipt", "SimilarSearchReceipt", "RectificationMarkReceipt",  "DesignReceipt"]
   end
 
   def receipt_form_url

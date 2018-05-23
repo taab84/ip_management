@@ -1,10 +1,3 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
 tax_list = [
     [ "746-01", "Taxe de dépôt sans revendication de couleurs", "uncolored",  14000],
     [ "746-01", "Taxe de dépôt avec revendication de couleurs", "colored",  15000],
@@ -16,11 +9,18 @@ tax_list = [
     [ "746-08", "Taxe de Recherche de Similitude / ou par déposant dans 3 classes", "base",  3000],
     [ "746-08", "Taxe au delà de la 3ème classe/ ou par déposant dans 3 classes", "class",  3000],
     [ "746-09", "Taxe de rectification d'erreur materiel", "error",  400],
-    [ "746-15", "Taxe National pour la demande d'enregistrement international ou de renouvellement", "int",  4000]
+    [ "746-15", "Taxe National pour la demande d'enregistrement international ou de renouvellement", "int",  4000],
+    [ "747-00", "Taxe fixe et independante du nombre de dessins et modèles déposé", "base",  10000],
+    [ "747-01", "Taxe par dessin ou modèle", "model",  1000],
+    [ "747-03", "Deposé sous forme de dessin industriel par vue", "draws",  500],
+    [ "747-03", "Deposé sous forme de photographie par vue", "pictures",  2000],
+    [ "747-04", "Taxe de maintient pour la seconde periode de protection de neuf ans, par dessin ou modèle", "holding",  1000]
+    
+    
   ]
 
   tax_list.each do |code, description, category, current_tax|
-    Tax.create( code: code, description: description, category: category, current_tax: current_tax )
+    Tax.find_or_create_by( code: code, description: description, category: category, current_tax: current_tax )
   end
 
   group_list = [
@@ -30,7 +30,7 @@ tax_list = [
     ]
 
   group_list.each do |name, tenant, adress, email|
-    Group.create( name: name, tenant: tenant, adress: adress, email: email)
+    Group.find_or_create_by( name: name, tenant: tenant, adress: adress, email: email)
   end
 
   white_list = [
@@ -40,6 +40,6 @@ tax_list = [
   ]
 
   white_list.each do |ip_adress, description|
-    Whitelist.create(ip_adress: ip_adress, description: description)
+    Whitelist.find_or_create_by(ip_adress: ip_adress, description: description)
   end
   

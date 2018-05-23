@@ -26,6 +26,13 @@
 <% elsif params[:type]=="RectificationMarkReceipt" %>
   <div class="row receipt_tax_value_inputs">
   <%= f.input :type, as: :hidden, input_html: {id:"receipt_type", value: "RectificationMarkReceipt"} %>
-    <div class="col col-md-12"> <%= f.input :number_marks, input_html:{value: 1} %> </div>
+    <div class="col col-md-12"> <%= f.input :number_marks %> </div>
   </div>
+<% elsif params[:type]=="DesignReceipt" %>
+<div class="row receipt_tax_value_inputs">
+<%= f.input :type, as: :hidden, input_html: {id:"receipt_type", value: "DesignReceipt"} %>
+<div class="col col-md-4"><%= f.input :models, hint: true %></div>
+<div class="col col-md-4"><%= f.input :draws, hint: true %></div>
+<div class="col col-md-4"><%= f.input :pics, hint: true %></div>
+</div>
 <% end %>

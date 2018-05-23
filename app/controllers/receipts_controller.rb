@@ -112,6 +112,8 @@ class ReceiptsController < ApplicationController
         :number_searches, :number_searches_with_more_than_three_classes, :order_ids => [])
       elsif params[:type] == "RectificationMarkReceipt" then params.require(:rectification_mark_receipt).permit(:owner_name, :type, :owner_adress, :representative_id, :owner_street, :owner_wilaya, :image,
         :number_marks, :order_ids => [])
+      elsif params[:type] == "DesignReceipt" then params.require(:design_receipt).permit(:owner_name, :type, :owner_adress, :representative_id, :owner_street, :owner_wilaya, :image,
+        :models, :draws, :pics, :order_ids => [])
       end
     end
 
@@ -125,6 +127,8 @@ class ReceiptsController < ApplicationController
         :number_searches, :number_searches_with_more_than_three_classes)
       elsif params[:type] == "RectificationMarkReceipt" then params.require(:rectification_mark_receipt).permit(:owner_name, :type, :owner_adress, :representative_id, :owner_street, :owner_wilaya, :image,
         :number_marks)
+      elsif params[:type] == "DesignReceipt" then params.require(:design_receipt).permit(:owner_name, :type, :owner_adress, :representative_id, :owner_street, :owner_wilaya, :image,
+        :models, :draws, :pics)
       end
     end
 
@@ -137,7 +141,7 @@ class ReceiptsController < ApplicationController
     end
 
     def receipt_types
-      ["Receipt", "MarkReceipt", "IdenticalSearchReceipt", "SimilarSearchReceipt", "RectificationMarkReceipt"]
+      ["Receipt", "MarkReceipt", "IdenticalSearchReceipt", "SimilarSearchReceipt", "RectificationMarkReceipt", "DesignReceipt"]
     end
 
 end

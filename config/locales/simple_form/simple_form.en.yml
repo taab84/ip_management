@@ -51,11 +51,18 @@ en:
         representative: "Select a Representative if exists"
         orders: "Select or add payement orders"
     hints:
-      receipt:
+      mark_receipt:
         classes: "Class numbers (between 1 & 45)"
+      identical_search_receipt:
         number_searches: "Searches numbers"
         number_additional_classes: "Classes number suppl"
+      similar_search_receipt:
+        number_searches: "Searches numbers"
         number_searches_with_more_than_three_classes: "Searches numbers with more than 3 classes"
+      design_receipt:
+        models: "Model numbers"
+        draws: "view numbers (industrial draws)"
+        pics: "view numbers  (Photography)"
       user:
         password: 
           new_session: "Minimum characters of %{count}"

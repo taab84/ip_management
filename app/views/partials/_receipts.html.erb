@@ -7,7 +7,7 @@
     <li><%= link_to(I18n.t('menu.receipt.search.identical'), new_receipt_path({ :type => "IdenticalSearchReceipt", :branch => "M" })) %></li>
     <li><%= link_to(I18n.t('menu.receipt.search.similitude'), new_receipt_path({ :type => "SimilarSearchReceipt", :branch => "M" })) %></li>
     <li role="separator" class="divider"></li>
-    <li><a href="#"><%= t('menu.receipt.design.new') %></a></li>
+    <li><%= link_to(I18n.t('menu.receipt.design.new'), new_receipt_path({ :type => "DesignReceipt", :branch => "M" })) %></li>
   </ul>
 </li>
 <li class="dropdown">

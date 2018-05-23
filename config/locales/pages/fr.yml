@@ -64,6 +64,9 @@ fr:
         classes_plus: "Classes Supplementaires"
         classes_plus_three: "Nombre de recherches (plus de 3 classes)"
         number_marks: "Nombre de marques"
+        models: "Nombre de modéles"
+        draws: "Nombre de vues en dessin industriel"
+        pics: "Nombre de vues en photographie"
       mark:
         new: "Dépôt Marque"
         list_mark: "Dépôts Marques"

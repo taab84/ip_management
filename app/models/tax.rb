@@ -5,7 +5,7 @@ class Tax < ApplicationRecord
   validates :date_app, absence: true, unless: :new_tax?
   validates :code, uniqueness: { scope: :category}
 
-  rails_admin do
+    rails_admin do
     weight 4
     edit do
       field :code
@@ -16,6 +16,7 @@ class Tax < ApplicationRecord
       field :date_app
     end
     list do
+      sort_by :code
       field :code
       field :description
       field :current_tax

@@ -8,4 +8,8 @@
     <strong><%= I18n.t('menu.receipt.attributes.classes_plus_three') %>: </strong> <%= @receipt.number_searches_with_more_than_three_classes %><br />
 <% elsif params[:type] == "RectificationMarkReceipt" then %>
     <strong><%= I18n.t('menu.receipt.attributes.number_marks') %>: </strong> <%= @receipt.number_marks %><br />
+<% elsif params[:type] == "DesignReceipt" then %>
+    <strong><%= I18n.t('menu.receipt.attributes.models') %>: </strong> <%= @receipt.models %><br />
+    <strong><%= I18n.t('menu.receipt.attributes.draws') %>: </strong> <%= @receipt.draws %><br />
+    <strong><%= I18n.t('menu.receipt.attributes.pics') %>: </strong> <%= @receipt.pics %><br />
 <% end %>
