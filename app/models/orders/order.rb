@@ -12,6 +12,7 @@ class Order < ApplicationRecord
   attr_accessor :name
 
   validates :payement, presence: true
+  validates :group, :user, presence: true
   validates_associated :payement
 
   before_validation :initiate, on: :create

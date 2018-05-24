@@ -8,6 +8,7 @@ class Receipt < ApplicationRecord
   has_many :payements, through: :orders
 
   validates :order_ids, presence: true
+  validates :group, :user, presence: true
   validate :sum_remain_must_be_enough, on: :create
   validate :sum_used_must_be_enough, on: :update
 
@@ -17,9 +18,11 @@ class Receipt < ApplicationRecord
     owner_street: :string,
     owner_wilaya: :string
 
-  validates :owner_name, :owner_street, :owner_wilaya, :type, presence: true
+  validates :owner_name, :owner_street, :owner_wilaya, :type, :branch, presence: true
+  validates :number, uniqueness: { :scope => [:serie, :branch] }
 
   enum status: { active: 0, inactive: 1 }
+  enum branch: { M: 0, P: 1 }
 
   enum owner_wilaya: { "Adrar" => "Adrar",
     "Chlef"           => "Chlef",
@@ -141,6 +144,7 @@ class Receipt < ApplicationRecord
   def valuate
     self.serie = Date.current.year
     self.number = set_number
+    self.branch = branching
     Tax.updating
     tax_calculate
   end

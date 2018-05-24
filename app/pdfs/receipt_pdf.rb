@@ -27,16 +27,16 @@ class ReceiptPdf < Prawn::Document
       row(0..1).column(1..3).align = :center
     end
 
-    receipt_family = "U"
-    if @receipt.class.superclass.name == "MdReceipt" then
-      receipt_family = "M"
-    elsif @receipt.class.superclass.name == "PdReceipt" then
-      receipt_family = "P"
-    end
+    # receipt_family = "U"
+    # if @receipt.class.superclass.name == "MdReceipt" then
+    #   receipt_family = "M"
+    # elsif @receipt.class.superclass.name == "PdReceipt" then
+    #   receipt_family = "P"
+    # end
 
     move_down 20
     text "Quittance de Taxe", :align => :center, :size => 20
-    date_number = [["#{@receipt.created_at.strftime('%d-%m-%Y')}", "#{@receipt.serie}/#{@receipt.number}/#{receipt_family}"]]
+    date_number = [["#{@receipt.created_at.strftime('%d-%m-%Y')}", "#{@receipt.serie}/#{@receipt.number}/#{@receipt.branch}"]]
     table(date_number, :position => :right, :cell_style => { leading: 0, :padding_top => -5, :padding_bottom => 1 })
 
     move_down 20

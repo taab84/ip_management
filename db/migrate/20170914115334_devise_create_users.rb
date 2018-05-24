@@ -7,7 +7,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.1]
       t.string :username,           null: false, default: ""
       t.string :fullname,           null: false, default: ""
       t.string :type,               null: false, default: "Public"
-      t.references :group,   foreign_key: true, index: true
+      t.references :group,   foreign_key: true, index: false
 
       ## Recoverable
       # t.string   :reset_password_token
@@ -37,10 +37,6 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.1]
 
       t.timestamps null: false
     end
-
-    add_index :users, :email,                unique: true
-    add_index :users, :username,             unique: true
-    add_index :users, :type,                 unique: false
     # add_index :users, :confirmation_token,   unique: true
     # add_index :users, :unlock_token,         unique: true
   end

@@ -9,7 +9,5 @@ class CreateGroups < ActiveRecord::Migration[5.1]
 
       t.timestamps
     end
-    add_index :groups, :name, unique: true
-    add_index :groups, :tenant, unique: true
   end
 end

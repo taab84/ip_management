@@ -1,5 +1,6 @@
 class TransferPayement < Payement
   jsonb_accessor :data,
+    bank: :string,
     serie: :integer,
     number: :integer,
     ref: :integer

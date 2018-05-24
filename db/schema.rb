@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_20_123041) do
+ActiveRecord::Schema.define(version: 2018_05_15_104246) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,26 +29,25 @@ ActiveRecord::Schema.define(version: 2018_05_20_123041) do
 
   create_table "orderables", force: :cascade do |t|
     t.string "type"
-    t.bigint "order_id"
-    t.bigint "receipt_id"
+    t.decimal "used", precision: 10, scale: 2, default: "0.0"
+    t.bigint "order_id", null: false
+    t.bigint "receipt_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.decimal "used", precision: 10, scale: 2, default: "0.0"
-    t.index ["order_id"], name: "index_orderables_on_order_id"
-    t.index ["receipt_id"], name: "index_orderables_on_receipt_id"
+    t.index ["receipt_id", "order_id"], name: "index_orderables_on_receipt_id_and_order_id", unique: true
     t.index ["type"], name: "index_orderables_on_type"
   end
 
   create_table "orders", force: :cascade do |t|
-    t.string "type"
-    t.integer "number"
+    t.string "type", null: false
+    t.integer "number", null: false
     t.decimal "remain", precision: 10, scale: 2, default: "0.0", null: false
     t.jsonb "image_data"
+    t.bigint "user_id", null: false
+    t.bigint "group_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "group_id"
-    t.bigint "user_id"
-    t.index ["created_at"], name: "index_orders_on_created_at"
+    t.index ["created_at"], name: "index_orders_on_created_at", unique: true
     t.index ["group_id"], name: "index_orders_on_group_id"
     t.index ["number"], name: "index_orders_on_number"
     t.index ["remain"], name: "index_orders_on_remain"
@@ -57,53 +56,53 @@ ActiveRecord::Schema.define(version: 2018_05_20_123041) do
   end
 
   create_table "payements", force: :cascade do |t|
-    t.string "type"
+    t.string "type", null: false
     t.decimal "value", precision: 10, scale: 2, default: "0.0", null: false
-    t.string "name"
-    t.date "date"
-    t.jsonb "data"
+    t.string "name", null: false
+    t.date "date", null: false
+    t.jsonb "data", null: false
     t.jsonb "image_data"
-    t.bigint "order_id"
+    t.bigint "order_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["created_at"], name: "index_payements_on_created_at"
+    t.index ["created_at"], name: "index_payements_on_created_at", unique: true
     t.index ["data"], name: "index_payements_on_data", using: :gin
     t.index ["date"], name: "index_payements_on_date"
     t.index ["name"], name: "index_payements_on_name"
-    t.index ["order_id"], name: "index_payements_on_order_id"
+    t.index ["order_id"], name: "index_payements_on_order_id", unique: true
     t.index ["type"], name: "index_payements_on_type"
   end
 
   create_table "receipts", force: :cascade do |t|
     t.string "type"
-    t.integer "serie"
-    t.integer "number"
-    t.string "owner_name"
-    t.jsonb "owner_adress"
+    t.integer "status", default: 0, null: false
+    t.integer "serie", null: false
+    t.integer "number", null: false
+    t.integer "branch", null: false
+    t.string "owner_name", null: false
+    t.jsonb "owner_adress", null: false
     t.decimal "total", precision: 10, scale: 2, default: "0.0", null: false
-    t.jsonb "data"
+    t.jsonb "data", null: false
     t.jsonb "image_data"
     t.bigint "representative_id"
-    t.bigint "user_id"
+    t.bigint "user_id", null: false
+    t.bigint "group_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "group_id"
-    t.integer "status", default: 0
-    t.index ["created_at"], name: "index_receipts_on_created_at"
+    t.index ["created_at"], name: "index_receipts_on_created_at", unique: true
     t.index ["data"], name: "index_receipts_on_data", using: :gin
     t.index ["group_id"], name: "index_receipts_on_group_id"
-    t.index ["number"], name: "index_receipts_on_number"
+    t.index ["number", "serie", "branch"], name: "index_receipts_on_number_and_serie_and_branch", unique: true
     t.index ["owner_adress"], name: "index_receipts_on_owner_adress", using: :gin
     t.index ["owner_name"], name: "index_receipts_on_owner_name"
     t.index ["representative_id"], name: "index_receipts_on_representative_id"
-    t.index ["serie"], name: "index_receipts_on_serie"
     t.index ["type"], name: "index_receipts_on_type"
     t.index ["user_id"], name: "index_receipts_on_user_id"
   end
 
   create_table "representatives", force: :cascade do |t|
-    t.string "fullname"
-    t.string "adress"
+    t.string "fullname", null: false
+    t.string "adress", null: false
     t.string "wilaya"
     t.jsonb "contact"
     t.datetime "created_at", null: false
@@ -113,9 +112,9 @@ ActiveRecord::Schema.define(version: 2018_05_20_123041) do
   end
 
   create_table "taxes", force: :cascade do |t|
-    t.string "code"
-    t.string "description"
-    t.string "category"
+    t.string "code", null: false
+    t.string "description", null: false
+    t.string "category", null: false
     t.decimal "current_tax", precision: 10, scale: 2, default: "0.0", null: false
     t.decimal "next_tax", precision: 10, scale: 2, default: "0.0", null: false
     t.date "date_app"
@@ -145,11 +144,10 @@ ActiveRecord::Schema.define(version: 2018_05_20_123041) do
   end
 
   create_table "whitelists", force: :cascade do |t|
-    t.inet "ip_adress"
+    t.inet "ip_adress", null: false
     t.string "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["ip_adress"], name: "index_whitelists_on_ip_adress"
   end
 
   add_foreign_key "orderables", "orders"

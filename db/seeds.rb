@@ -24,7 +24,7 @@ tax_list = [
   end
 
   group_list = [
-      ["Oran", "oran", "08 Rue Ferh el Hadj Boulanger", "inapi-oran@inapi.org"],
+      ["Oran", "oran", "08 Rue Ferh el Hadj, Boulanger", "inapi-oran@inapi.org"],
       ["Alger", "alger", "42 Rue Larbi ben Mhidi", "mail1@exemple.dz"],
       ["Setif", "setif", "Setif", "mail2@exemple.dz"]
     ]
